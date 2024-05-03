@@ -17,7 +17,8 @@ const config: Config = {
         "coal" : "#383634",
         "leaf" : "#4C7C7D",
         "tomato" : "#E45959",
-        "cream" : "#EDEAE7"
+        "cream" : "#EDEAE7",
+        "darkcream" : "#b3b0ad"
       }
     },
   },

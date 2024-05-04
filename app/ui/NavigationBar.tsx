@@ -112,7 +112,7 @@ export function SideMenu({
       <>
         <section
           className={clsx(
-            "fixed right-0 top-[61px] w-3/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4",
+            "fixed z-50 right-0 top-[61px] w-3/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4",
             {
               hidden: !openSidebar,
               block: openSidebar,
@@ -145,7 +145,7 @@ export function SideMenu({
       <>
         <section
           className={clsx(
-            "fixed right-0 top-[61px] w-3/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4",
+            "fixed z-50 right-0 top-[61px] w-3/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4",
             {
               hidden: !openSidebar,
               block: openSidebar,

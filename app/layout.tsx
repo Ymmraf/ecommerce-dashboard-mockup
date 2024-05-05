@@ -4,6 +4,7 @@ import { Lato } from "next/font/google";
 import { Kanit } from "next/font/google";
 import { NavitagionBar, SideMenu } from "./ui/NavigationBar";
 import "./globals.css";
+import Footer from "./ui/Footer";
 
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
@@ -32,6 +33,7 @@ export default function RootLayout({
         <body>
           <NavitagionBar />
           {children}
+          <Footer />
         </body>
       </html>
     </Providers>

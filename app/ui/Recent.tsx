@@ -1,7 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
+import { products } from "../lib/products";
+import { getDecimal } from "../utils/getDecimal";
+import Link from "next/link";
+import ProductCard from "./ProductCard";
 
 export default function Recent() {
+  const recent = products.filter(product => product.new == true)
+
   return (
     <>
       <section className="w-11/12 m-auto">
@@ -9,6 +15,25 @@ export default function Recent() {
           <FontAwesomeIcon className="text-coal text-3xl" icon={faStore} />
           <h2 className="text-coal font-semibold text-2xl">New additions</h2>
         </div>
+        <div className="grid grid-cols-2 gap-x-2 gap-y-6">
+          {
+            recent.slice(0,4).map((product,index) => 
+              <ProductCard 
+                key={index}
+                name={product.name}
+                price={getDecimal(product.price, product.discount)}
+                img={product.img}
+                rating={product.rating}
+                originalPrice={getDecimal(product.price)}
+              />
+            )
+          }
+        </div>
+        <div className="mt-4">
+        <Link href="/" className="text-coal text-lg hover:underline">
+          <p className="text-center px-4 py-2">View all &gt;</p>
+        </Link>
+      </div>
       </section>
     </>
   );

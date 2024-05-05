@@ -6,6 +6,8 @@ import { getDecimal } from "../utils/getDecimal";
 import ProductCard from "./ProductCard";
 
 export function Discount() {
+  const discount = products.filter(product => product.discount > 0)
+
   return (
     <section className="w-11/12 m-auto">
       <div className="flex gap-x-3 mb-6">
@@ -13,7 +15,7 @@ export function Discount() {
         <h2 className="text-coal font-semibold text-2xl">Discounted goods</h2>
       </div>
       <div className="grid grid-cols-2 gap-x-2 gap-y-6">
-        {products.map((product, index) => {
+        {discount.slice(0,4).map((product, index) => {
           return (
               <ProductCard
                 key={index}

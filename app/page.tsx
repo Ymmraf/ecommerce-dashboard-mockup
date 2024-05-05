@@ -1,4 +1,5 @@
 import { Discount } from "./ui/Discount";
+import Recent from "./ui/Recent";
 import Recipe from "./ui/Recipe";
 import Swipe from "./ui/Swipe";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Swipe />
       <Discount />
       <Recipe />
+      <Recent />
     </main>
   );
 }

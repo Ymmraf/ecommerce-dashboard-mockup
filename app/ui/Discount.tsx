@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPercent } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 import Link from "next/link";
 import { products } from "../lib/products";
 import { getDecimal } from "../utils/getDecimal";
+import ProductCard from "./ProductCard";
 
 export function Discount() {
   return (
@@ -16,7 +15,7 @@ export function Discount() {
       <div className="grid grid-cols-2 gap-x-2 gap-y-6">
         {products.map((product, index) => {
           return (
-              <DiscountCard
+              <ProductCard
                 key={index}
                 name={product.name}
                 price={getDecimal(product.price, product.discount)}
@@ -33,54 +32,5 @@ export function Discount() {
         </Link>
       </div>
     </section>
-  );
-}
-
-function DiscountCard({
-  name,
-  price,
-  img,
-  rating,
-  originalPrice
-}: {
-  name: string;
-  price: string;
-  img: string;
-  rating: number;
-  originalPrice: string
-}) {
-  return (
-    <Link
-      href="/"
-      className="w-full bg-white p-4 rounded-3xl relative duration-300 shadow-sm hover:scale-[1.01] "
-    >
-      <Image
-        className="rounded-full w-20 h-20 absolute top-[-10px] shadow-md"
-        src={img}
-        alt="product image"
-        width={100}
-        height={100}
-      />
-      <div className="flex justify-end mb-4">
-        <div className="text-leaf">
-          <div className="flex justify-center">
-            <FontAwesomeIcon className="text-sm" icon={faStar} />
-          </div>
-          <p className="font-semibold mt-1">{rating}/5</p>
-        </div>
-      </div>
-      <h3 className="text-coal text-xl mb-4">{name}</h3>
-      <div className="flex gap-x-2">
-        <p className="font-semibold text-tomato text-lg relative">
-          ${price}
-        </p>
-        <div className="flex items-center">
-          <p className="font-regular text-coal text-sm line-through">
-            ${originalPrice}
-          </p>
-        </div>
-      </div>
-      <p className="text-gray-400 text-sm">/ 500g</p>
-    </Link>
   );
 }

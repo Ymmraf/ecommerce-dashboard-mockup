@@ -15,8 +15,8 @@ export default function Recipe() {
           <div className="p-8 bg-red-100 rounded-2xl flex">
             <div className="flex justify-center w-[150px] h-[150px]">
               <Image
-                className="opacity-85"
-                src="/fruits/watermelon.png"
+                className="opacity-85 rounded-full size-36"
+                src="/fruits/watermelon-recipe.jpg"
                 alt="watermelon"
                 width={150}
                 height={150}

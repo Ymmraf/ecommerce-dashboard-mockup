@@ -8,13 +8,27 @@ import { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 
+import Badge, { BadgeProps } from "@mui/material/Badge";
+import { styled } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
+
 export function NavitagionBar() {
   const [openSidebar, setSidebar] = useState<boolean>(false);
   const [currentOpen, setCurrentOpen] = useState<null | string>(null);
 
   function handleClickNavigation() {
-    setSidebar(false)
-    setCurrentOpen(null)
+    setSidebar(false);
+    setCurrentOpen(null);
   }
 
   function handleClickSidebar(menu: string) {
@@ -55,10 +69,14 @@ export function NavitagionBar() {
                 }
               )}
             >
-              <FontAwesomeIcon icon={faCartShopping} />
-              <div className="p-1 w-5 h-5 bg-tomato rounded-full text-cream font-bold absolute text-[10px] top-4 left-6 flex justify-center items-center">
-                <p>5</p> 
-            </div>
+              <div className="absolute top-1 left-1 opacity-90">
+                {/* <IconButton aria-label="cart"> */}
+                  <StyledBadge badgeContent={12} color="error">
+                    <ShoppingCartIcon />
+                  </StyledBadge>
+                {/* </IconButton> */}
+              </div>
+
             </button>
             <div>
               <div className="w-px bg-coal h-full"></div>
@@ -77,7 +95,11 @@ export function NavitagionBar() {
           </li>
         </ul>
       </nav>
-      <SideMenu openSidebar={openSidebar} currentOpen={currentOpen} handleClickNavigation={handleClickNavigation}/>
+      <SideMenu
+        openSidebar={openSidebar}
+        currentOpen={currentOpen}
+        handleClickNavigation={handleClickNavigation}
+      />
       <div className="h-[62px]"></div>
     </>
   );
@@ -101,11 +123,11 @@ const navigation = [
 export function SideMenu({
   openSidebar,
   currentOpen,
-  handleClickNavigation
+  handleClickNavigation,
 }: {
   openSidebar: boolean;
   currentOpen: null | string;
-  handleClickNavigation: Function
+  handleClickNavigation: Function;
 }) {
   if (currentOpen == "navigation") {
     return (
@@ -167,7 +189,9 @@ export function SideMenu({
             <p className="text-coal text-xl">$0.00</p>
           </div>
           <div>
-            <button className="w-full py-3 bg-leaf mt-2 text-cream font-semibold rounded-xl">Purchase</button>
+            <button className="w-full py-3 bg-leaf mt-2 text-cream font-semibold rounded-xl">
+              Purchase
+            </button>
           </div>
         </section>
       </>

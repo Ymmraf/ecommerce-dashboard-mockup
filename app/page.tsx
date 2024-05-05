@@ -1,3 +1,4 @@
+import BonusProgram from "./ui/BonusProgram";
 import { Discount } from "./ui/Discount";
 import Recent from "./ui/Recent";
 import Recipe from "./ui/Recipe";
@@ -9,6 +10,7 @@ export default function Home() {
       <Swipe />
       <Discount />
       <Recipe />
+      <BonusProgram />
       <Recent />
     </main>
   );

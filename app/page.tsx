@@ -4,6 +4,7 @@ import Recent from "./ui/Recent";
 import Recipe from "./ui/Recipe";
 import Swipe from "./ui/Swipe";
 import WorkProcess from "./ui/WorkProcess";
+import Footer from "./ui/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <BonusProgram />
       <Recent />
       <WorkProcess />
+      <Footer />
     </main>
   );
 }

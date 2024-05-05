@@ -41,11 +41,11 @@ export default function Recipe() {
               </div>
             </div>
           </div>
-          <div className="p-8 bg-emerald-200 rounded-2xl flex">
-            <div className="flex justify-center">
+          <div className="p-8 bg-blue-200 rounded-2xl flex">
+            <div className="flex justify-center w-[150px] h-[150px]">
               <Image
-                className="opacity-85"
-                src="/fruits/asparagus.png"
+                className="opacity-85 rounded-full size-36"
+                src="/fruits/blueberry-recipe.jpg"
                 alt="asparagus"
                 width={150}
                 height={150}
@@ -53,8 +53,8 @@ export default function Recipe() {
             </div>
             <div>
               <div>
-                <h3 className="text-leaf text-2xl font-semibold text-center">
-                  Asparagus
+                <h3 className="text-blue-700 text-2xl font-semibold text-center">
+                  Blueberry
                 </h3>
                 <p className="text-coal text-lg opacity-80 text-center">
                   Recipes with Sinramon

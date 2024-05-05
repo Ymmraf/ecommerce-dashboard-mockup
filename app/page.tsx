@@ -3,6 +3,7 @@ import { Discount } from "./ui/Discount";
 import Recent from "./ui/Recent";
 import Recipe from "./ui/Recipe";
 import Swipe from "./ui/Swipe";
+import WorkProcess from "./ui/WorkProcess";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Recipe />
       <BonusProgram />
       <Recent />
+      <WorkProcess />
     </main>
   );
 }

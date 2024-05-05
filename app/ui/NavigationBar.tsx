@@ -2,15 +2,12 @@
 
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -111,12 +108,24 @@ const navigation = [
     href: "/",
   },
   {
-    heading: "Fresh Fruit",
-    href: "/fresh-fruit",
+    heading: "Store",
+    href: "/store",
   },
   {
-    heading: "Dried Fruit",
-    href: "/dried-fruit",
+    heading: "About",
+    href: "/about",
+  },
+  {
+    heading: "Contact",
+    href: "/contact",
+  },
+  {
+    heading: "Payment",
+    href: "/payment",
+  },
+  {
+    heading: "FAQ",
+    href: "/faq",
   },
 ];
 
@@ -134,14 +143,15 @@ export function SideMenu({
       <>
         <section
           className={clsx(
-            "fixed z-50 right-0 top-[60px] w-3/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4",
+            "fixed z-40 right-0 top-0 w-3/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4",
             {
               hidden: !openSidebar,
               block: openSidebar,
             }
           )}
         >
-          <ul>
+          <ul className="flex flex-col justify-between h-full pt-[52px]">
+            <div>
             {navigation.map((menu, index) => (
               <>
                 <li
@@ -158,6 +168,12 @@ export function SideMenu({
                 <hr className="h-[2px] bg-coal opacity-30" />
               </>
             ))}
+            </div>
+            <div>
+              <li className="text-center text-xl py-3 mt-2 hover:bg-darkcream rounded-xl w-full bg-leaf text-cream">
+                <Link href="/dashboard" onClick={() => handleClickNavigation()}>Seller dashboard</Link>
+              </li>
+            </div>
           </ul>
         </section>
       </>

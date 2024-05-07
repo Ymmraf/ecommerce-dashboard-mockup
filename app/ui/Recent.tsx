@@ -30,7 +30,7 @@ export default function Recent() {
           }
         </div>
         <div className="mt-4">
-        <Link href="/" className="text-coal text-lg hover:underline">
+        <Link href="/store" className="text-coal text-lg hover:underline">
           <p className="text-center px-4 py-2">View all &gt;</p>
         </Link>
       </div>

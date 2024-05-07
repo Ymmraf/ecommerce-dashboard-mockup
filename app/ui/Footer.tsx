@@ -16,18 +16,18 @@ export default function Footer() {
                 <div>
                     <p className="text-coal text-xl font-semibold my-4">Company</p>
                     <ul className="flex gap-x-8 mb-4">
-                        <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">About</Link></li>
-                        <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Store</Link></li>
-                        <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">FAQ</Link></li>
+                        <li><Link href="/about" className="text-coal font-regular opacity-70 hover:underline">About</Link></li>
+                        <li><Link href="/store" className="text-coal font-regular opacity-70 hover:underline">Store</Link></li>
+                        <li><Link href="/faq" className="text-coal font-regular opacity-70 hover:underline">FAQ</Link></li>
                     </ul>
                 </div>
                 <hr className="h-[2px] bg-darkcream w-full"/>
                 <div>
                     <p className="text-coal text-xl font-semibold my-4">Service</p>
                     <ul className="flex gap-x-8 mb-4">
-                        <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Delivery</Link></li>
-                        <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Payment</Link></li>
-                        <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Contacts</Link></li>
+                        <li><Link href="/delivery" className="text-coal font-regular opacity-70 hover:underline">Delivery</Link></li>
+                        <li><Link href="/payment" className="text-coal font-regular opacity-70 hover:underline">Payment</Link></li>
+                        <li><Link href="/contact" className="text-coal font-regular opacity-70 hover:underline">Contacts</Link></li>
                     </ul>
                 </div>
                 <hr className="h-[2px] bg-darkcream w-full"/>

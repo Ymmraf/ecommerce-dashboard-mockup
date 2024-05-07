@@ -1,3 +1,10 @@
+export function producted() {
+    setTimeout(() => {
+        return products
+    },3000)
+    return products
+}
+
 export const products = [
     {name: "Orange", type: "fresh", price: 3, stock: 20, discount: 0, img: "/fruits/orange.jpg", desc: "An orange", rating: 4.9, new: true},
     {name: "Apple", type: "fresh", price: 3, stock: 20, discount: 0.2, img: "/fruits/apple.jpg", desc: "An apple", rating: 4.8, new: false},

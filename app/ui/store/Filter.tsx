@@ -5,21 +5,13 @@ import clsx from "clsx";
 export default function Filter({
   state,
   toggle,
-  typeFilter,
-  handleClickType,
-  stateFilter,
-  handleClickState,
-  priceSort,
-  handleClickPrice,
+  currentFilter,
+  handleClickFilter
 }: {
   state: boolean;
   toggle: Function;
-  typeFilter: string;
-  handleClickType: Function;
-  stateFilter: string;
-  handleClickState: Function;
-  priceSort: string;
-  handleClickPrice: Function;
+  currentFilter: any
+  handleClickFilter: Function
 }) {
   return (
     <aside
@@ -45,11 +37,11 @@ export default function Filter({
           <ul className="flex gap-x-2">
             <li>
               <button
-                onClick={() => handleClickType("fresh")}
+                onClick={() => handleClickFilter({filter: "type", value: "fresh"})}
                 className={clsx(
                   "px-4 py-2 text-coal border-[1px] rounded-xl border-coal hover:text-cream hover:bg-coal duration-300",
                   {
-                    "bg-coal text-cream": typeFilter == "fresh",
+                    "bg-coal text-cream": currentFilter.type == "fresh",
                   }
                 )}
               >
@@ -58,11 +50,11 @@ export default function Filter({
             </li>
             <li>
               <button
-                onClick={() => handleClickType("dried")}
+                onClick={() => handleClickFilter({filter: "type", value: "dried"})}
                 className={clsx(
                   "px-4 py-2 text-coal border-[1px] rounded-xl border-coal hover:text-cream hover:bg-coal duration-300",
                   {
-                    "bg-coal text-cream": typeFilter == "dried",
+                    "bg-coal text-cream": currentFilter.type == "dried",
                   }
                 )}
               >
@@ -77,11 +69,11 @@ export default function Filter({
           <ul className="flex gap-x-2">
             <li>
               <button
-                onClick={() => handleClickState("new")}
+                onClick={() => handleClickFilter({filter: "state", value: "new"})}
                 className={clsx(
                   "px-4 py-2 text-coal border-[1px] rounded-xl border-coal hover:text-cream hover:bg-coal duration-300",
                   {
-                    "bg-coal text-cream": stateFilter == "new",
+                    "bg-coal text-cream": currentFilter.state == "new",
                   }
                 )}
               >
@@ -90,11 +82,11 @@ export default function Filter({
             </li>
             <li>
               <button
-                onClick={() => handleClickState("discount")}
+                onClick={() => handleClickFilter({filter: "state", value: "discount"})}
                 className={clsx(
                   "px-4 py-2 text-coal border-[1px] rounded-xl border-coal hover:text-cream hover:bg-coal duration-300",
                   {
-                    "bg-coal text-cream": stateFilter == "discount",
+                    "bg-coal text-cream": currentFilter.state == "discount",
                   }
                 )}
               >
@@ -109,11 +101,11 @@ export default function Filter({
           <ul className="flex gap-x-2">
             <li>
               <button
-                onClick={() => handleClickPrice("desc")}
+                onClick={() => handleClickFilter({filter: "price", value: "desc"})}
                 className={clsx(
                   "px-4 py-2 text-coal border-[1px] rounded-xl border-coal hover:text-cream hover:bg-coal duration-300",
                   {
-                    "bg-coal text-cream": priceSort == "desc",
+                    "bg-coal text-cream": currentFilter.price == "desc",
                   }
                 )}
               >
@@ -122,11 +114,11 @@ export default function Filter({
             </li>
             <li>
               <button
-                onClick={() => handleClickPrice("asc")}
+                onClick={() => handleClickFilter({filter: "price", value: "asc"})}
                 className={clsx(
                   "px-4 py-2 text-coal border-[1px] rounded-xl border-coal hover:text-cream hover:bg-coal duration-300",
                   {
-                    "bg-coal text-cream": priceSort == "asc",
+                    "bg-coal text-cream": currentFilter.price == "asc",
                   }
                 )}
               >

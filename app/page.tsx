@@ -1,9 +1,9 @@
-import BonusProgram from "./ui/BonusProgram";
-import { Discount } from "./ui/Discount";
-import Recent from "./ui/Recent";
-import Recipe from "./ui/Recipe";
-import Swipe from "./ui/Swipe";
-import WorkProcess from "./ui/WorkProcess";
+import BonusProgram from "./ui/home/BonusProgram";
+import { Discount } from "./ui/home/Discount";
+import Recent from "./ui/home/Recent";
+import Recipe from "./ui/home/Recipe";
+import Swipe from "./ui/home/Swipe";
+import WorkProcess from "./ui/home/WorkProcess";
 import Footer from "./ui/Footer";
 
 export default function Home() {

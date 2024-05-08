@@ -1,8 +1,58 @@
-export function producted() {
-    setTimeout(() => {
-        return products
-    },3000)
-    return products
+import { sql, createClient } from '@vercel/postgres';
+
+export async function clientFecthProducts() {
+    const client = createClient()
+    await client.connect()
+
+    try {
+        const data = sql`
+            SELECT * FROM products
+        `
+        return data
+    } catch (error) {
+        console.log(`Database error : ${error}`)
+        throw new Error("Failed to fetch products")
+    } finally {
+        await client.end()
+    }
+}
+
+export async function fetchProducts() {
+    try {
+        const data = await sql`
+        SELECT * FROM products
+        `
+        return data
+    } catch (error) {
+        console.log(`Database error : ${error}`)
+        throw new Error("Failed to fetch products")
+    }
+}
+
+export async function fetchDiscountProducts() {
+    try {
+        const discountProducts = await sql`
+            SELECT * FROM products
+            WHERE discount > 0;
+        `
+        return discountProducts
+    } catch (error) {
+        console.log(`Database error : ${error}`)
+        throw new Error("Failed to fetch discount products")
+    }
+}
+
+export async function fetchNewProducts() {
+    try {
+        const discountProducts = await sql`
+            SELECT * FROM products
+            WHERE new = true;
+        `
+        return discountProducts
+    } catch (error) {
+        console.log(`Database error : ${error}`)
+        throw new Error("Failed to fetch new products")
+    }
 }
 
 export const products = [
@@ -32,3 +82,4 @@ export const products = [
     {name: "Cashew Nut", type: "dried", price: 5, stock: 20, discount: 0.2, img: "/fruits/cashew.jpg", desc: "a bowl of cashew nut", rating: 4.9, new: false},
     {name: "Macademia", type: "dried", price: 6, stock: 20, discount: 0, img: "/fruits/macademia.jpg", desc: "a bowl of macademia", rating: 4.8, new: true},
 ]
+

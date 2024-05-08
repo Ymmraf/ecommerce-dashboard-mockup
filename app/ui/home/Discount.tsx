@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPercent } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { products } from "../lib/products";
-import { getDecimal } from "../utils/getDecimal";
-import ProductCard from "./ProductCard";
-import { ProductCardSkeleton } from "./Skeleton";
+import { getDecimal } from "../../utils/getDecimal";
+import ProductCard from "../ProductCard";
+import { ProductCardSkeleton } from "../Skeleton";
 import { Suspense } from "react";
+import { fetchDiscountProducts } from "../../lib/products";
 
-export function Discount() {
-  const discount = products.filter(product => product.discount > 0)
+export async function Discount() {
+  const fetchedProduct = (await fetchDiscountProducts()).rows
+  const discount = fetchedProduct.filter(product => product.discount > 0)
 
   return (
     <section className="w-11/12 m-auto">

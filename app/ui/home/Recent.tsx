@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
-import { products } from "../lib/products";
-import { getDecimal } from "../utils/getDecimal";
+import { products } from "../../lib/products";
+import { getDecimal } from "../../utils/getDecimal";
 import Link from "next/link";
-import ProductCard from "./ProductCard";
+import ProductCard from "../ProductCard";
+import { fetchNewProducts } from "../../lib/products";
 
-export default function Recent() {
-  const recent = products.filter(product => product.new == true)
+export default async function Recent() {
+  const newProducts = (await fetchNewProducts()).rows
+  const recent = newProducts.filter(product => product.new == true)
 
   return (
     <>

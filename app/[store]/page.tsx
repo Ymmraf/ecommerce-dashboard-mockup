@@ -21,10 +21,6 @@ export default function Store() {
     price: ""
   });
 
-  const [typeFilter, setTypeFilter] = useState<any>("");
-  const [stateFilter, setStateFilter] = useState<any>("");
-  const [priceSort, setPriceSort] = useState<any>("");
-
   interface FilterObject {
     filter: string 
     value: string
@@ -51,48 +47,41 @@ export default function Store() {
     }
   }
 
-  function handleClickType(typeStr: string) {
-    if (!typeFilter) {
-      setTypeFilter(typeStr);
-      setCurrentFilter({...currentFilter, type: typeStr})
-    } else if (typeFilter) {
-      if (typeFilter == typeStr) {
-        setTypeFilter("");
-        setCurrentFilter({...currentFilter, type: ""})
-      } else if (typeFilter != typeStr) {
-        setTypeFilter(typeStr);
-        setCurrentFilter({...currentFilter, type: typeStr})
-      }
-    }
-  }
+  function filterAndSort() {
+    setDisplay(display => initialData)
 
-  function handleClickState(stateStr: string) {
-    if (!stateFilter) {
-      setStateFilter(stateStr);
-      setCurrentFilter({...currentFilter, state: stateStr})
-    } else if (stateFilter) {
-      if (stateFilter == stateStr) {
-        setStateFilter("");
-        setCurrentFilter({...currentFilter, state: ""})
-      } else if (stateFilter != stateStr) {
-        setStateFilter(stateStr);
-        setCurrentFilter({...currentFilter, state: stateStr})
-      }
+    if(currentFilter.type) {
+      setDisplay(display => display.filter(product => product.type == currentFilter.type))
     }
-  }
 
-  function handleClickPrice(priceStr: string) {
-    if (!priceSort) {
-      setPriceSort(priceStr);
-      setCurrentFilter({...currentFilter, price: priceStr})
-    } else if (priceSort) {
-      if (priceSort == priceStr) {
-        setPriceSort("");
-        setCurrentFilter({...currentFilter, price: ""})
-      } else if (priceSort != priceStr) {
-        setPriceSort(priceStr);
-        setCurrentFilter({...currentFilter, price: priceStr})
-      }
+    if(currentFilter.state == "discount") {
+      setDisplay(display => display.filter(product => product.discount > 0))
+    } else if (currentFilter.state == "new") {
+      setDisplay(display => display.filter(product => product.new == true))
+    }
+
+    if(currentFilter.price == "asc") {
+      setDisplay(display => display.sort((a,b) => {
+        if(a.discount > 0 && b.discount > 0) {
+          return (a.price * (1 - a.discount) - (b.price * (1 - b.discount)))
+        } else if (a.discount > 0 && b.discount == 0) {
+          return (a.price * (1 - a.discount)) - b.price
+        } else if (b.discount > 0 && a.discount == 0) {
+          return a.price - (b.price * (1 - b.discount))
+        }
+        return a.price - b.price
+      }))
+    } else if (currentFilter.price == "desc") {
+      setDisplay(display => display.sort((a,b) => {
+        if(a.discount > 0 && b.discount > 0) {
+          return (b.price * (1 - b.discount) - (a.price * (1 - a.discount)))
+        } else if (b.discount > 0 && a.discount == 0) {
+          return (b.price * (1 - b.discount)) - a.price
+        } else if (a.discount > 0 && b.discount == 0) {
+          return b.price - (a.price * (1 - a.discount))
+        }
+        return b.price - a.price
+      }))
     }
   }
 
@@ -101,11 +90,11 @@ export default function Store() {
       fetchAllProducts();
     }
 
+    if(display.length) {
+      filterAndSort()
+    }
+    console.log(currentFilter)
   }, [currentFilter]);
-
-  function filterAndSort() {
-    
-  }
 
   function toggleSideFilter() {
     setSideFilter(() => !sideFilter);
@@ -128,8 +117,7 @@ export default function Store() {
           className="text-coal px-4 py-2 text-xl w-full text-left hover:bg-darkcream flex justify-between my-8 rounded-xl duration-300"
         >
           <div className="font-semibold opacity-90">
-            Filter ({currentFilter.length}){" "}
-            <FontAwesomeIcon className="size-4" icon={faFilter} />
+            Filter <FontAwesomeIcon className="size-4" icon={faFilter} />
           </div>
           <div className="font-regular">
             Show {display.length} {display.length > 1 ? "goods" : "good"}
@@ -138,14 +126,8 @@ export default function Store() {
         <Filter
           state={sideFilter}
           toggle={toggleSideFilter}
-          typeFilter={typeFilter}
-          handleClickType={handleClickType}
-          stateFilter={stateFilter}
-          handleClickState={handleClickState}
-          priceSort={priceSort}
-          handleClickPrice={handleClickPrice}
-          // nameSort={nameSort}
-          // handleClickName={handleClickName}
+          currentFilter={currentFilter}
+          handleClickFilter={handleClickFilter}
         />
         <section className="grid grid-cols-2 gap-x-2 gap-y-6 mt-8">
           <Suspense fallback={<ProductCardSkeleton />}>

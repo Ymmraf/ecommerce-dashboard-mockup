@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import CartDisplay from "./CartDisplay";
 import { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
@@ -201,6 +201,7 @@ export function SideMenu({
             }
           )}
         >
+          <div>
           <h2 className="text-xl font-semibold text-coal mb-4">Your Order</h2>
           <div className="flex justify-between mb-2">
             <p className="text-coal">Subtotal:</p>
@@ -215,50 +216,15 @@ export function SideMenu({
             <p className="text-coal text-xl font-bold">Total:</p>
             <p className="text-coal text-xl">${total.toFixed(2)}</p>
           </div>
-          <div>
+          <div className="mb-4">
             <button className="w-full py-3 bg-leaf mt-2 text-cream font-semibold rounded-xl">
               Purchase
             </button>
           </div>
-          <div className="overflow-scroll space-y-3">
-            {productInCart.map((product) => (
-              <>
-                <div className="h-24 flex gap-x-2 p-2">
-                  <div className="mr-1">
-                    <div className="rounded-full">
-                      <Image
-                        className="rounded-full shadow-md min-h-[80px] min-w-[80px]"
-                        src={product.img}
-                        alt={product.product}
-                        width={80}
-                        height={80}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex justify-between w-full">
-                    <div className="flex flex-col justify-between py-1">
-                      <p className="text-coal font-semibold text-lg">{product.product}</p>
-                      <div className="flex items-end min-w-20">
-                        <button className="size-8 border-[1px] border-coal border-opacity-50 text-coal font-bold hover:text-cream hover:bg-coal duration-300">-</button>
-                        <div className="flex items-center">
-                          <p className="min-w-8 text-center">{
-                            product.quantity
-                            }</p>
-                        </div>
-                        <button className="size-8 border-[1px] border-coal border-opacity-50 text-coal font-bold hover:text-cream hover:bg-coal duration-300">+</button>
-                      </div>
-                    </div>
-                    <div className="flex flex-col justify-between py-1">
-                      <div className="flex justify-end">
-                        <button className="text-coal px-2 py-1 hover:bg-darkcream duration-300 rounded-xl"><FontAwesomeIcon icon={faXmark} className="text-xl"/></button>
-                      </div>
-                      <p className="text-coal">${(product.price * product.quantity).toFixed(2)}</p>
-                    </div>
-                  </div>
-                </div>
-                <hr className="w-full h-[2px] bg-darkcream"/>
-              </>
-            ))}
+          </div>
+          <hr className="h-1 w-full bg-darkcream"/>
+          <div className="h-full">
+            <CartDisplay />
           </div>
         </section>
       </>

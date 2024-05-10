@@ -23,7 +23,6 @@ export default function Order({
 }) {
   const [inCart, setInCart] = useAtom(cart);
   const total = getSum(inCart).toFixed(2)
-  const deliveryFee = getTotalFee(inCart)
 
   function addToCart(addToCart: AddToCart) {
     let alreadyInCart = false;
@@ -49,7 +48,7 @@ export default function Order({
       <div className="w-4/5 m-auto">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-coal text-xl font-semibold">Total: ${total}</p>
+            <p className="text-coal text-xl font-semibold">Subtotal: ${total}</p>
             <p className="text-coal opacity-70">$ {price} / 500g</p>
           </div>
           <div>

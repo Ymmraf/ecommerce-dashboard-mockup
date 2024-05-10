@@ -76,6 +76,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
         price={(productInfo.price * (1 - productInfo.discount)).toFixed(2)}
         name={productInfo.name}
         img={productInfo.img}
+        stock={productInfo.stock}
       />
       <Footer />
     </>

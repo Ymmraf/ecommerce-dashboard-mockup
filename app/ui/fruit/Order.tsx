@@ -3,23 +3,25 @@
 import { useAtom } from "jotai";
 import { cart } from "@/app/atom/state";
 import { getSum } from "@/app/utils/getSum";
-import { getTotalFee } from "@/app/utils/getSum";
 
 interface AddToCart {
   product: string;
   price: number;
   quantity: number;
-  img: string
+  img: string,
+  stock: number
 }
 
 export default function Order({
   price,
   name,
-  img
+  img,
+  stock
 }: {
   price: string;
   name: string;
   img: string
+  stock: number
 }) {
   const [inCart, setInCart] = useAtom(cart);
   const total = getSum(inCart).toFixed(2)
@@ -36,7 +38,7 @@ export default function Order({
 
     if(alreadyInCart) {
       setInCart(inCart.map((element,index) => 
-        element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img } : element
+        element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img, stock: stock } : element
       ))
     } else if (!alreadyInCart) {
       setInCart([...inCart, addToCart]);
@@ -52,14 +54,18 @@ export default function Order({
             <p className="text-coal opacity-70">$ {price} / 500g</p>
           </div>
           <div>
+            {
+              
+            }
             <button
               onClick={() =>
-                addToCart({ product: name, price: Number(price), quantity: 1, img: img })
+                addToCart({ product: name, price: Number(price), quantity: 1, img: img , stock: stock})
               }
               className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg"
             >
               <div>Add to cart +</div>
             </button>
+
           </div>
         </div>
       </div>

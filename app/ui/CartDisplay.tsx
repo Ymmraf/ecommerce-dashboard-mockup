@@ -23,6 +23,7 @@ export default function CartDisplay() {
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity + 1),
                 img: item.img,
+                stock: item.stock
               }
             : item
         )
@@ -36,6 +37,7 @@ export default function CartDisplay() {
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity - 1),
                 img: item.img,
+                stock: item.stock
               }
             : item
         )
@@ -77,7 +79,7 @@ export default function CartDisplay() {
                     <button 
                         disabled={false}
                         onClick={() => changeProductQuantity("-", product.product)} 
-                        className="disabled:opacity-30 size-8 border-[1px] border-coal border-opacity-90 text-coal font-bold hover:text-cream hover:bg-coal duration-300">
+                        className="size-8 border-[1px] border-coal border-opacity-90 text-coal font-bold hover:text-cream hover:bg-coal duration-300">
                         -
                     </button>
                   }
@@ -85,12 +87,21 @@ export default function CartDisplay() {
                   <div className="flex items-center">
                     <p className="min-w-8 text-center">{product.quantity}</p>
                   </div>
-                  <button
-                    onClick={() => changeProductQuantity("+", product.product)}
-                    className="size-8 border-[1px] border-coal border-opacity-90 text-coal font-bold hover:text-cream hover:bg-coal duration-300"
-                  >
-                    +
+                  {
+                    product.quantity == product.stock ? 
+                    <button 
+                        disabled={true}
+                        onClick={() => changeProductQuantity("+", product.product)} 
+                        className="opacity-30 size-8 border-[1px] border-coal border-opacity-90 text-coal font-bold">
+                        +
+                    </button> :
+                    <button 
+                      disabled={false}
+                      onClick={() => changeProductQuantity("+", product.product)} 
+                      className="size-8 border-[1px] border-coal border-opacity-90 text-coal font-bold hover:text-cream hover:bg-coal duration-300">
+                      +
                   </button>
+                  }
                 </div>
               </div>
               <div className="flex flex-col justify-between py-1">

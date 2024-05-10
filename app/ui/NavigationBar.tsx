@@ -9,6 +9,8 @@ import clsx from "clsx";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { cart } from "../atom/state";
+import { atom, useAtom } from "jotai";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -22,6 +24,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 export function NavitagionBar() {
   const [openSidebar, setSidebar] = useState<boolean>(false);
   const [currentOpen, setCurrentOpen] = useState<null | string>(null);
+  const [productQuantity] = useAtom(cart)
 
   function handleClickNavigation() {
     setSidebar(false);
@@ -68,7 +71,7 @@ export function NavitagionBar() {
             >
               <div className="absolute top-1 left-1 opacity-90">
                 {/* <IconButton aria-label="cart"> */}
-                  <StyledBadge badgeContent={12} color="error">
+                  <StyledBadge badgeContent={productQuantity.length} color="error">
                     <ShoppingCartIcon />
                   </StyledBadge>
                 {/* </IconButton> */}

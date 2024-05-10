@@ -27,6 +27,7 @@ export default async function Recent() {
                 img={product.img}
                 rating={product.rating}
                 originalPrice={getDecimal(product.price)}
+                href={product.href}
               />
             )
           }

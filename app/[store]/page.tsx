@@ -15,6 +15,7 @@ export default function Store() {
   const [initialData, setinitialData] = useState<any>("");
   const [sideFilter, setSideFilter] = useState(false);
   const [display, setDisplay] = useState<any[]>([]);
+  const [filterQuantity, setFilterQuantity] = useState<number>(0)
   const [currentFilter, setCurrentFilter] = useState<any>({
     type: "",
     state: "",
@@ -32,12 +33,14 @@ export default function Store() {
         ...currentFilter,
         [filter.filter] : filter.value
       })
+      setFilterQuantity(quantity => quantity+1)
     } else if (currentFilter[filter.filter]) {
       if(currentFilter[filter.filter] == filter.value) {
         setCurrentFilter({
           ...currentFilter,
           [filter.filter] : ""
         })
+        setFilterQuantity(quantity => quantity-1)
       } else if (currentFilter[filter.filter] != filter.value) {
         setCurrentFilter({
           ...currentFilter,
@@ -117,7 +120,7 @@ export default function Store() {
           className="text-coal px-4 py-2 text-xl w-full text-left hover:bg-darkcream flex justify-between my-8 rounded-xl duration-300"
         >
           <div className="font-semibold opacity-90">
-            Filter <FontAwesomeIcon className="size-4" icon={faFilter} />
+            Filter({filterQuantity}) <FontAwesomeIcon className="size-4" icon={faFilter} />
           </div>
           <div className="font-regular">
             Show {display.length} {display.length > 1 ? "goods" : "good"}
@@ -139,6 +142,7 @@ export default function Store() {
                 img={product.img}
                 rating={product.rating}
                 originalPrice={getDecimal(product.price)}
+                href={product.href}
               />
             ))}
           </Suspense>

@@ -6,6 +6,7 @@ import Swipe from "./ui/home/Swipe";
 import WorkProcess from "./ui/home/WorkProcess";
 import Footer from "./ui/Footer";
 
+
 export default function Home() {
   return (
     <main className="z-0 space-y-12">

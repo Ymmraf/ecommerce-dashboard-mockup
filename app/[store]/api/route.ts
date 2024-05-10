@@ -1,8 +1,13 @@
 import { sql } from "@vercel/postgres"
 
 export async function GET() {
-    const res = await sql`
-    SELECT * FROM products
-    `
-    return Response.json({res})
+    try {
+      const res = await sql`
+      SELECT * FROM products
+      `
+      return Response.json({res})
+    } catch (error) {
+      console.log(`Database error: ${error}`)
+      throw new Error(`Cannot fetch all products`)
+    }
   }

@@ -9,16 +9,18 @@ export default function ProductCard({
     img,
     rating,
     originalPrice,
+    href
   }: {
     name: string;
     price: string;
     img: string;
     rating: number;
     originalPrice: string,
+    href: string
   }) {
     return (
       <Link
-        href="/"
+        href={href}
         className="w-full bg-white p-4 rounded-3xl relative duration-300 shadow-sm hover:scale-[1.01] "
       >
         <Image

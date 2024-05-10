@@ -1,23 +1,6 @@
 import { sql, createClient } from '@vercel/postgres';
 
-export async function clientFecthProducts() {
-    const client = createClient()
-    await client.connect()
-
-    try {
-        const data = sql`
-            SELECT * FROM products
-        `
-        return data
-    } catch (error) {
-        console.log(`Database error : ${error}`)
-        throw new Error("Failed to fetch products")
-    } finally {
-        await client.end()
-    }
-}
-
-export async function fetchProducts() {
+export async function fetchAllProducts() {
     try {
         const data = await sql`
         SELECT * FROM products
@@ -52,6 +35,19 @@ export async function fetchNewProducts() {
     } catch (error) {
         console.log(`Database error : ${error}`)
         throw new Error("Failed to fetch new products")
+    }
+}
+
+export async function fetchProductByName(name: string) {
+    try {
+        const product = await sql `
+        SELECT * FROM products
+        WHERE name = ${name}
+        `
+        return product
+    } catch (error) {
+        console.log(`Database error : ${error}`)
+        throw new Error("Failed to fetch product by name")
     }
 }
 

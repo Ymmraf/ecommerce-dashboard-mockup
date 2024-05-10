@@ -52,6 +52,13 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
             <p className="text-coal opacity-70">Delivery: 1-3 business days</p>
           </div>
         </div>
+        <div>
+          {
+            productInfo.stock <= 3 && productInfo.stock > 0 ? 
+            <p className="text-tomato font-semibold text-sm pl-3">{productInfo.stock} remaining</p> :
+            <p></p>
+          }
+        </div>
         <article className="my-8">
           <h2 className="text-coal text-xl">Description:</h2>
           <p className="text-coal mt-4 tracking-wide leading-7">

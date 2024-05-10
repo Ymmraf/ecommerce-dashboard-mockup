@@ -1,53 +1,29 @@
-import { sql, createClient } from '@vercel/postgres';
+import { sql } from '@vercel/postgres';
 
-export async function fetchAllProducts() {
-    try {
-        const data = await sql`
-        SELECT * FROM products
-        `
-        return data
-    } catch (error) {
-        console.log(`Database error : ${error}`)
-        throw new Error("Failed to fetch products")
-    }
-}
-
-export async function fetchDiscountProducts() {
-    try {
-        const discountProducts = await sql`
+export const fetchProduct = {
+    async all() {
+        try {
+            const data = await sql`
             SELECT * FROM products
-            WHERE discount > 0;
-        `
-        return discountProducts
-    } catch (error) {
-        console.log(`Database error : ${error}`)
-        throw new Error("Failed to fetch discount products")
-    }
-}
+            `
+            return data
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error("Failed to fetch products")
+        }
+    },
 
-export async function fetchNewProducts() {
-    try {
-        const discountProducts = await sql`
+    async byName(name: string) {
+        try {
+            const product = await sql `
             SELECT * FROM products
-            WHERE new = true;
-        `
-        return discountProducts
-    } catch (error) {
-        console.log(`Database error : ${error}`)
-        throw new Error("Failed to fetch new products")
-    }
-}
-
-export async function fetchProductByName(name: string) {
-    try {
-        const product = await sql `
-        SELECT * FROM products
-        WHERE name = ${name}
-        `
-        return product
-    } catch (error) {
-        console.log(`Database error : ${error}`)
-        throw new Error("Failed to fetch product by name")
+            WHERE name = ${name}
+            `
+            return product
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error("Failed to fetch product by name")
+        }
     }
 }
 

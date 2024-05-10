@@ -88,7 +88,7 @@ export default function CartDisplay() {
                     <p className="min-w-8 text-center">{product.quantity}</p>
                   </div>
                   {
-                    product.quantity == product.stock ? 
+                    product.quantity >= product.stock ? 
                     <button 
                         disabled={true}
                         onClick={() => changeProductQuantity("+", product.product)} 

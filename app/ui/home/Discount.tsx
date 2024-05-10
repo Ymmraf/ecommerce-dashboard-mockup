@@ -5,12 +5,8 @@ import { getDecimal } from "../../utils/getDecimal";
 import ProductCard from "../ProductCard";
 import { ProductCardSkeleton } from "../Skeleton";
 import { Suspense } from "react";
-import { fetchDiscountProducts } from "../../lib/products";
 
-export async function Discount() {
-  const fetchedProduct = (await fetchDiscountProducts()).rows
-  const discount = fetchedProduct.filter(product => product.discount > 0)
-
+export default function Discount({discount} : {discount: any[]}) {
   return (
     <section className="w-11/12 m-auto">
       <div className="flex gap-x-3 mb-6">

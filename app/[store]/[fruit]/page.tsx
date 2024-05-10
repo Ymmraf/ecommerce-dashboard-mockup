@@ -1,6 +1,6 @@
 import Breadcrumbs from "@/app/ui/Breadcrumbs";
 import capitalizeParams from "@/app/utils/capitalizeParams";
-import { fetchProductByName } from "@/app/lib/products";
+import { fetchProduct } from "@/app/lib/products";
 import { Suspense } from "react";
 import { ProductCardSkeleton } from "@/app/ui/Skeleton";
 import Image from "next/image";
@@ -12,7 +12,7 @@ import Order from "@/app/ui/fruit/Order";
 
 export default async function Fruit({ params }: { params: { fruit: string } }) {
   const fruitName = capitalizeParams(params.fruit);
-  const productInfo = (await fetchProductByName(fruitName)).rows[0];
+  const productInfo = (await fetchProduct.byName(fruitName)).rows[0];
 
   return (
     <>

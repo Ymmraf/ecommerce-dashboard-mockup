@@ -26,6 +26,15 @@ export default function Order({
   const [inCart, setInCart] = useAtom(cart);
   const total = getSum(inCart).toFixed(2)
 
+  const currentProductQuantity = (name: string) => {
+    const currentProductIndex = inCart.findIndex((product) => product.product == name)
+    if(currentProductIndex == -1) {
+      return 0
+    } else if (currentProductIndex >= 0) {
+      return inCart[currentProductIndex].quantity
+    }
+  }
+
   function addToCart(addToCart: AddToCart) {
     let alreadyInCart = false;
     
@@ -55,16 +64,16 @@ export default function Order({
           </div>
           <div>
             {
-              
+              currentProductQuantity(name) == stock ? 
+              <button disabled={true} className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg opacity-60" >
+                <div>Add to cart +</div>
+              </button>
+              :
+              <button onClick={() => addToCart({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}) } className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg">
+                <div>Add to cart +</div>
+              </button>
             }
-            <button
-              onClick={() =>
-                addToCart({ product: name, price: Number(price), quantity: 1, img: img , stock: stock})
-              }
-              className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg"
-            >
-              <div>Add to cart +</div>
-            </button>
+            
 
           </div>
         </div>

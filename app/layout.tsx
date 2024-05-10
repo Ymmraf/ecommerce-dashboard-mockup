@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Providers from "./Providers";
 import { Lato } from "next/font/google";
 import { Kanit } from "next/font/google";
-import { NavitagionBar, SideMenu } from "./ui/NavigationBar";
+import { NavitagionBar } from "./ui/NavigationBar";
 import "./globals.css";
 
 const lato = Lato({

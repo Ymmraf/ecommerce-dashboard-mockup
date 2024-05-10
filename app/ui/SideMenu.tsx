@@ -6,41 +6,16 @@ import clsx from "clsx";
 import CartDisplay from "./CartDisplay";
 
 const navigation = [
-    {
-      heading: "Home",
-      href: "/",
-    },
-    {
-      heading: "Store",
-      href: "/store",
-    },
-    {
-      heading: "About",
-      href: "/about",
-    },
-    {
-      heading: "Contact",
-      href: "/contact",
-    },
-    {
-      heading: "Payment",
-      href: "/payment",
-    },
-    {
-      heading: "FAQ",
-      href: "/faq",
-    },
+    {heading: "Home",href: "/",},
+    {heading: "Store",href: "/store",},
+    {heading: "About",href: "/about",},
+    {heading: "Contact",href: "/contact",},
+    {heading: "Payment",href: "/payment",},
+    {heading: "FAQ",href: "/faq",},
   ];
 
-export default function SideMenu({
-    openSidebar,
-    currentOpen,
-    handleClickNavigation,
-  }: {
-    openSidebar: boolean;
-    currentOpen: null | string;
-    handleClickNavigation: Function;
-  }) {
+export default function SideMenu({ openSidebar, currentOpen, handleClickNavigation, }: 
+  { openSidebar: boolean; currentOpen: null | string; handleClickNavigation: Function;}) {
     const [productInCart] = useAtom(cart);
     const subTotal = getSum(productInCart);
     const deliveryFee = getTotalFee(productInCart);

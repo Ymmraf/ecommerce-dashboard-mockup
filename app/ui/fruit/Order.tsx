@@ -1,13 +1,47 @@
-'use client'
+"use client";
 
 import { useAtom } from "jotai";
 import { cart } from "@/app/atom/state";
+import { getSum } from "@/app/utils/getSum";
+import { getTotalFee } from "@/app/utils/getSum";
 
-export default function Order({ price, name }: { price: string, name: string }) {
-  const [inCart, setInCart] = useAtom(cart)
+interface AddToCart {
+  product: string;
+  price: number;
+  quantity: number;
+  img: string
+}
 
-  function addToCart(addToCart: any) {
-    console.log(addToCart)
+export default function Order({
+  price,
+  name,
+  img
+}: {
+  price: string;
+  name: string;
+  img: string
+}) {
+  const [inCart, setInCart] = useAtom(cart);
+  const total = getSum(inCart).toFixed(2)
+  const deliveryFee = getTotalFee(inCart)
+
+  function addToCart(addToCart: AddToCart) {
+    let alreadyInCart = false;
+    
+    inCart.forEach(product => {
+      if(product.product == addToCart.product) {
+        alreadyInCart = true
+        return
+      }
+    })
+
+    if(alreadyInCart) {
+      setInCart(inCart.map((element,index) => 
+        element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img } : element
+      ))
+    } else if (!alreadyInCart) {
+      setInCart([...inCart, addToCart]);
+    }
   }
 
   return (
@@ -15,14 +49,17 @@ export default function Order({ price, name }: { price: string, name: string }) 
       <div className="w-4/5 m-auto">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-coal text-xl font-semibold">Total: ${}</p>
+            <p className="text-coal text-xl font-semibold">Total: ${total}</p>
             <p className="text-coal opacity-70">$ {price} / 500g</p>
           </div>
           <div>
-            <button onClick={() => addToCart({product: name, price: Number(price)})} className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg">
-                <div>
-                    Add to cart +
-                </div>
+            <button
+              onClick={() =>
+                addToCart({ product: name, price: Number(price), quantity: 1, img: img })
+              }
+              className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg"
+            >
+              <div>Add to cart +</div>
             </button>
           </div>
         </div>

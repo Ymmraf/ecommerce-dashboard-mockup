@@ -4,6 +4,7 @@ import { cart } from "../atom/state";
 import Link from "next/link";
 import clsx from "clsx";
 import CartDisplay from "./CartDisplay";
+import DisplayTotal from "./DisplayTotal";
 
 const navigation = [
     {heading: "Home",href: "/",},
@@ -36,12 +37,12 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
             <ul className="flex flex-col justify-between h-full pt-[52px]">
               <div>
                 {navigation.map((menu, index) => (
-                  <>
+                  <div key={index}>
                     <li
-                      key={index}
-                      className="text-center text-xl py-3 hover:bg-darkcream rounded-xl"
+                      className="text-center text-xl hover:bg-darkcream rounded-xl"
                     >
                       <Link
+                        className="block py-3"
                         onClick={() => handleClickNavigation()}
                         href={menu.href}
                       >
@@ -49,7 +50,7 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
                       </Link>
                     </li>
                     <hr className="h-[2px] bg-coal opacity-30" />
-                  </>
+                  </div>
                 ))}
               </div>
               <div>
@@ -76,24 +77,11 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
             )}
           >
             <div>
-            <h2 className="text-xl font-semibold text-coal mb-4">Your Order</h2>
-            <div className="flex justify-between mb-2">
-              <p className="text-coal">Subtotal:</p>
-              <p className="text-coal">${subTotal.toFixed(2)}</p>
-            </div>
-            <div className="flex justify-between mb-2">
-              <p className="text-coal">Delivery:</p>
-              <p className="text-coal">${deliveryFee.toFixed(2)}</p>
-            </div>
-            <div className="h-px w-full bg-coal my-6"></div>
-            <div className="flex justify-between mb-2">
-              <p className="text-coal text-xl font-bold">Total:</p>
-              <p className="text-coal text-xl">${total.toFixed(2)}</p>
-            </div>
+            <DisplayTotal subTotal={subTotal} deliveryFee={deliveryFee} total={total}/>
             <div className="mb-4">
-              <button className="w-full py-3 bg-leaf mt-2 text-cream font-semibold rounded-xl">
+              <Link onClick={() => handleClickNavigation()} href="/checkout" className="text-center block py-3 bg-leaf mt-2 text-cream font-semibold rounded-xl">
                 Purchase
-              </button>
+              </Link>
             </div>
             </div>
             <hr className="h-1 w-full bg-darkcream"/>

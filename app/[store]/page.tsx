@@ -23,8 +23,8 @@ export default function Store() {
   });
 
   interface FilterObject {
-    filter: string 
-    value: string
+    filter: "type" | "state" | "price"
+    value: "fresh" | "dried" | "discount" | "new" | "desc" | "asc"
   }
 
   function handleClickFilter(filter : FilterObject) {
@@ -65,25 +65,11 @@ export default function Store() {
 
     if(currentFilter.price == "asc") {
       setDisplay(display => display.sort((a,b) => {
-        if(a.discount > 0 && b.discount > 0) {
-          return (a.price * (1 - a.discount) - (b.price * (1 - b.discount)))
-        } else if (a.discount > 0 && b.discount == 0) {
-          return (a.price * (1 - a.discount)) - b.price
-        } else if (b.discount > 0 && a.discount == 0) {
-          return a.price - (b.price * (1 - b.discount))
-        }
-        return a.price - b.price
+        return ((a.price * (1-a.discount)) - (b.price * (1-b.discount)))
       }))
     } else if (currentFilter.price == "desc") {
       setDisplay(display => display.sort((a,b) => {
-        if(a.discount > 0 && b.discount > 0) {
-          return (b.price * (1 - b.discount) - (a.price * (1 - a.discount)))
-        } else if (b.discount > 0 && a.discount == 0) {
-          return (b.price * (1 - b.discount)) - a.price
-        } else if (a.discount > 0 && b.discount == 0) {
-          return b.price - (a.price * (1 - a.discount))
-        }
-        return b.price - a.price
+        return ((b.price * (1-b.discount)) - (a.price * (1-a.discount)))
       }))
     }
   }

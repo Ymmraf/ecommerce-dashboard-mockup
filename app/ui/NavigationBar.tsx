@@ -11,7 +11,7 @@ import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { cart } from "../atom/state";
-
+import DisplayTotal from "./DisplayTotal";
 import { useAtom } from "jotai";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({

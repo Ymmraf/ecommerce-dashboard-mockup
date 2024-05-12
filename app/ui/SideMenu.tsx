@@ -11,7 +11,6 @@ const navigation = [
     {heading: "Store",href: "/store",},
     {heading: "About",href: "/about",},
     {heading: "Contact",href: "/contact",},
-    {heading: "Payment",href: "/payment",},
     {heading: "FAQ",href: "/faq",},
   ];
 

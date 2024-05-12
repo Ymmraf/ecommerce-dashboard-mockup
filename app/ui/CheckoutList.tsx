@@ -46,7 +46,7 @@ export default function CheckoutList() {
   }
 
   return (
-    <div className="overflow-scroll space-y-3 max-h-full">
+    <div className="space-y-3 max-h-full">
       {productInCart.map((product, index) => (
         <div key={index}>
           <div className="h-24 flex gap-x-2 p-2">

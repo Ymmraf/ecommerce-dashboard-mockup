@@ -2,7 +2,7 @@
 import { useAtom } from "jotai";
 import { CartProduct, cart } from "../atom/state";
 import Breadcrumbs from "../ui/Breadcrumbs";
-import { getSum, getTotalFee } from "../utils/getSum";
+import { getTotalProductPrice, getDeliveryFee } from "../utils/getSum";
 import CheckoutList from "../ui/CheckoutList";
 import DisplayTotalCheckout from "../ui/checkout/DisplayTotalCheckout";
 import Footer from "../ui/Footer";
@@ -22,9 +22,9 @@ interface CustomerInfomation {
 
 export default function Checkout() {
   const [productInCart] = useAtom(cart);
-  const subTotal = getSum(productInCart);
-  const deliveryFee = getTotalFee(productInCart);
-  const total = subTotal + deliveryFee;
+  const totalProductPrice = getTotalProductPrice(productInCart);
+  const deliveryFee = getDeliveryFee(productInCart);
+  const totalPrice = totalProductPrice + deliveryFee;
 
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -125,9 +125,9 @@ export default function Checkout() {
             <CheckoutList />
           </div>
           <DisplayTotalCheckout
-            subTotal={subTotal}
+            totalProductPrice={totalProductPrice}
             deliveryFee={deliveryFee}
-            total={total}
+            totalPrice={totalPrice}
           />
         </section>
         <section className="my-8">

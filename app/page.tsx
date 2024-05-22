@@ -9,7 +9,7 @@ import { fetchProduct } from "./lib/products";
 
 export default async function Home() {
   const allProduct = (await fetchProduct.all()).rows
-  const discountProducts = (allProduct.filter(product => product.discount > 0)).slice(0,4)
+  const discountProducts = (allProduct.filter(product => product.discount > 0))
   const newProducts = (allProduct.filter(product => product.new == true)).slice(0,4)
 
   return (

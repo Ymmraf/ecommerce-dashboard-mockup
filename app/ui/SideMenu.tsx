@@ -1,4 +1,4 @@
-import { getSum, getTotalFee } from "../utils/getSum";
+import { getTotalProductPrice, getDeliveryFee } from "../utils/getSum";
 import { useAtom } from "jotai";
 import { cart } from "../atom/state";
 import Link from "next/link";
@@ -11,16 +11,15 @@ const navigation = [
     {heading: "Store",href: "/store",},
     {heading: "About",href: "/about",},
     {heading: "Contact",href: "/contact",},
-    {heading: "Payment",href: "/payment",},
     {heading: "FAQ",href: "/faq",},
   ];
 
 export default function SideMenu({ openSidebar, currentOpen, handleClickNavigation, }: 
   { openSidebar: boolean; currentOpen: null | string; handleClickNavigation: Function;}) {
     const [productInCart] = useAtom(cart);
-    const subTotal = getSum(productInCart);
-    const deliveryFee = getTotalFee(productInCart);
-    const total = subTotal + deliveryFee;
+    const productPrice = getTotalProductPrice(productInCart);
+    const deliveryFee = getDeliveryFee(productInCart);
+    const total = productPrice + deliveryFee;
   
     if (currentOpen == "navigation") {
       return (
@@ -77,7 +76,7 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
             )}
           >
             <div>
-            <DisplayTotal subTotal={subTotal} deliveryFee={deliveryFee} total={total}/>
+            <DisplayTotal subTotal={productPrice} deliveryFee={deliveryFee} total={total}/>
             <div className="mb-4">
               <Link onClick={() => handleClickNavigation()} href="/checkout" className="text-center block py-3 bg-leaf mt-2 text-cream font-semibold rounded-xl">
                 Purchase

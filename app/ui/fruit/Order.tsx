@@ -2,7 +2,7 @@
 
 import { useAtom } from "jotai";
 import { cart } from "@/app/atom/state";
-import { getSum } from "@/app/utils/getSum";
+import { getTotalProductPrice } from "@/app/utils/getSum";
 
 interface AddToCart {
   product: string;
@@ -24,7 +24,7 @@ export default function Order({
   stock: number
 }) {
   const [inCart, setInCart] = useAtom(cart);
-  const total = getSum(inCart).toFixed(2)
+  const productPrice = getTotalProductPrice(inCart).toFixed(2)
 
   const currentProductQuantity = (name: string) => {
     const currentProductIndex = inCart.findIndex((product) => product.product == name)
@@ -59,7 +59,7 @@ export default function Order({
       <div className="w-4/5 m-auto">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-coal text-xl font-semibold">Subtotal: ${total}</p>
+            <p className="text-coal text-xl font-semibold">Subtotal: ${productPrice}</p>
             <p className="text-coal opacity-70">$ {price} / 500g</p>
           </div>
           <div>
@@ -73,8 +73,6 @@ export default function Order({
                 <div>Add to cart +</div>
               </button>
             }
-            
-
           </div>
         </div>
       </div>

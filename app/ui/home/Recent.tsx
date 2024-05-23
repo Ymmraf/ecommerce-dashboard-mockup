@@ -12,7 +12,7 @@ export default function Recent({recent} : {recent: any[]}) {
           <FontAwesomeIcon className="text-coal text-3xl" icon={faStore} />
           <h2 className="text-coal font-semibold text-2xl">New additions</h2>
         </div>
-        <div className="grid grid-cols-2 gap-x-2 gap-y-6">
+        <div className="grid grid-cols-2 gap-x-2 gap-y-6 md:grid-cols-4">
           {
             recent.slice(0,4).map((product,index) => 
               <ProductCard 

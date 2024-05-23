@@ -3,10 +3,11 @@ import Discount from "./ui/home/Discount";
 import Recent from "./ui/home/Recent";
 import Recipe from "./ui/home/Recipe";
 import Swipe from "./ui/home/Swipe";
-import WorkProcess from "./ui/home/WorkProcess";
+import WorkProcessMobile from "./ui/home/WorkProcessMobile";
 import Footer from "./ui/Footer";
 import { fetchProduct } from "./lib/products";
 import DesktopBanner from "./ui/home/DesktopBanner";
+import WorkProcessDesktop from "./ui/home/WorkProcessDesktop";
 
 export default async function Home() {
   const allProduct = (await fetchProduct.all()).rows
@@ -21,7 +22,8 @@ export default async function Home() {
       <Recipe />
       <BonusProgram />
       <Recent recent={newProducts}/>
-      <WorkProcess />
+      <WorkProcessMobile />
+      <WorkProcessDesktop />
       <Footer />
     </main>
   );

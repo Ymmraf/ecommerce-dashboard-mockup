@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot, faWheatAwn, faSeedling, faTruck, faCube } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
-export default function WorkProcess() {
+export default function WorkProcessMobile() {
   return (
-    <section className="w-11/12 m-auto">
+    <section className="w-11/12 m-auto lg:hidden">
       <div className="flex gap-x-3 mb-6">
         <FontAwesomeIcon className="text-coal text-3xl" icon={faWheatAwn} />
         <h2 className="text-coal font-semibold text-2xl">How we work</h2>

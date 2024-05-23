@@ -45,7 +45,7 @@ export default function BonusProgram() {
                   <p className="font-semibold text-xl text-coal mb-4">Accumulative discount program for retail customers</p>
                   <p className="text-lg text-coal">Our online store has an accumulation system of discounts for regular customers. Sign up and earn discount levels as your total purchases increase.</p>
                   <div className="w-10/12 m-auto">
-                    <Link className="block text-center py-3 rounded-2xl font-semibold bg-coal text-cream duration-300 hover:scale-105" href="/">Sign up</Link>
+                    <Link className="block text-center py-3 rounded-2xl font-semibold bg-coal text-cream duration-300 hover:scale-105" href="/signup">Sign up</Link>
                   </div>
                 </div>
               </div>

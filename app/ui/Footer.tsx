@@ -12,34 +12,34 @@ export default function Footer() {
                     <button className="w-12 bg-coal rounded-r-xl text-cream font-bold">✓</button>
                 </div>
             </div>
-            <div>
+            <div className="md:grid md:grid-cols-3 md:text-center">
                 <div>
                     <p className="text-coal text-xl font-semibold my-4">Company</p>
-                    <ul className="flex gap-x-8 mb-4">
+                    <ul className="flex gap-x-8 mb-4 md:block md:space-y-2">
                         <li><Link href="/about" className="text-coal font-regular opacity-70 hover:underline">About</Link></li>
                         <li><Link href="/store" className="text-coal font-regular opacity-70 hover:underline">Store</Link></li>
                         <li><Link href="/faq" className="text-coal font-regular opacity-70 hover:underline">FAQ</Link></li>
                     </ul>
                 </div>
-                <hr className="h-[2px] bg-darkcream w-full"/>
+                <hr className="h-[2px] bg-darkcream w-full md:hidden"/>
                 <div>
                     <p className="text-coal text-xl font-semibold my-4">Service</p>
-                    <ul className="flex gap-x-8 mb-4">
+                    <ul className="flex gap-x-8 mb-4 md:block md:space-y-2">
                         <li><Link href="/delivery" className="text-coal font-regular opacity-70 hover:underline">Delivery</Link></li>
                         <li><Link href="/payment" className="text-coal font-regular opacity-70 hover:underline">Payment</Link></li>
                         <li><Link href="/contact" className="text-coal font-regular opacity-70 hover:underline">Contacts</Link></li>
                     </ul>
                 </div>
-                <hr className="h-[2px] bg-darkcream w-full"/>
+                <hr className="h-[2px] bg-darkcream w-full md:hidden"/>
                 <div>
                     <p className="text-coal text-xl font-semibold my-4">Follow us</p>
-                    <ul className="flex gap-x-8 mb-4">
+                    <ul className="flex gap-x-8 mb-4 md:block md:space-y-2">
                         <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Instagram</Link></li>
                         <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Facebook</Link></li>
                         <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Twitter</Link></li>
                     </ul>
                 </div>
-                <hr className="h-[2px] bg-darkcream w-full"/>
+                <hr className="h-[2px] bg-darkcream w-full md:hidden"/>
             </div>
             <div className="space-y-6">
                 <div className="w-3/5 m-auto">

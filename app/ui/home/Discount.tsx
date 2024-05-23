@@ -1,5 +1,3 @@
-'use client'
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPercent } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
@@ -7,9 +5,6 @@ import { getDecimal } from "../../utils/getDecimal";
 import ProductCard from "../ProductCard";
 import { ProductCardSkeleton } from "../Skeleton";
 import { Suspense } from "react";
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 
 export default function Discount({discount} : {discount: any[]}) {
   return (

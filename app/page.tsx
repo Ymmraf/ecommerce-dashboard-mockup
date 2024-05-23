@@ -6,6 +6,7 @@ import Swipe from "./ui/home/Swipe";
 import WorkProcess from "./ui/home/WorkProcess";
 import Footer from "./ui/Footer";
 import { fetchProduct } from "./lib/products";
+import DesktopBanner from "./ui/home/DesktopBanner";
 
 export default async function Home() {
   const allProduct = (await fetchProduct.all()).rows
@@ -15,6 +16,7 @@ export default async function Home() {
   return (
     <main className="z-0 space-y-12">
       <Swipe />
+      <DesktopBanner />
       <Discount discount={discountProducts}/>
       <Recipe />
       <BonusProgram />

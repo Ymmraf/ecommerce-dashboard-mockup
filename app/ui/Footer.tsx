@@ -36,8 +36,8 @@ export default function Footer() {
                     <div>
                         <p className="text-coal text-xl font-semibold my-4">Service</p>
                         <ul className="flex gap-x-8 mb-4 md:block md:space-y-2">
-                            <li><Link href="/delivery" className="text-coal font-regular opacity-70 hover:underline">Delivery</Link></li>
-                            <li><Link href="/payment" className="text-coal font-regular opacity-70 hover:underline">Payment</Link></li>
+                            <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Delivery</Link></li>
+                            <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Payment</Link></li>
                             <li><Link href="/contact" className="text-coal font-regular opacity-70 hover:underline">Contacts</Link></li>
                         </ul>
                     </div>

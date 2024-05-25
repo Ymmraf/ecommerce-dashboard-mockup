@@ -58,9 +58,9 @@ export default function Order({
     <aside className="w-full py-2 bg-white sticky bottom-0 mt-8">
       <div className="w-4/5 m-auto">
         <div className="flex justify-between items-center">
-          <div>
-            <p className="text-coal text-xl font-semibold">Subtotal: ${productPrice}</p>
-            <p className="text-coal opacity-70">$ {price} / 500g</p>
+          <div className="text-coal">
+            <p className="text-xl font-semibold">Subtotal: ${productPrice}</p>
+            <p className="opacity-70">$ {price} / 500g</p>
           </div>
           <div>
             {

@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function Swipe() {
   return (
-    <section className="w-11/12 m-auto mt-2 mb-12">
+    <section className="w-11/12 m-auto mt-2 mb-12 lg:hidden">
       <Swiper
         modules={[Pagination, Autoplay]}
         loop={true}

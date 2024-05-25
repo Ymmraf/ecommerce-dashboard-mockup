@@ -1,0 +1,8 @@
+.swiper {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+.swiper-button-next, .swiper-button-prev{
+    color: #4C7C7D;
+}

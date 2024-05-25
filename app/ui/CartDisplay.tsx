@@ -46,12 +46,12 @@ export default function CartDisplay() {
   }
 
   return (
-    <div className="overflow-scroll space-y-3 max-h-full">
+    <div className="overflow-scroll space-y-3 max-h-full text-coal">
       {productInCart.map((product, index) => (
         <div key={index}>
           <div className="h-24 flex gap-x-2 p-2">
             <div className="mr-1">
-              <div className="rounded-full">
+              <div>
                 <Image
                   className="rounded-full shadow-md min-h-[80px] min-w-[80px]"
                   src={product.img}
@@ -63,7 +63,7 @@ export default function CartDisplay() {
             </div>
             <div className="flex justify-between w-full">
               <div className="flex flex-col justify-between py-1">
-                <p className="text-coal font-semibold text-lg">
+                <p className="font-semibold text-lg">
                   {product.product}
                 </p>
                 <div className="flex items-end min-w-20">
@@ -92,13 +92,13 @@ export default function CartDisplay() {
                     <button 
                         disabled={true}
                         onClick={() => changeProductQuantity("+", product.product)} 
-                        className="opacity-30 size-8 border-[1px] border-coal border-opacity-90 text-coal font-bold">
+                        className="opacity-30 size-8 border-[1px] border-coal border-opacity-90font-bold">
                         +
                     </button> :
                     <button 
                       disabled={false}
                       onClick={() => changeProductQuantity("+", product.product)} 
-                      className="size-8 border-[1px] border-coal border-opacity-90 text-coal font-bold hover:text-cream hover:bg-coal duration-300">
+                      className="size-8 border-[1px] border-coal border-opacity-90 font-bold hover:text-cream hover:bg-coal duration-300">
                       +
                   </button>
                   }
@@ -108,12 +108,12 @@ export default function CartDisplay() {
                 <div className="flex justify-end">
                   <button
                     onClick={() => deleteProductFromCart(product.product)}
-                    className="text-coal px-2 py-1 hover:bg-darkcream duration-300 rounded-xl"
+                    className=" px-2 py-1 hover:bg-darkcream duration-300 rounded-xl"
                   >
                     <FontAwesomeIcon icon={faXmark} className="text-xl" />
                   </button>
                 </div>
-                <p className="text-coal">
+                <p>
                   ${(product.price * product.quantity).toFixed(2)}
                 </p>
               </div>

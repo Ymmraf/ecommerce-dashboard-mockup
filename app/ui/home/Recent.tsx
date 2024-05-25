@@ -3,8 +3,9 @@ import { faStore } from "@fortawesome/free-solid-svg-icons";
 import { getDecimal } from "../../utils/getDecimal";
 import Link from "next/link";
 import ProductCard from "../ProductCard";
+import { ProductInfoForCard } from "@/type";
 
-export default function Recent({recent} : {recent: any[]}) {
+export default function Recent({recent} : {recent: ProductInfoForCard[]}) {
   return (
     <>
       <section className="w-11/12 m-auto">

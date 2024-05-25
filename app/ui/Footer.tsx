@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function Footer() {
     return (
-        <footer className="pt-20 mt-8 bg-[#e0ddda]
+        <footer className="pt-20 mt-8 bg-[#e0ddda] text-coal
         lg:py-8
         ">
             <div className="w-4/5 m-auto space-y-12
@@ -11,12 +11,12 @@ export default function Footer() {
 
                 <div className="lg:flex lg:items-center">
                     <div className="lg:w-full">
-                        <p className="text-coal font-bold text-xl mb-2">Get our newsletter:</p>
+                        <p className="font-bold text-xl mb-2">Get our newsletter:</p>
                         <div className="flex w-11/12 m-auto">
                             <input type="email" placeholder="Your email" className="w-full p-2 rounded-l-xl"/>
                             <button className="w-12 bg-coal rounded-r-xl text-cream font-bold hover:text-xl duration-300">✓</button>
                         </div>
-                        <div className="text-coal flex justify-center gap-x-8 underline cursor-pointer opacity-70 mt-4">
+                        <div className="flex justify-center gap-x-8 underline cursor-pointer opacity-70 mt-4">
                             <p>Terms & Conditions</p>
                             <p>Privacy Policy</p>
                         </div>
@@ -25,29 +25,29 @@ export default function Footer() {
 
                 <div className="md:grid md:grid-cols-3 md:text-center">
                     <div>
-                        <p className="text-coal text-xl font-semibold my-4">Company</p>
-                        <ul className="flex gap-x-8 mb-4 md:block md:space-y-2">
-                            <li><Link href="/about" className="text-coal font-regular opacity-70 hover:underline">About</Link></li>
-                            <li><Link href="/store" className="text-coal font-regular opacity-70 hover:underline">Store</Link></li>
-                            <li><Link href="/faq" className="text-coal font-regular opacity-70 hover:underline">FAQ</Link></li>
+                        <p className="text-xl font-semibold my-4">Company</p>
+                        <ul className="flex gap-x-8 mb-4 md:block md:space-y-2 opacity-70">
+                            <li><Link href="/about" className="hover:underline">About</Link></li>
+                            <li><Link href="/store" className="hover:underline">Store</Link></li>
+                            <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
                         </ul>
                     </div>
                     <hr className="h-[2px] bg-darkcream w-full md:hidden"/>
                     <div>
-                        <p className="text-coal text-xl font-semibold my-4">Service</p>
-                        <ul className="flex gap-x-8 mb-4 md:block md:space-y-2">
-                            <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Delivery</Link></li>
-                            <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Payment</Link></li>
-                            <li><Link href="/contact" className="text-coal font-regular opacity-70 hover:underline">Contacts</Link></li>
+                        <p className="text-xl font-semibold my-4">Service</p>
+                        <ul className="flex gap-x-8 mb-4 md:block md:space-y-2 opacity-70">
+                            <li><Link href="/" className="hover:underline">Delivery</Link></li>
+                            <li><Link href="/" className="hover:underline">Payment</Link></li>
+                            <li><Link href="/contact" className="hover:underline">Contacts</Link></li>
                         </ul>
                     </div>
                     <hr className="h-[2px] bg-darkcream w-full md:hidden"/>
                     <div>
-                        <p className="text-coal text-xl font-semibold my-4">Follow us</p>
-                        <ul className="flex gap-x-8 mb-4 md:block md:space-y-2">
-                            <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Instagram</Link></li>
-                            <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Facebook</Link></li>
-                            <li><Link href="/" className="text-coal font-regular opacity-70 hover:underline">Twitter</Link></li>
+                        <p className="text-xl font-semibold my-4">Follow us</p>
+                        <ul className="flex gap-x-8 mb-4 md:block md:space-y-2 opacity-70">
+                            <li><Link href="/" className="hover:underline">Instagram</Link></li>
+                            <li><Link href="/" className="hover:underline">Facebook</Link></li>
+                            <li><Link href="/" className="hover:underline">Twitter</Link></li>
                         </ul>
                     </div>
                     <hr className="h-[2px] bg-darkcream w-full md:hidden"/>
@@ -62,10 +62,10 @@ export default function Footer() {
                             height={500}
                         />
                     </div>
-                    <div>
-                        <p className="text-center text-coal font-semibold">Eco Food Market</p>
-                        <p className="text-center text-coal font-semibold mb-6">Freshy Goods Ltd.</p>
-                        <p className="text-center text-coal opacity-50 pb-6">2024 © All rights reserved</p>
+                    <div className="text-center">
+                        <p className="font-semibold">Eco Food Market</p>
+                        <p className="font-semibold mb-6">Freshy Goods Ltd.</p>
+                        <p className="opacity-50 pb-6">2024 © All rights reserved</p>
                     </div>
                 </div>
 

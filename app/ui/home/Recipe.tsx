@@ -7,9 +7,9 @@ export default function Recipe() {
   return (
     <>
       <section className="w-11/12 m-auto">
-        <div className="flex gap-x-3 mb-6">
-          <FontAwesomeIcon className="text-coal text-3xl" icon={faUtensils} />
-          <h2 className="text-coal font-semibold text-2xl">What to cook ?</h2>
+        <div className="flex gap-x-3 mb-6 text-coal font-semibold">
+          <FontAwesomeIcon className="text-3xl" icon={faUtensils} />
+          <h2 className="text-2xl">What to cook ?</h2>
         </div>
 
         <div className="space-y-4 lg:space-y-0 lg:grid lg:grid-cols-[2fr,1fr] lg:gap-x-4 lg:h-[400px]">
@@ -30,11 +30,11 @@ export default function Recipe() {
                 />
               </div>
               <div>
-                <div>
-                  <h3 className="text-tomato text-2xl font-semibold text-center">
+                <div className="text-center">
+                  <h3 className="text-tomato text-2xl font-semibold">
                     Watermelon
                   </h3>
-                  <p className="text-coal text-lg opacity-80 text-center">
+                  <p className="text-coal text-lg opacity-80">
                     Recipes with Polawat
                   </p>
                 </div>
@@ -104,9 +104,9 @@ export default function Recipe() {
 
           <div>
             <div className="p-8 bg-leaf rounded-2xl">
-              <div className="text-cream">
-                  <p className="text-cream text-2xl font-bold mb-2 md:text-center">200 +</p>
-                  <p className="text-lg font-semibold mb-8 md:text-center">Healthy recipes</p>
+              <div className="text-cream md:text-center">
+                  <p className="text-2xl font-bold mb-2">200 +</p>
+                  <p className="text-lg font-semibold mb-8">Healthy recipes</p>
               </div>
               <div className="flex md:justify-center">
                   <Link className="w-2/5 block text-center border border-cream text-cream py-2 rounded-xl duration-300 hover:bg-cream hover:text-leaf" href="/">View all</Link>

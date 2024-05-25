@@ -7,8 +7,9 @@ import { getDecimal } from "../../utils/getDecimal";
 import { ProductCardSkeleton } from "../Skeleton";
 import { Suspense } from "react";
 import SwiperPanel from "./SwiperPanel";
+import { ProductInfoForCard } from "@/type";
 
-export default function Discount({discount} : {discount: any[]}) {
+export default function Discount({discount} : {discount: ProductInfoForCard[]}) {
   return (
     <section className="w-11/12 m-auto">
       <div className="flex justify-between text-coal">
@@ -36,7 +37,7 @@ export default function Discount({discount} : {discount: any[]}) {
         </div>
       </Suspense>
 
-      <div className="hidden w-11/12 m-auto lg:block ">
+      <div className="hidden lg:block ">
         <SwiperPanel products={discount} />
       </div>
 

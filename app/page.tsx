@@ -12,7 +12,7 @@ import WorkProcessDesktop from "./ui/home/WorkProcessDesktop";
 export default async function Home() {
   const allProduct = (await fetchProduct.all()).rows
   const discountProducts = (allProduct.filter(product => product.discount > 0))
-  const newProducts = (allProduct.filter(product => product.new == true)).slice(0,4)
+  const newProducts = (allProduct.filter(product => product.new == true))
 
   return (
     <main className="z-0 space-y-12">

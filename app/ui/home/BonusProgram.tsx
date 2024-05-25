@@ -5,6 +5,7 @@ import Link from "next/link";
 export default function BonusProgram() {
     return (
         <>
+          <div className="h-1"></div>
           <section className="w-11/12 m-auto space-y-6">
             <div className="flex gap-x-3 mb-6 text-coal font-semibold">
               <FontAwesomeIcon className="text-3xl" icon={faMedal} />

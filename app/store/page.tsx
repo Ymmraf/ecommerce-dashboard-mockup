@@ -118,7 +118,7 @@ export default function Store() {
           currentFilter={currentFilter}
           handleClickFilter={handleClickFilter}
         />
-        <section className="grid grid-cols-2 gap-x-2 gap-y-6 mt-8">
+        <section className="grid grid-cols-2 gap-x-2 gap-y-6 mt-8 md:grid-cols-3">
           <Suspense fallback={<ProductCardSkeleton />}>
             {display.map((product, index) => (
               <ProductCard

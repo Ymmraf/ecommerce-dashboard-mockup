@@ -11,7 +11,7 @@ import { ProductInfoForCard } from "@/type";
 
 export default function Discount({discount} : {discount: ProductInfoForCard[]}) {
   return (
-    <section className="w-11/12 m-auto">
+    <section className="w-11/12 m-auto mb-12">
       <div className="flex justify-between text-coal">
         <div className="flex gap-x-3 mb-6 font-semibold">
           <FontAwesomeIcon className="text-3xl" icon={faPercent} />

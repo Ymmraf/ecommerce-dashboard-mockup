@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Recipe() {
   return (
     <>
-      <section className="w-11/12 m-auto">
+      <section className="w-11/12 m-auto mb-12">
         <div className="flex gap-x-3 mb-6 text-coal font-semibold">
           <FontAwesomeIcon className="text-3xl" icon={faUtensils} />
           <h2 className="text-2xl">What to cook ?</h2>

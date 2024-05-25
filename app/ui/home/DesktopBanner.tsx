@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function DesktopBanner() {
     return (
-        <section className="hidden w-11/12 m-auto lg:grid lg:grid-cols-[2fr,1fr] lg:gap-x-4">
+        <section className="hidden w-11/12 m-auto lg:grid lg:grid-cols-[2fr,1fr] lg:gap-x-4 mb-12">
             <div>
                 <Image
                     className="w-full rounded-2xl"

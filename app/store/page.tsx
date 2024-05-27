@@ -96,7 +96,7 @@ export default function Store() {
 
   return (
     <>
-      <div className="lg:flex">
+      <div className="lg:flex lg:min-h-[70vh] 2xl:min-h-[80vh]">
         <FilterDesktop 
           currentFilter={currentFilter}
           handleClickFilter={handleClickFilter}

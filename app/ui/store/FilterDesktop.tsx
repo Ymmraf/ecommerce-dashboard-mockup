@@ -14,7 +14,7 @@ export default function FilterDesktop({
     <aside className="hidden w-5/6 max-w-[300px] text-coal font-semibold justify-between relative lg:flex">
       <div className="ml-8 fixed top-24">
         <h2 className="my-4  text-2xl">Filter</h2>
-        <div className="text-lg">
+        <div className="text-lg space-y-8">
           <div>
             <p>Type</p>
             <ul>

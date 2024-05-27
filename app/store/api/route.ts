@@ -3,7 +3,7 @@ import { sql } from "@vercel/postgres"
 export async function GET() {
     try {
       const res = await sql`
-      SELECT * FROM products
+      SELECT name, price, img, discount, type, rating, new, href, origin FROM products
       `
       return Response.json({res})
     } catch (error) {

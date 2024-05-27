@@ -10,22 +10,20 @@ import { useState, useEffect } from "react";
 import { ProductCardSkeleton } from "../ui/Skeleton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import FilterDesktop from "../ui/store/FilterDesktop";
+import { StoreFilter, StoreProductInfomation } from "@/type";
+import { FilterObject } from "@/type";
 
 export default function Store() {
-  const [initialData, setinitialData] = useState<any>("");
-  const [sideFilter, setSideFilter] = useState(false);
-  const [display, setDisplay] = useState<any[]>([]);
+  const [initialData, setinitialData] = useState<any>();
+  const [sideFilter, setSideFilter] = useState<boolean>(false);
+  const [display, setDisplay] = useState<StoreProductInfomation[]>([]);
   const [filterQuantity, setFilterQuantity] = useState<number>(0)
-  const [currentFilter, setCurrentFilter] = useState<any>({
+  const [currentFilter, setCurrentFilter] = useState<StoreFilter>({
     type: "",
     state: "",
     price: ""
   });
-
-  interface FilterObject {
-    filter: "type" | "state" | "price"
-    value: "fresh" | "dried" | "discount" | "new" | "desc" | "asc"
-  }
 
   function handleClickFilter(filter : FilterObject) {
     if(!currentFilter[filter.filter]) {
@@ -63,14 +61,14 @@ export default function Store() {
       setDisplay(display => display.filter(product => product.new == true))
     }
 
-    if(currentFilter.price == "asc") {
-      setDisplay(display => display.sort((a,b) => {
-        return ((a.price * (1-a.discount)) - (b.price * (1-b.discount)))
-      }))
+    if (currentFilter.price == "asc") {
+      setDisplay(display => display.toSorted(
+        (a, b) => a.price * (1 - a.discount) - b.price * (1 - b.discount)
+      ));
     } else if (currentFilter.price == "desc") {
-      setDisplay(display => display.sort((a,b) => {
-        return ((b.price * (1-b.discount)) - (a.price * (1-a.discount)))
-      }))
+      setDisplay((display) => display.toSorted(
+        (a, b) => b.price * (1 - b.discount) - a.price * (1 - a.discount)
+      ));
     }
   }
 
@@ -82,7 +80,7 @@ export default function Store() {
     if(display.length) {
       filterAndSort()
     }
-    console.log(currentFilter)
+    
   }, [currentFilter]);
 
   function toggleSideFilter() {
@@ -98,42 +96,48 @@ export default function Store() {
 
   return (
     <>
-      <main className="w-11/12 m-auto">
-        <Breadcrumbs nav={["Store"]} />
-        <h1 className="text-coal text-3xl font-semibold">All products</h1>
-        <button
-          onClick={toggleSideFilter}
-          className="text-coal px-4 py-2 text-xl w-full text-left hover:bg-darkcream flex justify-between my-8 rounded-xl duration-300"
-        >
-          <div className="font-semibold opacity-90">
-            Filter({filterQuantity}) <FontAwesomeIcon className="size-4" icon={faFilter} />
-          </div>
-          <div className="font-regular">
-            Show {display.length} {display.length > 1 ? "goods" : "good"}
-          </div>
-        </button>
-        <Filter
-          state={sideFilter}
-          toggle={toggleSideFilter}
+      <div className="lg:flex">
+        <FilterDesktop 
           currentFilter={currentFilter}
           handleClickFilter={handleClickFilter}
         />
-        <section className="grid grid-cols-2 gap-x-2 gap-y-6 mt-8 md:grid-cols-3">
-          <Suspense fallback={<ProductCardSkeleton />}>
-            {display.map((product, index) => (
-              <ProductCard
-                key={index}
-                name={product.name}
-                price={getDecimal(product.price, product.discount)}
-                img={product.img}
-                rating={product.rating}
-                originalPrice={getDecimal(product.price)}
-                href={product.href}
-              />
-            ))}
-          </Suspense>
-        </section>
-      </main>
+        <main className="w-11/12 mx-auto lg:mr-8">
+          <Breadcrumbs nav={["Store"]} />
+          <h1 className="text-coal text-3xl font-semibold">All products</h1>
+          <button
+            onClick={toggleSideFilter}
+            className="text-coal px-4 py-2 text-xl w-full text-left hover:bg-darkcream flex justify-between my-8 rounded-xl duration-300"
+          >
+            <div className="font-semibold opacity-90">
+              Filter({filterQuantity}) <FontAwesomeIcon className="size-4" icon={faFilter} />
+            </div>
+            <div className="font-regular">
+              Show {display.length} {display.length > 1 ? "goods" : "good"}
+            </div>
+          </button>
+          <Filter
+            state={sideFilter}
+            toggle={toggleSideFilter}
+            currentFilter={currentFilter}
+            handleClickFilter={handleClickFilter}
+          />
+          <section className="grid grid-cols-2 gap-x-2 gap-y-6 mt-8 md:grid-cols-3 xl:grid-cols-4">
+            <Suspense fallback={<ProductCardSkeleton />}>
+              {display.map((product, index) => (
+                <ProductCard
+                  key={index}
+                  name={product.name}
+                  price={getDecimal(product.price, product.discount)}
+                  img={product.img}
+                  rating={product.rating}
+                  originalPrice={getDecimal(product.price)}
+                  href={product.href}
+                />
+              ))}
+            </Suspense>
+          </section>
+        </main>
+      </div>
       <Footer />
     </>
   );

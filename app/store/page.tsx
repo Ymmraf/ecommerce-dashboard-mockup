@@ -104,9 +104,10 @@ export default function Store() {
         <main className="w-11/12 mx-auto lg:mr-8">
           <Breadcrumbs nav={["Store"]} />
           <h1 className="text-coal text-3xl font-semibold">All products</h1>
+
           <button
             onClick={toggleSideFilter}
-            className="text-coal px-4 py-2 text-xl w-full text-left hover:bg-darkcream flex justify-between my-8 rounded-xl duration-300"
+            className="text-coal px-4 py-2 text-xl w-full text-left hover:bg-darkcream flex justify-between my-8 rounded-xl duration-300 lg:hidden"
           >
             <div className="font-semibold opacity-90">
               Filter({filterQuantity}) <FontAwesomeIcon className="size-4" icon={faFilter} />
@@ -115,6 +116,18 @@ export default function Store() {
               Show {display.length} {display.length > 1 ? "goods" : "good"}
             </div>
           </button>
+          
+          <p
+            className="text-coal px-4 py-2 text-xl w-full text-left hidden justify-between my-8 rounded-xl duration-300 lg:flex" 
+          >
+            <div className="font-semibold opacity-90">
+              Filter({filterQuantity}) <FontAwesomeIcon className="size-4" icon={faFilter} />
+            </div>
+            <div className="font-regular">
+              Show {display.length} {display.length > 1 ? "goods" : "good"}
+            </div>
+          </p>
+
           <Filter
             state={sideFilter}
             toggle={toggleSideFilter}

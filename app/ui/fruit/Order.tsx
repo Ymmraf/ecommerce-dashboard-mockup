@@ -69,7 +69,7 @@ export default function Order({
                 <div>Add to cart +</div>
               </button>
               :
-              <button onClick={() => addToCart({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}) } className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg">
+              <button onClick={() => addToCart({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}) } className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg hover:scale-105 duration-300">
                 <div>Add to cart +</div>
               </button>
             }

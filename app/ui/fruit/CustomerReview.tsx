@@ -54,14 +54,14 @@ function ReviewBlock({name, review, rating, date} : {name : string, review : str
           <h3 className="text-xl">{name}</h3>
           <p>{review}</p>
           <div className="flex justify-between">
-            <p>{date}</p>
+            <p className="font-semibold opacity-70">{date}</p>
             <div>
                 {
                     ratingArr.map((element, index) => {
                         if(index+1 > Math.floor(rating)) {
-                            return <FontAwesomeIcon key={index} icon={faStar} className="text-coal opacity-50"/>
+                            return <FontAwesomeIcon key={index} icon={faStar} className="text-coal opacity-30"/>
                         } else {
-                            return <FontAwesomeIcon key={index} icon={faStar} className="text-leaf"/>
+                            return <FontAwesomeIcon key={index} icon={faStar} className="text-coal opacity-80"/>
                         }
                     })
                 }

@@ -11,7 +11,7 @@ export default async function Recommend() {
     return (
         <>
             <h2 className="text-coal text-xl mt-12 mb-6">People also like</h2>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-4">
+            <div className="grid grid-cols-2 gap-x-2 gap-y-4 lg:grid-cols-4">
                 {
                     recommendProduct.map((product,index) => 
                         <ProductCard

@@ -10,6 +10,7 @@ import clsx from "clsx";
 import Footer from "@/app/ui/Footer";
 import Order from "@/app/ui/fruit/Order";
 import CustomerReview from "@/app/ui/fruit/CustomerReview";
+import Recommend from "@/app/ui/fruit/Recommend";
 
 export default async function Fruit({ params }: { params: { fruit: string } }) {
   const fruitName = capitalizeParams(params.fruit);
@@ -88,6 +89,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
       />
       <aside className="w-11/12 m-auto">
           <CustomerReview rating={productInfo.rating}/>
+          <Recommend />
       </aside>
       <Footer />
     </>

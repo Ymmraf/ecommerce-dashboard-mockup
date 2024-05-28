@@ -18,7 +18,7 @@ export default function CustomerReview({rating} : {rating : number}) {
         {
             name: "Danaisate",
             review: "Mmmm... pretty good",
-            rating: 3,
+            rating: 4,
             date: "March 15, 2024"
         },
 
@@ -26,7 +26,7 @@ export default function CustomerReview({rating} : {rating : number}) {
 
     return (
         <>
-            <div className="flex justify-between text-coal mt-8 mb-4">
+            <div className="flex justify-between text-coal mt-12 mb-4">
                 <h2 className="text-xl">Customer review</h2>
                 <div className="flex gap-x-2">
                     <FontAwesomeIcon className="relative top-[3px] text-leaf" icon={faStar}/>
@@ -51,7 +51,7 @@ function ReviewBlock({name, review, rating, date} : {name : string, review : str
     return (
       <div className="bg-white rounded-xl p-4">
         <div className="space-y-4">
-          <h3 className="font-semibold text-xl">{name}</h3>
+          <h3 className="text-xl">{name}</h3>
           <p>{review}</p>
           <div className="flex justify-between">
             <p>{date}</p>

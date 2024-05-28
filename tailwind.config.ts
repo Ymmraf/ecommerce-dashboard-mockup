@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -19,6 +19,9 @@ const config: Config = {
         "tomato" : "#E45959",
         "cream" : "#EDEAE7",
         "darkcream" : "#b3b0ad"
+      },
+      gridTemplateColumns: {
+        "store-lg" : "1fr 3fr"
       }
     },
   },

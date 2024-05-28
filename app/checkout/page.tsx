@@ -1,12 +1,13 @@
 "use client";
 import { useAtom } from "jotai";
-import { CartProduct, cart } from "../atom/state";
+import { cart } from "../atom/state";
 import Breadcrumbs from "../ui/Breadcrumbs";
 import { getTotalProductPrice, getDeliveryFee } from "../utils/getSum";
 import CheckoutList from "../ui/CheckoutList";
 import DisplayTotalCheckout from "../ui/checkout/DisplayTotalCheckout";
 import Footer from "../ui/Footer";
 import { useState } from "react";
+import { CartProduct } from "@/type";
 
 interface CustomerInfomation {
   name: string;

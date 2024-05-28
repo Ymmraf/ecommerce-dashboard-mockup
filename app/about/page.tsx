@@ -17,10 +17,10 @@ export default function About() {
               height={500}
             />
           </figure>
-          <article className="space-y-8 text-coal lg:text-center">
+          <article className="space-y-8 text-coal">
             <div>
               <h2 className="text-xl font-semibold">Overall</h2>
-              <p className="tracking-wide mt-2 text-justify lg:text-center">
+              <p className="tracking-wide mt-2 text-justify">
                 Freshy Market is a fictional online grocery store. The main goal
                 of this project is to create a simple and user-friendly
                 E-commerce website.
@@ -28,15 +28,15 @@ export default function About() {
             </div>
             <div>
               <h2 className="text-xl font-semibold">Features</h2>
-              <p className="tracking-wide mt-2 text-justify lg:text-center">
+              <p className="tracking-wide mt-2 text-justify">
                 The site has a page for both Customer and Seller
               </p>
-              <p className="tracking-wide mt-2 text-justify lg:text-center">
+              <p className="tracking-wide mt-2 text-justify">
                 On the customer side, users can view, select, filter and add
                 products to their cart. They can freely increase and decrease
                 quantity of their order before paying
               </p>
-              <p className="tracking-wide mt-2 text-justify lg:text-center">
+              <p className="tracking-wide mt-2 text-justify">
                 On the seller side, seller can view and manage each orders. The
                 site also offer dashboard page to visualize the sales of a
                 certain product in a period of time.
@@ -44,7 +44,7 @@ export default function About() {
             </div>
             <div>
               <h2 className="text-xl font-semibold">Tech use</h2>
-              <p className="tracking-wide mt-2 text-justify lg:text-center">
+              <p className="tracking-wide mt-2 text-justify">
                 Most part of the application, Freshy Market is built by <span className="font-semibold">'Next JS'</span> framework and styling with <span className="font-semibold">'Tailwind CSS'</span>, being deployed on <span className="font-semibold">'Vercel'</span> and using <span className="font-semibold">'Vercel PostreSQL'</span> as database.
               </p>
             </div>

@@ -117,7 +117,7 @@ export default function Store() {
             </div>
           </button>
           
-          <p
+          <div
             className="text-coal px-4 py-2 text-xl w-full text-left hidden justify-between my-8 rounded-xl duration-300 lg:flex" 
           >
             <div className="font-semibold opacity-90">
@@ -126,7 +126,7 @@ export default function Store() {
             <div className="font-regular">
               Show {display.length} {display.length > 1 ? "goods" : "good"}
             </div>
-          </p>
+          </div>
 
           <Filter
             state={sideFilter}

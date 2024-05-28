@@ -117,7 +117,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
           </div>
         </section>
       </main>
-      <div className="lg:hidden">
+      <div className="fixed bottom-0 right-0 left-0 z-30 lg:hidden">
         <Order
           price={(productInfo.price * (1 - productInfo.discount)).toFixed(2)}
           name={productInfo.name}

@@ -35,44 +35,74 @@ export default function Order({
     }
   }
 
-  function addToCart(addToCart: AddToCart) {
-    let alreadyInCart = false;
+  function deleteProductFromCart(productName: string) {
+    setInCart(
+      inCart.filter((product) => product.product != productName)
+    );
+  }
+
+  function changeQuantity(addToCart: AddToCart, operator: string) {
+    let itemIsAlreadyInCart = false;
     
     inCart.forEach(product => {
       if(product.product == addToCart.product) {
-        alreadyInCart = true
+        itemIsAlreadyInCart = true
         return
       }
     })
 
-    if(alreadyInCart) {
-      setInCart(inCart.map((element,index) => 
-        element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img, stock: stock } : element
-      ))
-    } else if (!alreadyInCart) {
+    if(itemIsAlreadyInCart) {
+      if(operator == "+") {
+        setInCart(inCart.map((element,index) => 
+          element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img, stock: stock } : element
+        ))
+      } else if(operator == "-") {
+        if(currentProductQuantity(addToCart.product) == 1) {
+          deleteProductFromCart(addToCart.product)
+        } else {
+          setInCart(inCart.map((element,index) => 
+            element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity - 1), img: img, stock: stock } : element
+          ))
+        }
+      }
+    } else if (!itemIsAlreadyInCart) {
       setInCart([...inCart, addToCart]);
     }
   }
 
   return (
-    <aside className="w-full py-2 bg-white sticky bottom-0 mt-8">
-      <div className="w-4/5 m-auto">
+    <aside className="w-full py-2 bg-white mt-8">
+      <div className="w-11/12 md:w-4/5 m-auto">
         <div className="flex justify-between items-center">
           <div className="text-coal">
             <p className="text-xl font-semibold">Subtotal: ${productPrice}</p>
             <p className="opacity-70">$ {price} / 500g</p>
           </div>
-          <div>
-            {
-              currentProductQuantity(name) == stock ? 
-              <button disabled={true} className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg opacity-60" >
-                <div>Add to cart +</div>
-              </button>
-              :
-              <button onClick={() => addToCart({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}) } className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg">
-                <div>Add to cart +</div>
-              </button>
-            }
+          <div className="flex gap-x-2">
+            <div>
+              {
+                currentProductQuantity(name) == stock ? 
+                <button disabled={true} className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg opacity-60" >
+                  <div>Add to cart</div>
+                </button>
+                :
+                <button onClick={() => changeQuantity({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}, "+") } className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg hover:scale-105 duration-300">
+                  <div>Add to cart</div>
+                </button>
+              }
+            </div>
+            <div>
+              {
+                currentProductQuantity(name) == 0 ?
+                <button disabled={true} className="font-semibold text-cream bg-tomato py-2 px-4 rounded-lg opacity-60">
+                  -
+                </button>
+                :
+                <button onClick={() => changeQuantity({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}, "-") } className="font-semibold text-cream bg-tomato py-2 px-4 rounded-lg">
+                  -
+                </button>
+              }
+            </div>
           </div>
         </div>
       </div>

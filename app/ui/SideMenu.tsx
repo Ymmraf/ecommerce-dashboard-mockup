@@ -26,7 +26,7 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
         <>
           <section
             className={clsx(
-              "fixed z-40 right-0 top-0 h-full border-1 bg-cream border-coal border-px shadow-md p-4 w-4/5 md:w-2/5 lg:w-1/5",
+              "fixed z-40 right-0 top-0 h-full border-1 bg-cream border-coal border-px shadow-md p-4 w-4/5 md:w-2/5 xl:w-1/4",
               {
                 hidden: !openSidebar,
                 block: openSidebar,
@@ -68,7 +68,7 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
         <>
           <section
             className={clsx(
-              "fixed z-50 right-0 top-[60px] w-4/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4 md:w-2/5 lg:w-1/5",
+              "fixed z-50 right-0 top-[60px] w-4/5 h-full border-1 bg-cream border-coal border-px shadow-md p-4 md:w-2/5 xl:w-1/4",
               {
                 hidden: !openSidebar,
                 block: openSidebar,

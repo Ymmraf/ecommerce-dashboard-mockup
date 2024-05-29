@@ -28,7 +28,7 @@ export default function Signup() {
 
     return (
         <>
-            <main className="w-11/12 m-auto flex justify-center items-center text-coal h-[80vh]">
+            <main className="w-11/12 m-auto flex justify-center items-center text-coal h-[80vh] max-w-[800px]">
                 <div className="w-11/12 bg-white p-8 rounded-2xl shadow-md relative">
                     <h1 className="font-semibold text-3xl text-center mb-8">Create account</h1>
                     <form action="" className="">

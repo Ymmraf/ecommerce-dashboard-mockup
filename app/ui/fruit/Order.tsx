@@ -42,16 +42,16 @@ export default function Order({
   }
 
   function changeQuantity(addToCart: AddToCart, operator: string) {
-    let alreadyInCart = false;
+    let itemIsAlreadyInCart = false;
     
     inCart.forEach(product => {
       if(product.product == addToCart.product) {
-        alreadyInCart = true
+        itemIsAlreadyInCart = true
         return
       }
     })
 
-    if(alreadyInCart) {
+    if(itemIsAlreadyInCart) {
       if(operator == "+") {
         setInCart(inCart.map((element,index) => 
           element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img, stock: stock } : element
@@ -65,7 +65,7 @@ export default function Order({
           ))
         }
       }
-    } else if (!alreadyInCart) {
+    } else if (!itemIsAlreadyInCart) {
       setInCart([...inCart, addToCart]);
     }
   }

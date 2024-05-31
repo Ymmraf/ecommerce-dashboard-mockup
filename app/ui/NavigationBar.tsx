@@ -11,8 +11,8 @@ import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { cart } from "../atom/state";
-import DisplayTotal from "./DisplayTotal";
 import { useAtom } from "jotai";
+import { usePathname } from "next/navigation";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -27,6 +27,7 @@ export function NavitagionBar() {
   const [openSidebar, setSidebar] = useState<boolean>(false);
   const [currentOpen, setCurrentOpen] = useState<null | string>(null);
   const [productInCart] = useAtom(cart);
+  const pathname = usePathname();
 
   function handleClickNavigation() {
     setSidebar(false);
@@ -47,63 +48,70 @@ export function NavitagionBar() {
     }
   }
 
-  return (
-    <>
-      <nav className="shadow-sm px-4 pt-4 pb-2 fixed top-0 left-0 right-0 z-50 bg-cream">
-        <ul className="flex justify-between">
-          <li>
-            <Link href="/">
-              <Image
-                src={"/Freshy Logo.png"}
-                alt="Freshy Logo"
-                width={100}
-                height={50}
-              />
-            </Link>
-          </li>
-          <li className="flex gap-x-4 relative">
-            <button
-              onClick={() => handleClickSidebar("cart")}
-              className={clsx(
-                "h-9 w-9 px-2 pt-2 text-coal rounded-md align-middle hover:bg-darkcream",
-                {
-                  "bg-darkcream": currentOpen == "cart",
-                }
+  if(pathname.includes('/dashboard')) {
+    return 
+  } else {
+    return (
+      <>
+        <nav className="shadow-sm px-4 pt-4 pb-2 fixed top-0 left-0 right-0 z-50 bg-cream">
+          <ul className="flex justify-between">
+            <li>
+              <Link href="/">
+                <Image
+                  src={"/Freshy Logo.png"}
+                  alt="Freshy Logo"
+                  width={100}
+                  height={50}
+                />
+              </Link>
+            </li>
+            <li className="flex gap-x-4 relative">
+              {pathname == "/checkout" ? (<></>) : (
+                <button
+                  onClick={() => handleClickSidebar("cart")}
+                  className={clsx(
+                    "h-9 w-9 px-2 pt-2 text-coal rounded-md align-middle hover:bg-darkcream",
+                    {
+                      "bg-darkcream": currentOpen == "cart",
+                    }
+                  )}
+                >
+                  <div className="absolute top-1 left-1 opacity-90">
+                    <StyledBadge
+                      badgeContent={productInCart.length}
+                      color="error"
+                    >
+                      <ShoppingCartIcon />
+                    </StyledBadge>
+                  </div>
+                </button>
               )}
-            >
-              <div className="absolute top-1 left-1 opacity-90">
-                {/* <IconButton aria-label="cart"> */}
-                <StyledBadge badgeContent={productInCart.length} color="error">
-                  <ShoppingCartIcon />
-                </StyledBadge>
-                {/* </IconButton> */}
-              </div>
-            </button>
-            <div>
-              <div className="w-px bg-coal h-full"></div>
-            </div>
-            <button
-              onClick={() => handleClickSidebar("navigation")}
-              className={clsx(
-                "h-9 w-9 px-2 pt-2 pb-4 text-coal rounded-md align-middle hover:bg-darkcream",
-                {
-                  "bg-darkcream": currentOpen == "navigation",
-                }
+              {pathname == "/checkout" ? (<></>) : (
+                <div>
+                  <div className="w-px bg-coal h-full"></div>
+                </div>
               )}
-            >
-              <FontAwesomeIcon icon={faBars} />
-            </button>
-          </li>
-        </ul>
-      </nav>
-      <SideMenu
-        openSidebar={openSidebar}
-        currentOpen={currentOpen}
-        handleClickNavigation={handleClickNavigation}
-      />
-      <div className="h-[62px]"></div>
-    </>
-  );
+              <button
+                onClick={() => handleClickSidebar("navigation")}
+                className={clsx(
+                  "h-9 w-9 px-2 pt-2 pb-4 text-coal rounded-md align-middle hover:bg-darkcream",
+                  {
+                    "bg-darkcream": currentOpen == "navigation",
+                  }
+                )}
+              >
+                <FontAwesomeIcon icon={faBars} />
+              </button>
+            </li>
+          </ul>
+        </nav>
+        <SideMenu
+          openSidebar={openSidebar}
+          currentOpen={currentOpen}
+          handleClickNavigation={handleClickNavigation}
+        />
+        <div className="h-[62px]"></div>
+      </>
+    );
+  }
 }
-
-

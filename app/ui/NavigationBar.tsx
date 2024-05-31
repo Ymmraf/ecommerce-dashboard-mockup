@@ -48,68 +48,70 @@ export function NavitagionBar() {
     }
   }
 
-  console.log(pathname);
-
-  return (
-    <>
-      <nav className="shadow-sm px-4 pt-4 pb-2 fixed top-0 left-0 right-0 z-50 bg-cream">
-        <ul className="flex justify-between">
-          <li>
-            <Link href="/">
-              <Image
-                src={"/Freshy Logo.png"}
-                alt="Freshy Logo"
-                width={100}
-                height={50}
-              />
-            </Link>
-          </li>
-          <li className="flex gap-x-4 relative">
-            {pathname == "/checkout" ? (<></>) : (
+  if(pathname.includes('/dashboard')) {
+    return 
+  } else {
+    return (
+      <>
+        <nav className="shadow-sm px-4 pt-4 pb-2 fixed top-0 left-0 right-0 z-50 bg-cream">
+          <ul className="flex justify-between">
+            <li>
+              <Link href="/">
+                <Image
+                  src={"/Freshy Logo.png"}
+                  alt="Freshy Logo"
+                  width={100}
+                  height={50}
+                />
+              </Link>
+            </li>
+            <li className="flex gap-x-4 relative">
+              {pathname == "/checkout" ? (<></>) : (
+                <button
+                  onClick={() => handleClickSidebar("cart")}
+                  className={clsx(
+                    "h-9 w-9 px-2 pt-2 text-coal rounded-md align-middle hover:bg-darkcream",
+                    {
+                      "bg-darkcream": currentOpen == "cart",
+                    }
+                  )}
+                >
+                  <div className="absolute top-1 left-1 opacity-90">
+                    <StyledBadge
+                      badgeContent={productInCart.length}
+                      color="error"
+                    >
+                      <ShoppingCartIcon />
+                    </StyledBadge>
+                  </div>
+                </button>
+              )}
+              {pathname == "/checkout" ? (<></>) : (
+                <div>
+                  <div className="w-px bg-coal h-full"></div>
+                </div>
+              )}
               <button
-                onClick={() => handleClickSidebar("cart")}
+                onClick={() => handleClickSidebar("navigation")}
                 className={clsx(
-                  "h-9 w-9 px-2 pt-2 text-coal rounded-md align-middle hover:bg-darkcream",
+                  "h-9 w-9 px-2 pt-2 pb-4 text-coal rounded-md align-middle hover:bg-darkcream",
                   {
-                    "bg-darkcream": currentOpen == "cart",
+                    "bg-darkcream": currentOpen == "navigation",
                   }
                 )}
               >
-                <div className="absolute top-1 left-1 opacity-90">
-                  <StyledBadge
-                    badgeContent={productInCart.length}
-                    color="error"
-                  >
-                    <ShoppingCartIcon />
-                  </StyledBadge>
-                </div>
+                <FontAwesomeIcon icon={faBars} />
               </button>
-            )}
-            {pathname == "/checkout" ? (<></>) : (
-              <div>
-                <div className="w-px bg-coal h-full"></div>
-              </div>
-            )}
-            <button
-              onClick={() => handleClickSidebar("navigation")}
-              className={clsx(
-                "h-9 w-9 px-2 pt-2 pb-4 text-coal rounded-md align-middle hover:bg-darkcream",
-                {
-                  "bg-darkcream": currentOpen == "navigation",
-                }
-              )}
-            >
-              <FontAwesomeIcon icon={faBars} />
-            </button>
-          </li>
-        </ul>
-      </nav>
-      <SideMenu
-        openSidebar={openSidebar}
-        currentOpen={currentOpen}
-        handleClickNavigation={handleClickNavigation}
-      />
-      <div className="h-[62px]"></div>
-    </>
-  );
+            </li>
+          </ul>
+        </nav>
+        <SideMenu
+          openSidebar={openSidebar}
+          currentOpen={currentOpen}
+          handleClickNavigation={handleClickNavigation}
+        />
+        <div className="h-[62px]"></div>
+      </>
+    );
+  }
 }

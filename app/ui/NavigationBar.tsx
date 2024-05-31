@@ -11,8 +11,8 @@ import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { cart } from "../atom/state";
-import DisplayTotal from "./DisplayTotal";
 import { useAtom } from "jotai";
+import { usePathname } from "next/navigation";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -27,6 +27,7 @@ export function NavitagionBar() {
   const [openSidebar, setSidebar] = useState<boolean>(false);
   const [currentOpen, setCurrentOpen] = useState<null | string>(null);
   const [productInCart] = useAtom(cart);
+  const pathname = usePathname();
 
   function handleClickNavigation() {
     setSidebar(false);
@@ -47,6 +48,8 @@ export function NavitagionBar() {
     }
   }
 
+  console.log(pathname);
+
   return (
     <>
       <nav className="shadow-sm px-4 pt-4 pb-2 fixed top-0 left-0 right-0 z-50 bg-cream">
@@ -62,26 +65,31 @@ export function NavitagionBar() {
             </Link>
           </li>
           <li className="flex gap-x-4 relative">
-            <button
-              onClick={() => handleClickSidebar("cart")}
-              className={clsx(
-                "h-9 w-9 px-2 pt-2 text-coal rounded-md align-middle hover:bg-darkcream",
-                {
-                  "bg-darkcream": currentOpen == "cart",
-                }
-              )}
-            >
-              <div className="absolute top-1 left-1 opacity-90">
-                {/* <IconButton aria-label="cart"> */}
-                <StyledBadge badgeContent={productInCart.length} color="error">
-                  <ShoppingCartIcon />
-                </StyledBadge>
-                {/* </IconButton> */}
+            {pathname == "/checkout" ? (<></>) : (
+              <button
+                onClick={() => handleClickSidebar("cart")}
+                className={clsx(
+                  "h-9 w-9 px-2 pt-2 text-coal rounded-md align-middle hover:bg-darkcream",
+                  {
+                    "bg-darkcream": currentOpen == "cart",
+                  }
+                )}
+              >
+                <div className="absolute top-1 left-1 opacity-90">
+                  <StyledBadge
+                    badgeContent={productInCart.length}
+                    color="error"
+                  >
+                    <ShoppingCartIcon />
+                  </StyledBadge>
+                </div>
+              </button>
+            )}
+            {pathname == "/checkout" ? (<></>) : (
+              <div>
+                <div className="w-px bg-coal h-full"></div>
               </div>
-            </button>
-            <div>
-              <div className="w-px bg-coal h-full"></div>
-            </div>
+            )}
             <button
               onClick={() => handleClickSidebar("navigation")}
               className={clsx(
@@ -105,5 +113,3 @@ export function NavitagionBar() {
     </>
   );
 }
-
-

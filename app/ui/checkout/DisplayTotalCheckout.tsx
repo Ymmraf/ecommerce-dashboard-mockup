@@ -1,6 +1,6 @@
 export default function DisplayTotalCheckout({totalProductPrice, deliveryFee, totalPrice} : {totalProductPrice : number, deliveryFee : number, totalPrice : number}) {
     return (
-        <div className="mt-8 bg-white p-4 rounded-xl text-coal">
+        <div className="mt-8 bg-white p-4 rounded-xl text-coal lg:bg-inherit lg:p-0">
               <div className="flex justify-between mb-2">
                 <p>Subtotal:</p>
                 <p>${totalProductPrice.toFixed(2)}</p>

@@ -21,7 +21,8 @@ const config: Config = {
         "darkcream" : "#b3b0ad"
       },
       gridTemplateColumns: {
-        "store-lg" : "1fr 3fr"
+        "store-lg" : "1fr 3fr",
+        "checkout-lg" : "2fr minmax(300px,1fr)"
       }
     },
   },

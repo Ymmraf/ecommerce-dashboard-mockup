@@ -22,7 +22,8 @@ const config: Config = {
       },
       gridTemplateColumns: {
         "store-lg" : "1fr 3fr",
-        "checkout-lg" : "2fr minmax(300px,1fr)"
+        "checkout-lg" : "2fr minmax(300px,1fr)",
+        "dashboard-lg" : "300px 4fr"
       }
     },
   },

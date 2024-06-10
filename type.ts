@@ -9,9 +9,7 @@ export interface CartProduct {
 export interface ProductInfoForCard {
     name: string,
     price: number,
-    img: string,
     rating: number,
-    href: string,
     discount: number
 }
 

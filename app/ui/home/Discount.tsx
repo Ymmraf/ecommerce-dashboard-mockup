@@ -30,7 +30,7 @@ export default function Discount({discount} : {discount: ProductInfoForCard[]}) 
                 img={product.img}
                 rating={product.rating}
                 originalPrice={getDecimal(product.price)}
-                href={product.href}
+                href={`/store/${product.name.toLowerCase()}`}
               />
             );
           })}

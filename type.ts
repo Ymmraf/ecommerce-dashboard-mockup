@@ -10,7 +10,8 @@ export interface ProductInfoForCard {
     name: string,
     price: number,
     rating: number,
-    discount: number
+    discount: number,
+    new: boolean
 }
 
 export interface StoreFilter {

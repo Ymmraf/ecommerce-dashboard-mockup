@@ -4,9 +4,8 @@ export const fetchProduct = {
     async card() {
         try {
             const data = await sql`
-            SELECT name, price, discount, rating, new FROM product
-            JOIN product_detail
-            ON product.detail_id = product_detail.id
+            SELECT name, price, discount, rating, new 
+            FROM product
             `
             return data
         } catch (error) {

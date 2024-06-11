@@ -14,10 +14,13 @@ export const fetchProduct = {
         }
     },
 
-    async byName(name: string) {
+    async productPageByName(name: string) {
         try {
             const product = await sql `
-            SELECT * FROM products
+            SELECT name, type, price, stock, discount, rating, new, detail, nutrition, origin
+            FROM product
+            JOIN product_detail
+            ON product.detail_id = product_detail.id
             WHERE name = ${name}
             `
             return product

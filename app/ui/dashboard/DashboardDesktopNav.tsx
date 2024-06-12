@@ -3,13 +3,13 @@ import Link from "next/link"
 
 const dashboardMenu = [
     {heading: "Dashboard",href: "/dashboard",},
-    {heading: "Stock",href: "/dashboard/stock",},
+    {heading: "Product management",href: "/dashboard/product",},
     {heading: "Member",href: "/dashboard/member",}
   ];
 
 export default function DashboardDesktopNav() {
     return (
-        <aside className="flex justify-between sticky top-0 left-0">
+        <aside className="hidden lg:flex justify-between sticky top-0 left-0 ">
           <div>
             <div className="w-full">
               <Image 

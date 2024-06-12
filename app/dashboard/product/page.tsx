@@ -8,11 +8,11 @@ import StockSkeleton from "@/app/ui/dashboard/StockLoading"
 import StockSearch from "@/app/ui/dashboard/StockSearch"
 
 export default async function Stock() {
-    const allStock = (await fetchProduct.all()).rows
+    const allStock = (await fetchProduct.stock()).rows
 
     return (
         <>
-            <h1 className="ml-8 mt-8 text-coal font-semibold text-4xl">Products stock</h1>
+            <h1 className="ml-8 mt-8 text-coal font-semibold text-4xl">Products management</h1>
             <div>
                 <StockSearch />
             </div>
@@ -38,7 +38,7 @@ export default async function Stock() {
                             <div className="flex items-center">
                                 <Image 
                                     className="size-16 rounded-full"
-                                    src={product.img}
+                                    src={`/fruits/${product.name.toLowerCase().replace(' ','-')}.jpg`}
                                     alt="product"
                                     width={100}
                                     height={100}
@@ -50,7 +50,7 @@ export default async function Stock() {
                                 <p>${product.price}</p>
                             </div>
                             <div className="flex items-center justify-end">
-                                <Link href={product.href} className="text-white bg-leaf text-lg p-3 rounded-lg">
+                                <Link href={`/dashboard/product/${product.name.toLowerCase()}`} className="text-white bg-leaf text-lg p-3 rounded-lg">
                                     <FontAwesomeIcon icon={faPenToSquare}/>
                                 </Link>
                             </div>

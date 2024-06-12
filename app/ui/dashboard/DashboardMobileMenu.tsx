@@ -3,7 +3,7 @@ import Link from "next/link"
 export default function DashboardMobileMenu({showMenu, handleClickNavigation} : {showMenu : boolean, handleClickNavigation : Function}) {
   const navigation = [
     {heading: "Dashboard",href: "/dashboard",},
-    {heading: "Stock",href: "/dashboard/stock",},
+    {heading: "Product Management",href: "/dashboard/product",},
     {heading: "Member",href: "/dashboard/member",}
   ];
 

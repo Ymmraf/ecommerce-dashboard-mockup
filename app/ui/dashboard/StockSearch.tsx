@@ -25,12 +25,6 @@ export default function StockSearch() {
         className="px-2 py-2 rounded-lg w-full"
         defaultValue={searchParams.get('query')?.toString()}
       />
-      <button
-        type="submit"
-        className="text-cream py-2 px-8 bg-leaf rounded-lg hover:scale-105 duration-300"
-      >
-        Search
-      </button>
     </form>
   );
 }

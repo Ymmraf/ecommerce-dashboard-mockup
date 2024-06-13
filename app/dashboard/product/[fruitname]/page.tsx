@@ -2,36 +2,49 @@ import Image from "next/image"
 import { fetchProduct } from "@/app/lib/products"
 import capitalizeParams from "@/app/utils/capitalizeParams"
 import { sql } from "@vercel/postgres"
-import { revalidatePath } from "next/cache"
+import SubmitButton from "@/app/ui/dashboard/SubmitButton"
+import ProductManagementRadio from "@/app/ui/dashboard/ProductManagementRadio"
 
 export default async function StockPage({ params }: { params: { fruitname: string } }) {
     const fruitName = capitalizeParams(params.fruitname)
     const productData = ((((await fetchProduct.productManagement(fruitName)).rows[0])))
-
+   
     async function submitChange(formData : FormData) {
         'use server'
         const rawFormData = {
-            add: formData.get('add'),
-            stock: formData.get('stock'),
-            price: formData.get('price'),
-            discount: formData.get('discount'),
-            detail: formData.get('detail'),
-            origin: formData.get('origin'),
-            nutrition: formData.get('nutrition')
+            add: Number(formData.get('add')),
+            stock: Number(formData.get('stock')),
+            price: Number(formData.get('price')),
+            discount: Number(formData.get('discount'))/100,
+            recent: String(formData.get('recent')),
+            detail: String(formData.get('detail')),
+            origin: String(formData.get('origin')),
+            nutrition: String(formData.get('nutrition'))
         }
 
+        console.log(rawFormData)
+    
         try {
-            await sql `
-                UPDATE product
-                SET stock = ${Number(rawFormData.stock)}
+            const queryId = await sql `
+                SELECT id FROM product
                 WHERE name = ${fruitName};
             `
+            const id = queryId.rows[0].id
+
+            await sql `
+                UPDATE product
+                SET
+                stock = ${rawFormData.stock},
+                price = ${rawFormData.price},
+                discount = ${rawFormData.discount}
+                new = ${rawFormData.recent},
+                WHERE id = ${id}
+            `
+
         } catch (error) {
             console.log(`Database error : ${error}`)
             throw new Error("Failed to update product data")
         }
-        console.log(rawFormData)
-        revalidatePath(`/dashboard/product`)
     }
 
     return (
@@ -67,17 +80,14 @@ export default async function StockPage({ params }: { params: { fruitname: strin
                         <input type="text" id="price" name="price" className="p-2 rounded-lg w-full" defaultValue={productData.price}/>
                     </div>
                     <div>
-                        <label className="block" htmlFor="discount">Discount</label>
+                        <label className="block" htmlFor="discount">Discount (%)</label>
                         <input type="number" id="discount" name="discount" className="p-2 rounded-lg w-full" defaultValue={productData.discount}/>
                     </div>
                 </div>
 
                 <div>
                     <h2 className="text-2xl mt-4 mb-2">Recently added</h2>
-                    <label htmlFor="true">True</label>
-                    <input type="radio" id="true" name="new" value="true"/>
-                    <label htmlFor="false">False</label>
-                    <input type="radio" id="false" name="new" value="false"/>
+                    <ProductManagementRadio recent={productData.new}/>
                 </div>
 
                 <h2 className="text-2xl mt-4 mb-2">Infomation</h2>
@@ -98,9 +108,7 @@ export default async function StockPage({ params }: { params: { fruitname: strin
                     </div>
                 </div>
                 <div>
-                    <div className="flex justify-center my-8">
-                        <button type="submit" className="text-cream bg-leaf py-2 px-8 rounded-lg hover:scale-105 duration-300">Save change</button>
-                    </div>
+                    <SubmitButton />
                 </div>
             </form>
         </section>

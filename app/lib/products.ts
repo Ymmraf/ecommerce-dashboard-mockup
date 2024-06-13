@@ -30,7 +30,12 @@ export const fetchProduct = {
         }
     },
 
-    async stock() {
+    async stock(query? : string) {
+        if(query) {
+            const product = await this.filteredStock(query)
+            return product
+        }
+
         try {
             const product = await sql `
             SELECT name, price, stock
@@ -41,6 +46,24 @@ export const fetchProduct = {
         } catch (error) {
             console.log(`Database error : ${error}`)
             throw new Error("Failed to fetch product for stock")
+        }
+    },
+
+    async filteredStock(query: string) {
+        try {
+            const product = await sql `
+            SELECT 
+                name, 
+                price, 
+                stock
+            FROM product
+            WHERE 
+                name ILIKE ${`%${query}%`};
+            `
+            return product
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error("Failed to fetch filtered products")
         }
     },
 

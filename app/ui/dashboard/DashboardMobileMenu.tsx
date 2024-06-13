@@ -4,7 +4,7 @@ export default function DashboardMobileMenu({showMenu, handleClickNavigation} : 
   const navigation = [
     {heading: "Dashboard",href: "/dashboard",},
     {heading: "Product Management",href: "/dashboard/product",},
-    {heading: "Member",href: "/dashboard/member",}
+    {heading: "Member",href: "/dashboard/user",}
   ];
 
     if(!showMenu) {

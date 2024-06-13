@@ -35,6 +35,7 @@ export const fetchProduct = {
             const product = await sql `
             SELECT name, price, stock
             FROM product
+            ORDER BY id ASC
             `
             return product
         } catch (error) {
@@ -52,6 +53,7 @@ export const fetchProduct = {
             ON product.detail_id = product_detail.id
             WHERE name = ${name}
             `
+            console.log(stockData.rows)
             return stockData
         } catch (error) {
             console.log(`Database error : ${error}`)

@@ -9,7 +9,7 @@ const dashboardMenu = [
 
 export default function DashboardDesktopNav() {
     return (
-        <aside className="hidden lg:flex justify-between sticky top-0 left-0 ">
+        <aside className="hidden lg:flex justify-between sticky top-0 left-0">
           <div>
             <div className="w-full">
               <Image 
@@ -21,6 +21,7 @@ export default function DashboardDesktopNav() {
               />
               <hr className="h-[2px] bg-darkcream"/>
             </div>
+            <div>
             <ul>
                 {dashboardMenu.map((menu, index) => (
                     <>
@@ -32,7 +33,13 @@ export default function DashboardDesktopNav() {
                       <hr className="h-[2px] bg-darkcream"/>
                     </>
                   ))}
+                  <div>
+                    <li className="text-center min-w-[298px] text-xl hover:bg-darkcream rounded-xl duration-300 my-1">
+                      <Link className="block py-3 text-cream bg-leaf" href="/">Homepage</Link>
+                    </li>
+                  </div>
             </ul>
+            </div>
           </div>
           <div className="bg-darkcream w-[2px] min-h-screen max-h-full"></div>
         </aside>

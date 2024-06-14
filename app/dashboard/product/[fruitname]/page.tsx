@@ -62,6 +62,7 @@ export default async function StockPage({ params }: { params: { fruitname: strin
             </div>
             <form action={submitChange} className="text-coal font-semibold xl:w-2/3 m-auto">
                 <h2 className="text-2xl mt-4 mb-2">Stock management</h2>
+
                 <div className="grid grid-cols-2 gap-x-8">
                     <div>
                         <label className="block" htmlFor="add">Add to stock</label>
@@ -81,7 +82,7 @@ export default async function StockPage({ params }: { params: { fruitname: strin
                     </div>
                     <div>
                         <label className="block" htmlFor="discount">Discount (%)</label>
-                        <input type="number" id="discount" name="discount" className="p-2 rounded-lg w-full" defaultValue={productData.discount}/>
+                        <input type="number" id="discount" name="discount" className="p-2 rounded-lg w-full" defaultValue={productData.discount * 100}/>
                     </div>
                 </div>
 

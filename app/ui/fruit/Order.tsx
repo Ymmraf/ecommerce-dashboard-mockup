@@ -5,19 +5,22 @@ import { cart } from "@/app/atom/state";
 import { getTotalProductPrice } from "@/app/utils/getSum";
 
 interface AddToCart {
-  product: string;
-  price: number;
-  quantity: number;
+  productId: number,
+  product: string,
+  price: number,
+  quantity: number,
   img: string,
   stock: number
 }
 
 export default function Order({
+  productId,
   price,
   name,
   img,
   stock
 }: {
+  productId: number,
   price: string;
   name: string;
   img: string
@@ -54,14 +57,14 @@ export default function Order({
     if(itemIsAlreadyInCart) {
       if(operator == "+") {
         setInCart(inCart.map((element,index) => 
-          element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img, stock: stock } : element
+          element.product == addToCart.product ? {productId : productId, product: name, price: Number(price), quantity: Number(inCart[index].quantity + 1), img: img, stock: stock } : element
         ))
       } else if(operator == "-") {
         if(currentProductQuantity(addToCart.product) == 1) {
           deleteProductFromCart(addToCart.product)
         } else {
           setInCart(inCart.map((element,index) => 
-            element.product == addToCart.product ? {product: name, price: Number(price), quantity: Number(inCart[index].quantity - 1), img: img, stock: stock } : element
+            element.product == addToCart.product ? {productId : productId, product: name, price: Number(price), quantity: Number(inCart[index].quantity - 1), img: img, stock: stock } : element
           ))
         }
       }
@@ -86,7 +89,7 @@ export default function Order({
                   <div>Add to cart</div>
                 </button>
                 :
-                <button onClick={() => changeQuantity({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}, "+") } className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg hover:scale-105 duration-300">
+                <button onClick={() => changeQuantity({ productId: productId, product: name, price: Number(price), quantity: 1, img: img , stock: stock}, "+") } className="font-semibold text-cream bg-leaf py-2 px-4 rounded-lg hover:scale-105 duration-300">
                   <div>Add to cart</div>
                 </button>
               }
@@ -98,7 +101,7 @@ export default function Order({
                   -
                 </button>
                 :
-                <button onClick={() => changeQuantity({ product: name, price: Number(price), quantity: 1, img: img , stock: stock}, "-") } className="font-semibold text-cream bg-tomato py-2 px-4 rounded-lg">
+                <button onClick={() => changeQuantity({ productId: productId, product: name, price: Number(price), quantity: 1, img: img , stock: stock}, "-") } className="font-semibold text-cream bg-tomato py-2 px-4 rounded-lg">
                   -
                 </button>
               }

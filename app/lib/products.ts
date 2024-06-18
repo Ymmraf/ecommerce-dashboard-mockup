@@ -17,7 +17,7 @@ export const fetchProduct = {
     async productPageByName(name: string) {
         try {
             const product = await sql `
-            SELECT name, type, price, stock, discount, rating, new, detail, nutrition, origin
+            SELECT *
             FROM product
             JOIN product_detail
             ON product.detail_id = product_detail.id

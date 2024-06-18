@@ -84,6 +84,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
             </article>
             <div className="hidden lg:block">
               <Order
+                productId={productInfo.id}
                 price={(productInfo.price * (1 - productInfo.discount)).toFixed(2)}
                 name={productInfo.name}
                 img={`/fruits/${productInfo.name.toLowerCase().replace(' ', '-')}.jpg`}
@@ -117,6 +118,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
       </main>
       <div className="fixed bottom-0 right-0 left-0 z-30 lg:hidden">
         <Order
+          productId={productInfo.id}
           price={(productInfo.price * (1 - productInfo.discount)).toFixed(2)}
           name={productInfo.name}
           img={productInfo.img}

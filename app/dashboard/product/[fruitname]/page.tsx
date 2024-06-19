@@ -11,12 +11,19 @@ export default async function StockPage({ params }: { params: { fruitname: strin
    
     async function submitChange(formData : FormData) {
         'use server'
+        let recent = true
+        if(formData.get('recent') == 'true') {
+            recent = true
+        } else if (formData.get('recent') == 'false') {
+            recent = false
+        }
+
         const rawFormData = {
             add: Number(formData.get('add')),
             stock: Number(formData.get('stock')),
             price: Number(formData.get('price')),
             discount: Number(formData.get('discount'))/100,
-            recent: String(formData.get('recent')),
+            recent: recent,
             detail: String(formData.get('detail')),
             origin: String(formData.get('origin')),
             nutrition: String(formData.get('nutrition'))
@@ -36,11 +43,10 @@ export default async function StockPage({ params }: { params: { fruitname: strin
                 SET
                 stock = ${rawFormData.stock},
                 price = ${rawFormData.price},
-                discount = ${rawFormData.discount}
-                new = ${rawFormData.recent},
+                discount = ${rawFormData.discount},
+                new = ${rawFormData.recent}
                 WHERE id = ${id}
             `
-
         } catch (error) {
             console.log(`Database error : ${error}`)
             throw new Error("Failed to update product data")

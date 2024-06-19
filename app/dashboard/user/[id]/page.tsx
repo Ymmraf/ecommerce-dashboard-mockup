@@ -15,7 +15,7 @@ export default async function UserInfomation({params} : {params : { id: number }
             <div className="w-11/12 m-auto">
                 <section className="my-4 text-coal space-y-4 font-semibold">
                     <p>User Id : {user.id}</p>
-                    <p>Total spent : {user.amount}</p>
+                    <p>Total spent : ${user.total_spent}</p>
                     <form>
                         <div>
                             <label className="block" htmlFor="username">Username</label>
@@ -37,7 +37,7 @@ export default async function UserInfomation({params} : {params : { id: number }
 
                     {
                         orders.map((order, index) => 
-                            <div key={index} className="h-18 p-2 bg-white rounded-lg text-coal" >
+                            <div key={index} className="h-18 p-2 bg-white rounded-lg text-coal mb-2" >
                                 <div className="grid grid-cols-5 px-8">
                                     <p className="relative top-4">{order.id}</p>
                                     <p className="relative top-4">${order.total}</p>

@@ -4,7 +4,8 @@ import Link from "next/link"
 const dashboardMenu = [
     {heading: "Dashboard",href: "/dashboard",},
     {heading: "Product management",href: "/dashboard/product",},
-    {heading: "Member",href: "/dashboard/user",}
+    {heading: "Member",href: "/dashboard/user",},
+    {heading: "Order",href: "/dashboard/order"}
   ];
 
 export default function DashboardDesktopNav() {

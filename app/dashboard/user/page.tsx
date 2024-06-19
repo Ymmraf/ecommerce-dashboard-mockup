@@ -31,7 +31,7 @@ export default async function Member({searchParams} : {searchParams? : { query? 
                 <div className="grid grid-cols-4 px-8">
                   <p className="relative top-4">{user.id}</p>
                   <p className="relative top-4">{user.username}</p>
-                  <p className="relative top-4">{user.amount}</p>
+                  <p className="relative top-4">${user.total_spent ? user.total_spent : 0}</p>
                   <div className="flex items-center justify-end">
                     <Link
                       href={`/dashboard/user/${user.id}`}

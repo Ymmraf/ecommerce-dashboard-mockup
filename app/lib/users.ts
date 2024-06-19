@@ -9,8 +9,15 @@ export const fetchUsers = {
 
         try {
             const users = await sql `
-            SELECT * FROM users
-            ORDER BY id ASC
+            WITH user_sum AS (
+            SELECT SUM(total) AS total_spent, user_id
+            FROM orders
+            GROUP BY user_id
+            )
+            
+            SELECT users.id, users.username, user_sum.total_spent FROM users
+            LEFT JOIN user_sum
+            ON users.id = user_sum.user_id
             `
 
             return users
@@ -18,12 +25,22 @@ export const fetchUsers = {
             console.log(`Database error : ${error}`)
             throw new Error('Failed to fetch users data')
         }
+
+        
     },
 
     async byQuery(query: string) {
         try {
             const users = await sql `
-            SELECT * FROM users
+            WITH user_sum AS (
+            SELECT SUM(total) AS total_spent, user_id
+            FROM orders
+            GROUP BY user_id
+            )
+            
+            SELECT users.id, users.username, user_sum.total_spent FROM users
+            LEFT JOIN user_sum
+            ON users.id = user_sum.user_id
             WHERE username ILIKE ${`%${query}%`};
             `
 
@@ -37,8 +54,16 @@ export const fetchUsers = {
     async byId(id : number) {
         try {
             const user = await sql `
-                SELECT * FROM users
-                WHERE id = ${id}
+                WITH user_sum AS (
+                SELECT SUM(total) AS total_spent, user_id
+                FROM orders
+                GROUP BY user_id
+                )
+                
+                SELECT users.id, users.username, user_sum.total_spent FROM users
+                LEFT JOIN user_sum
+                ON users.id = user_sum.user_id
+                WHERE users.id = ${id}
             `
             return user
         } catch (error) {
@@ -46,4 +71,6 @@ export const fetchUsers = {
             throw new Error("Failed to fetch users by id")
         }
     }
+
+
 }

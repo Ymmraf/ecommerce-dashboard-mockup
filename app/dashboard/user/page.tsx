@@ -16,7 +16,7 @@ export default async function Member({searchParams} : {searchParams? : { query? 
       <div>
         <UserSearch />
       </div>
-      <div className="lg:w-11/12 lg:m-auto lg:space-y-4 lg:mt-8">
+      <div className="lg:w-11/12 lg:m-auto lg:space-y-4 lg:mt-4">
         <div className="h-12 p-2 px-8 bg-leaf rounded-lg grid grid-cols-4 text-cream font-bold text-lg mb-2">
           <p>Id</p>
           <p>Username</p>

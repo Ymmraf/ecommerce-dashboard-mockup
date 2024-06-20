@@ -15,6 +15,7 @@ export const fetchOrders = {
         }
     },
 
+
     async all() {
         try {
             const orders = await sql `
@@ -28,6 +29,38 @@ export const fetchOrders = {
         } catch (error) {
             console.log(`Database error : ${error}`)
             throw new Error('Failed to fetch all order')
+        }
+    },
+
+    async byId(id: number) {
+        try {
+            const order = await sql `
+                SELECT orders.id, orders.user_id, orders.date, orders.total, orders.address, orders.packaging, orders.shipping, orders.payment, users.username
+                FROM orders
+                JOIN users
+                ON orders.user_id = users.id
+                WHERE orders.id = ${id}
+            `
+            return order
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error('Failed to fetch order by order id')
+        }
+    },
+
+    async itemById(id:number) {
+        try {
+            const items = await sql `
+                SELECT order_item.order_id, order_item.quantity, order_item.price, product.name
+                FROM order_item
+                JOIN product
+                ON order_item.product_id = product.id
+                WHERE order_item.order_id = ${id}
+            `
+            return items
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error('Failed to fetch items in order')
         }
     }
 }

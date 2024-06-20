@@ -44,7 +44,7 @@ export default async function UserInfomation({params} : {params : { id: number }
                                     <p className="relative top-4">{`${order.date.getDate()}-${order.date.getMonth()+1}-${order.date.getFullYear()}`}</p>
                                     <p className="relative top-4">{order.payment}</p>
                                     <div className="flex items-center justify-end">
-                                        <Link href={`/dashboard/user/${user.id}`} className="text-white bg-leaf text-lg p-3 rounded-lg">
+                                        <Link href={`/dashboard/order/${order.id}`} className="text-white bg-leaf text-lg p-3 rounded-lg">
                                             <FontAwesomeIcon icon={faPenToSquare} />
                                         </Link>
                                     </div>

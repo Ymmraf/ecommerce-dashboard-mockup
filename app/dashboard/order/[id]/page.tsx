@@ -11,19 +11,24 @@ export default async function OrderById({params} : {params : { id: number }}) {
             <h1 className="ml-8 mt-8 text-coal font-semibold text-4xl">Order id : {params.id}</h1>
             <div className="w-11/12 m-auto">
             <section className="text-coal space-y-2 mb-4 mt-4">
-                <div className="lg:grid lg:grid-cols-3">
+                <div>
                     <p><span className="font-semibold">Username : </span>{orders.username}</p>
                     <p><span className="font-semibold">Date : </span>{orders.date.getDate()}-{orders.date.getMonth()}-{orders.date.getFullYear()}</p>
                 </div>
-                <div className="lg:grid lg:grid-cols-3">
+                <hr />
+                <div>
                     <p><span className="font-semibold">Packaging : </span>{orders.packaging}</p>
                     <p><span className="font-semibold">Shipping method : </span>{orders.packaging}</p>
                     <p><span className="font-semibold">Payment : </span>{orders.payment}</p>
                 </div>
+                <hr />
                 <div className="lg:grid lg:grid-cols-3">
                     <p><span className="font-semibold">Address : </span>{orders.address}</p>
                 </div>
-                <p><span className="font-semibold">Total : </span>{orders.total}</p>
+                <hr />
+                <div>
+                    <p><span className="font-semibold">Total : </span>{orders.total}</p>
+                </div>
             </section>
                 <section>
                     <h2 className="text-coal text-2xl font-semibold mb-2">Order items</h2>

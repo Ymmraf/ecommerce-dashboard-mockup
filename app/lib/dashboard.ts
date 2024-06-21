@@ -37,7 +37,7 @@ export const dashboard = {
             return revenue
         } catch (error) {
             console.log(`Database error : ${error}`)
-            throw new Error('Failed to fetch quantity of order')
+            throw new Error('Failed to fetch monthly revenue')
         }
     },
 
@@ -50,7 +50,20 @@ export const dashboard = {
             return totalRevenue
         } catch (error) {
             console.log(`Database error : ${error}`)
-            throw new Error('Failed to fetch quantity of order')
+            throw new Error('Failed to fetch total revenue')
+        }
+    },
+
+    async totalMember() {
+        try {
+            const totalMember = await sql `
+                SELECT count(*)
+                FROM users
+            `
+            return totalMember
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error('Failed to fetch total member')
         }
     }
 }

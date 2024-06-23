@@ -16,7 +16,7 @@ export default function Recipe() {
 
           <div className="grid grid-cols-1 gap-y-4 
           md:grid-cols-2 md:gap-x-4">
-            <div className="p-8 bg-red-100 rounded-2xl flex justify-center 
+            <div className="p-8 bg-red-100 rounded-lg flex justify-center 
             sm:gap-x-8
             lg:block
             ">
@@ -51,14 +51,14 @@ export default function Recipe() {
                 <div className="flex justify-center mt-8">
                   <Link
                     href="/"
-                    className="text-center text-tomato py-3 px-6 border border-red-400 rounded-2xl hover:text-cream hover:bg-red-400 duration-300"
+                    className="text-center text-tomato py-3 px-6 border border-red-400 rounded-lg hover:text-cream hover:bg-red-400 duration-300"
                   >
                     Read more
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="p-8 bg-blue-200 rounded-2xl flex justify-center 
+            <div className="p-8 bg-blue-200 rounded-lg flex justify-center 
             sm:gap-x-8
             lg:block
             ">
@@ -93,7 +93,7 @@ export default function Recipe() {
                 <div className="flex justify-center mt-8">
                   <Link
                     href="/"
-                    className="text-center text-blue-700 py-3 px-6 border border-blue-800 rounded-2xl hover:text-cream hover:bg-blue-800 duration-300"
+                    className="text-center text-blue-700 py-3 px-6 border border-blue-800 rounded-lg hover:text-cream hover:bg-blue-800 duration-300"
                   >
                     Read more
                   </Link>
@@ -103,16 +103,16 @@ export default function Recipe() {
           </div>
 
           <div>
-            <div className="p-8 bg-leaf rounded-2xl">
+            <div className="p-8 bg-leaf rounded-lg">
               <div className="text-cream md:text-center">
                   <p className="text-2xl font-bold mb-2">200 +</p>
                   <p className="text-lg font-semibold mb-8">Healthy recipes</p>
               </div>
               <div className="flex md:justify-center">
-                  <Link className="w-2/5 block text-center border border-cream text-cream py-2 rounded-xl duration-300 hover:bg-cream hover:text-leaf" href="/">View all</Link>
+                  <Link className="w-2/5 block text-center border border-cream text-cream py-2 rounded-lg duration-300 hover:bg-cream hover:text-leaf" href="/">View all</Link>
               </div>
             </div>
-            <div className="bg-cream rounded-2xl mt-4 py-8 px-12 space-y-4 border-[2px] border-coal">
+            <div className="bg-cream rounded-lg mt-4 py-8 px-12 space-y-4 border-[2px] border-coal">
                 <p className="text-center text-coal font-bold text-xl">Don't miss new post</p>
                 <input className="w-full px-2 py-2 rounded-lg" type="email" placeholder="Your email"/>
                 <button className="inline-block w-full bg-coal py-2 rounded-lg text-cream font-semibold" type="button">Subscribe now</button>

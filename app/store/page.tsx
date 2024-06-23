@@ -103,7 +103,7 @@ export default function Store() {
           currentFilter={currentFilter}
           handleClickFilter={handleClickFilter}
         />
-        <main className="w-11/12 mx-auto lg:mr-8">
+        <main className="container px-8 xl:px-0 xl:w-3/5 mx-auto">
           <Breadcrumbs nav={["Store"]} />
           <h1 className="text-coal text-3xl font-semibold">All products</h1>
 

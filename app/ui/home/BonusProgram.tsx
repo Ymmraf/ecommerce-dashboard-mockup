@@ -12,7 +12,7 @@ export default function BonusProgram() {
               <h2 className="text-2xl">Bonus program</h2>
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-x-4">
-              <div className="bg-white p-6 rounded-2xl mb-6">
+              <div className="bg-white p-6 rounded-lg mb-6">
                   <div className="flex justify-center mb-8">
                       <div className="flex items-center justify-center size-32 rounded-full bg-tomato">
                           <div className="text-center text-cream">
@@ -48,7 +48,7 @@ export default function BonusProgram() {
                     <p className="text-lg">Our online store has an accumulation system of discounts for regular customers. Sign up and earn discount levels as your total purchases increase.</p>
                   </div>
                   <div className="w-10/12 m-auto">
-                    <Link className="block text-center font-semibold text-cream py-3 rounded-2xl bg-coal hover:scale-105 duration-300" href="/signup">Sign up</Link>
+                    <Link className="block text-center font-semibold text-cream py-3 rounded-lg bg-coal hover:scale-105 duration-300" href="/signup">Sign up</Link>
                   </div>
                 </div>
               </div>

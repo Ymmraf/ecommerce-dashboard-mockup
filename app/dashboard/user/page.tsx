@@ -25,7 +25,7 @@ export default async function Member({searchParams} : {searchParams? : { query? 
       </div>
       <div>
         <Suspense fallback={<StockSkeleton />}>
-          <div className="lg:w-11/12 lg:m-auto lg:space-y-4 pb-4">
+          <div className="lg:w-11/12 lg:m-auto lg:space-y-2 pb-4">
             {users.map((user, index) => (
               <div key={index} className="h-18 p-2 bg-white rounded-lg text-coal" >
                 <div className="grid grid-cols-4 px-8">

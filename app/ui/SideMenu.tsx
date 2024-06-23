@@ -53,7 +53,7 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
                 ))}
               </div>
               <div>
-                <li className="text-center text-xl py-3 mt-2 hover:bg-darkcream rounded-xl w-full bg-leaf text-cream">
+                <li className="text-center text-xl py-3 mt-2 hover:bg-darkcream rounded-lg w-full bg-leaf text-cream">
                   <Link href="/dashboard" onClick={() => handleClickNavigation()}>
                     Seller dashboard
                   </Link>
@@ -78,7 +78,7 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
             <div>
             <DisplayTotal subTotal={productPrice} deliveryFee={deliveryFee} total={total}/>
             <div className="mb-4">
-              <Link onClick={() => handleClickNavigation()} href="/checkout" className="text-center block py-3 bg-leaf mt-2 text-cream font-semibold rounded-xl">
+              <Link onClick={() => handleClickNavigation()} href="/checkout" className="text-center block py-3 bg-leaf mt-2 text-cream font-semibold rounded-lg">
                 Purchase
               </Link>
             </div>

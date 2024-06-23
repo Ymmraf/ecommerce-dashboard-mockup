@@ -34,7 +34,7 @@ export default function DashboardDesktopNav() {
                 {dashboardMenu.map((menu, index) => (
                     <>
                       <div key={menu.heading+index} className="flex">
-                        <li className="text-center min-w-[298px] text-xl hover:bg-darkcream rounded-xl duration-300 my-1">
+                        <li className="text-center min-w-[298px] text-xl hover:bg-darkcream rounded-lg duration-300 my-1">
                           <Link className="py-3 flex ml-20" href={menu.href} >
                             <div className="text-coal text-2xl relative bottom-1 mr-4">
                               <FontAwesomeIcon icon={menu.icon}/>

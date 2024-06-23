@@ -18,12 +18,14 @@ export default async function Home() {
     <main className="z-0 space-y-12">
       <Swipe />
       <DesktopBanner />
-      <Discount discount={discountProducts}/>
-      <Recipe />
-      <BonusProgram />
-      <Recent recent={newProducts}/>
-      <WorkProcessMobile />
-      <WorkProcessDesktop />
+      <div className="container mx-auto space-y-12">
+        <Discount discount={discountProducts}/>
+        <Recipe />
+        <BonusProgram />
+        <Recent recent={newProducts}/>
+        <WorkProcessMobile />
+        <WorkProcessDesktop />
+      </div>
       <Footer />
     </main>
   );

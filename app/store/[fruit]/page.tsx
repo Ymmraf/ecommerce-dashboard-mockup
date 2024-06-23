@@ -18,7 +18,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
 
   return (
     <>
-      <main className="w-11/12 m-auto xl:w-4/6 2xl:w-3/5">
+      <main className="w-11/12 mx-auto xl:w-4/6 2xl:w-3/5">
         <div>
           <Breadcrumbs nav={["Store", fruitName]} />
           <Link

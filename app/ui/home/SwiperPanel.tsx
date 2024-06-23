@@ -18,12 +18,12 @@ export default function SwiperPanel({
     <>
       <Swiper
         modules={[Pagination, Navigation]}
-        navigation={true}
+        // navigation={true}
         pagination={true}
         spaceBetween={8}
         slidesPerView={4}
-        slidesOffsetAfter={50}
-        slidesOffsetBefore={50}
+        // slidesOffsetAfter={50}
+        // slidesOffsetBefore={50}
       >
         {products.map((product, index) => {
           return (

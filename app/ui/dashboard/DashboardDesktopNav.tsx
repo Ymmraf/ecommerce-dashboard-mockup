@@ -15,7 +15,6 @@ const dashboardMenu = [
   ];
 
 export default function DashboardDesktopNav() {
-    const pathname = usePathname()
     return (
         <aside className="hidden lg:flex justify-between sticky top-0 left-0">
           <div>
@@ -32,8 +31,8 @@ export default function DashboardDesktopNav() {
             <div>
             <ul>
                 {dashboardMenu.map((menu, index) => (
-                    <>
-                      <div key={menu.heading+index} className="flex">
+                    <div key={`${menu.heading}-${index}`}>
+                      <div className="flex">
                         <li className="text-center min-w-[298px] text-xl hover:bg-darkcream rounded-lg duration-300 my-1">
                           <Link className="py-3 flex ml-20" href={menu.href} >
                             <div className="text-coal text-2xl relative bottom-1 mr-4">
@@ -44,7 +43,7 @@ export default function DashboardDesktopNav() {
                         </li>
                       </div>
                       <hr className="h-[2px] bg-darkcream"/>
-                    </>
+                    </div>
                   ))}
                   <div>
                     <li className="text-center min-w-[298px] text-xl hover:bg-darkcream rounded-xl duration-300 my-1">

@@ -18,7 +18,7 @@ export default async function RecentOrder() {
         </div>
         <div className="space-y-2 py-2 bg-white rounded-lg">
           {recentOrder.map((order, index) => (
-            <div key={index} className="px-4 h-12">
+            <div key={`${order.id}-${index}`} className="px-4 h-12">
               <div className="grid grid-cols-5 text-coal">
                 <p className="relative top-3">
                   {order.date.getDate()}-{order.date.getMonth()}-

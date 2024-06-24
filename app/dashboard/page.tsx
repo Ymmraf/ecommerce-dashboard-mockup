@@ -4,6 +4,7 @@ import TotalRevenue from "../ui/dashboard/TotalRevenue";
 import TotalMember from "../ui/dashboard/TotalMember";
 import RecentOrder from "../ui/dashboard/RecentOrder";
 import BestSeller from "../ui/dashboard/BestSeller";
+import DashboardChart from "../ui/dashboard/DashboardChart";
 
 export default function Dashboard() {
     return (
@@ -20,7 +21,7 @@ export default function Dashboard() {
                 <BestSeller />
             </div>
             <div>
-            
+                <DashboardChart />
             </div>
         </section>
     )

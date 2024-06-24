@@ -36,3 +36,8 @@ export interface FilterObject {
     filter: "type" | "state" | "price"
     value: "fresh" | "dried" | "discount" | "new" | "desc" | "asc"
   }
+
+export interface ChartData {
+    total: number,
+    date: Date
+}

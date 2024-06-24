@@ -16,7 +16,7 @@ export default async function BestSeller() {
           <div className="space-y-2 bg-white rounded-lg">
             <div className="py-2 space-y-2">
                 {bestSeller.map((product, index) => (
-                <div key={index} className="px-4 h-12">
+                <div key={`${product.name}-${index}`} className="px-4 h-12">
                     <div className="grid grid-cols-2 text-coal">
                     <div className="flex">
                         <Image

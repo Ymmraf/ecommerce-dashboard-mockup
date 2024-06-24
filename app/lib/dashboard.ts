@@ -65,5 +65,43 @@ export const dashboard = {
             console.log(`Database error : ${error}`)
             throw new Error('Failed to fetch total member')
         }
+    },
+
+    async recentOrder() {
+        try {
+            const recentOrder = await sql `
+                SELECT orders.id, orders.user_id, orders.date, orders.total, orders.payment, users.username FROM orders
+                LEFT JOIN users
+                ON orders.user_id = users.id
+                ORDER BY orders.id DESC
+                LIMIT 5
+            `
+            return recentOrder
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error(`Failed to fetch recent order`)
+        }
+    },
+
+    async bestSeller() {
+        try {
+            const bestSeller = await sql `
+                WITH best_seller AS (
+                    SELECT order_item.product_id, SUM(order_item.quantity)
+                    FROM order_item
+                    GROUP BY order_item.product_id
+                )
+
+                SELECT best_seller.sum AS quantity, product.name FROM best_seller
+                JOIN product
+                ON best_seller.product_id = product.id
+                ORDER BY sum DESC
+                LIMIT 5
+            `
+            return bestSeller
+        } catch (error) {
+            console.log(`Database error : ${error}`)
+            throw new Error(`Failed to fetch best seller`)
+        }
     }
 }

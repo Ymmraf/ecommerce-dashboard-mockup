@@ -23,7 +23,6 @@ export const fetchOrders = {
                 LEFT JOIN users
                 ON orders.user_id = users.id
                 ORDER BY orders.id DESC
-
             `
             return orders
         } catch (error) {

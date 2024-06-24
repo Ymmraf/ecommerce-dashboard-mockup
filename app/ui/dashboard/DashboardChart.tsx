@@ -16,7 +16,10 @@ export default async function DashboardChart() {
   
   return (
     <div>
-      <SaleChart salesData={getChartData(data)}/>
+      <h2 className="text-2xl text-coal pl-4 font-semibold mb-2">Monthly sales</h2>
+      <div className="bg-white rounded-lg">
+        <SaleChart salesData={getChartData(data)}/>
+      </div>
     </div>
   );
 }

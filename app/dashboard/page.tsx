@@ -16,11 +16,11 @@ export default function Dashboard() {
                 <TotalRevenue />
                 <TotalMember />
             </div>
-            <div className="grid xl:grid-cols-2 gap-x-2 px-16">
+            <div className="grid xl:grid-cols-2 gap-x-2 px-16 mb-8">
                 <RecentOrder />
                 <BestSeller />
             </div>
-            <div>
+            <div className="px-16 mb-8">
                 <DashboardChart />
             </div>
         </section>

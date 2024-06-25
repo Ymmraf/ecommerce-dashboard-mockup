@@ -24,8 +24,6 @@ export default function Store() {
     state: "",
     price: ""
   });
-
-  console.log('This is it')
   
   function handleClickFilter(filter : FilterObject) {
     if(!currentFilter[filter.filter]) {

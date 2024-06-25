@@ -53,8 +53,8 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
                 ))}
               </div>
               <div>
-                <li className="text-center text-xl py-3 mt-2 hover:bg-darkcream rounded-lg w-full bg-leaf text-cream">
-                  <Link href="/dashboard" onClick={() => handleClickNavigation()}>
+                <li className="text-center text-xl mt-2 text-cream">
+                  <Link className="py-3 w-full block rounded-lg bg-leaf" href="/dashboard" onClick={() => handleClickNavigation()}>
                     Seller dashboard
                   </Link>
                 </li>

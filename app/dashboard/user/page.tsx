@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import UserSearch from "@/app/ui/dashboard/UserSearch";
+import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
 
 export default async function Member({searchParams} : {searchParams? : { query? : string }}) {
   const query = searchParams?.query || ''
@@ -13,9 +14,11 @@ export default async function Member({searchParams} : {searchParams? : { query? 
   return (
     <>
       <h1 className="ml-8 mt-8 text-coal font-semibold text-4xl">Members</h1>
-      <div>
-        <UserSearch />
-      </div>
+      <Suspense fallback={<SearchSkeleton/>}>
+        <div>
+          <UserSearch />
+        </div>
+      </Suspense>
       <div className="w-11/12 m-auto space-y-2 lg:mt-4">
         <div className="h-12 p-2 px-8 bg-leaf rounded-lg grid grid-cols-4 text-cream font-bold text-lg mb-2">
           <p>Id</p>

@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { fetchOrders } from "@/app/lib/orders";
+import { Suspense } from "react";
+import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
 
 export default async function OrderPage() {
   const orders = (await fetchOrders.all()).rows;
@@ -10,9 +12,12 @@ export default async function OrderPage() {
   return (
     <>
       <h1 className="ml-8 mt-8 text-coal font-semibold text-4xl">Order</h1>
-      <div>
-        <StockSearch />
-      </div>
+      
+      <Suspense fallback={<SearchSkeleton/>}>
+        <div>
+          <StockSearch />
+        </div>
+      </Suspense>
 
       <div className="w-11/12 m-auto space-y-2">
         <div className="h-12 p-2 bg-leaf rounded-lg text-cream font-bold text-lg mb-2">

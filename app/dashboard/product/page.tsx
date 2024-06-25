@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import StockSkeleton from "@/app/ui/dashboard/StockLoading";
 import StockSearch from "@/app/ui/dashboard/StockSearch";
+import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
 
 export default async function Stock({
   searchParams,
@@ -20,9 +21,11 @@ export default async function Stock({
       <h1 className="ml-8 mt-8 text-coal font-semibold text-4xl">
         Products management
       </h1>
-      <div>
-        <StockSearch />
-      </div>
+      <Suspense fallback={<SearchSkeleton/>}>
+        <div>
+          <StockSearch />
+        </div>
+      </Suspense>
 
       <div className="w-11/12 m-auto space-y-4">
         <div className="h-12 p-2 bg-leaf rounded-lg grid grid-cols-3 text-cream font-bold text-lg mb-2">

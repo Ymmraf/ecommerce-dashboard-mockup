@@ -331,6 +331,13 @@ export default function Checkout() {
                   }
                 </div>
               </div>
+              <div>
+                {
+                  productInCart.length > 0 ? 
+                  <CheckoutButton handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
+                  <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
+                }
+              </div>
             </form>
             
 
@@ -354,7 +361,7 @@ export default function Checkout() {
               <CheckoutList />
             </div>
           </aside>
-              <button onClick={() => router.push('/')}>Redirect</button>
+              
         </div>
       </main>
       <Footer />

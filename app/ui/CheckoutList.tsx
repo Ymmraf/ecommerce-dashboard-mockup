@@ -22,7 +22,6 @@ export default function CheckoutList() {
                 product: item.product,
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity + 1),
-                img: item.img,
                 stock: item.stock
               }
             : item
@@ -36,7 +35,6 @@ export default function CheckoutList() {
                 product: item.product,
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity - 1),
-                img: item.img,
                 stock: item.stock
               }
             : item
@@ -54,7 +52,7 @@ export default function CheckoutList() {
               <div>
                 <Image
                   className="rounded-full shadow-md min-h-[80px] min-w-[80px]"
-                  src={product.img}
+                  src={`/fruits/${product.product.toLowerCase().replace(' ', '-')}.jpg`}
                   alt={product.product}
                   width={80}
                   height={80}

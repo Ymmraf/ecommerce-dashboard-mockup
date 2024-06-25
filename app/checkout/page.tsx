@@ -9,6 +9,7 @@ import Footer from "../ui/Footer";
 import { useState } from "react";
 import { CartProduct } from "@/type";
 import Image from "next/image";
+import CheckoutButton from "../ui/checkout/CheckoutButton";
 
 interface ShippingInfomation {
   address: string,
@@ -159,6 +160,7 @@ export default function Checkout() {
               totalPrice={totalPrice}
             />
           </section>
+          
           <section className="my-8">
             <form>
               <div>
@@ -325,9 +327,8 @@ export default function Checkout() {
                 </div>
               </div>
             </form>
-            <div className="flex justify-center lg:hidden">
-              <button className="text-cream bg-leaf font-semibold py-2 px-20 hover:scale-105 duration-300 rounded-lg" onClick={() => submitData(handleSubmit(), productInCart)} >Purchase</button>
-            </div>
+            
+
           </section>
           <aside className="hidden lg:block">
             <h2 className="text-xl font-semibold text-coal mb-4 lg:mb-2">Your Order</h2>
@@ -339,7 +340,7 @@ export default function Checkout() {
             <div className="justify-center hidden lg:block w-full my-8">
               {
                 productInCart.length > 0 ? 
-                <button className="w-full block text-cream bg-leaf font-semibold py-4 px-20 hover:scale-105 duration-300 rounded-lg" onClick={() => submitData(handleSubmit(), productInCart)} type="submit">Purchase</button> :
+                <CheckoutButton handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
                 <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
               }
               
@@ -348,6 +349,8 @@ export default function Checkout() {
               <CheckoutList />
             </div>
           </aside>
+         
+          
         </div>
       </main>
       <Footer />

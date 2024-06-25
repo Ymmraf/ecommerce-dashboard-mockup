@@ -1,11 +1,12 @@
 'use client'
 
+import Link from "next/link"
 import { useState } from "react"
 
 export default function Signup() {
     return (
         <>
-            <main className="w-11/12 m-auto flex justify-center items-center text-coal h-[80vh]">
+            <main className="m-auto flex justify-center items-center text-coal h-[80vh] max-w-[800px]">
                 <div className="w-11/12 bg-white p-8 rounded-2xl shadow-md relative">
                     <h1 className="font-semibold text-3xl text-center mb-8">Login</h1>
                     <form action="" className="">
@@ -25,6 +26,10 @@ export default function Signup() {
                         </div>
                         <div className="flex justify-center mb-2 mt-8">
                             <button className="text-lg font-semibold text-cream bg-leaf w-44 py-2 rounded-lg hover:scale-105 duration-300" type="button">Login</button>
+                        </div>
+                        <div className="flex gap-x-1 text-sm font-semibold justify-center mt-4">
+                            <p className="text-coal opacity-70">Don't have and account? </p>
+                            <Link className="text-blue-500 hover:underline" href="/signup">Sign up for free</Link>
                         </div>
                     </form>
                 </div>

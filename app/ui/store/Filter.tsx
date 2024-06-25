@@ -16,7 +16,7 @@ export default function Filter({
   return (
     <aside
       className={clsx(
-        "fixed z-40 left-0 top-0 w-4/5 h-full border-1 bg-cream border-coal border-px shadow-md",
+        "fixed z-40 left-0 top-0 w-4/5 h-full border-1 bg-cream border-coal border-px shadow-md md:w-2/5",
         {
           block: state,
           hidden: !state,

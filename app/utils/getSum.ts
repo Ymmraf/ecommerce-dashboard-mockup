@@ -1,4 +1,4 @@
-import { CartProduct } from "../atom/state"
+import { CartProduct } from "@/type"
 
 export function getTotalProductPrice(cart: CartProduct[]) : number {
     let total = 0

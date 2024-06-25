@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server"
 import { sql } from "@vercel/postgres"
+import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
+import { permanentRedirect } from "next/navigation"
 
 interface InsertItem {
     id: number,
@@ -54,5 +57,8 @@ export async function POST(request: Request) {
 
     console.log(requestData)
     console.log("log from /checkout/api/route.ts")
+    
+    // revalidatePath('/checkout')
+    // return redirect('/success')
     return NextResponse.json({requestData})
 }

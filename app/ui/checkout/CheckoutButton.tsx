@@ -4,6 +4,7 @@ import { CartProduct } from "@/type";
 
 export default function CheckoutButton({submitData,handleSubmit,productInCart,}: {submitData: Function;handleSubmit: Function;productInCart: CartProduct[];}) {
     const { pending } = useFormStatus()
+
     return (
         <>
             {
@@ -13,7 +14,6 @@ export default function CheckoutButton({submitData,handleSubmit,productInCart,}:
                 <button className="w-full text-cream bg-leaf font-semibold py-4 px-20 rounded-lg" onClick={() => submitData(handleSubmit(), productInCart)} >Purchase</button>
             }
         </>
-
     )
 }        
 

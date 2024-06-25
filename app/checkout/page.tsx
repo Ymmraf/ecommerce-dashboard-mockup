@@ -10,6 +10,7 @@ import { useState } from "react";
 import { CartProduct } from "@/type";
 import Image from "next/image";
 import CheckoutButton from "../ui/checkout/CheckoutButton";
+import { useRouter } from "next/navigation";
 
 interface ShippingInfomation {
   address: string,
@@ -35,6 +36,8 @@ export default function Checkout() {
   const [packaging, setPackaging] = useState("")
   const [shipping, setShipping] = useState("")
   const [payment, setPayment] = useState("")
+  
+  const router = useRouter()
   
   function submitData(customerInfomation: ShippingInfomation, cart: CartProduct[]) {
     const date = new Date()
@@ -64,6 +67,8 @@ export default function Checkout() {
     .then(response => response.json())
     .then(json => console.log(json))
     .catch(error => console.log(error))
+
+    router.push('/success')
   }
   
   function handleSubmit() {
@@ -162,7 +167,7 @@ export default function Checkout() {
           </section>
           
           <section className="my-8">
-            <form>
+            <form id="checkoutForm">
               <div>
                 <h2 className="text-coal font-semibold text-xl mb-2">
                   Personal information:
@@ -349,8 +354,7 @@ export default function Checkout() {
               <CheckoutList />
             </div>
           </aside>
-         
-          
+              <button onClick={() => router.push('/')}>Redirect</button>
         </div>
       </main>
       <Footer />

@@ -28,7 +28,7 @@ export default function Signup() {
                             <button className="text-lg font-semibold text-cream bg-leaf w-44 py-2 rounded-lg hover:scale-105 duration-300" type="button">Login</button>
                         </div>
                         <div className="flex gap-x-1 text-sm font-semibold justify-center mt-4">
-                            <p className="text-coal opacity-70">Don't have and account? </p>
+                            <p className="text-coal opacity-70">Don&apos;t have and account? </p>
                             <Link className="text-blue-500 hover:underline" href="/signup">Sign up for free</Link>
                         </div>
                     </form>

@@ -45,7 +45,7 @@ export default function About() {
             <div>
               <h2 className="text-xl font-semibold">Tech use</h2>
               <p className="tracking-wide mt-2 text-justify">
-                Most part of the application, Freshy Market is built by <span className="font-semibold">'Next JS'</span> framework and styling with <span className="font-semibold">'Tailwind CSS'</span>, being deployed on <span className="font-semibold">'Vercel'</span> and using <span className="font-semibold">'Vercel PostreSQL'</span> as database.
+                Most part of the application, Freshy Market is built by <span className="font-semibold">&apos;Next JS&apos;</span> framework and styling with <span className="font-semibold">&apos;Tailwind CSS&apos;</span>, being deployed on <span className="font-semibold">&apos;Vercel&apos;</span> and using <span className="font-semibold">&apos;Vercel PostreSQL&apos;</span> as database.
               </p>
             </div>
           </article>

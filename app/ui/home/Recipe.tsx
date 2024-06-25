@@ -113,7 +113,7 @@ export default function Recipe() {
               </div>
             </div>
             <div className="bg-cream rounded-lg mt-4 py-8 px-12 space-y-4 border-[2px] border-coal">
-                <p className="text-center text-coal font-bold text-xl">Don't miss new post</p>
+                <p className="text-center text-coal font-bold text-xl">Don&apos;t miss new post</p>
                 <input className="w-full px-2 py-2 rounded-lg" type="email" placeholder="Your email"/>
                 <button className="inline-block w-full bg-coal py-2 rounded-lg text-cream font-semibold" type="button">Subscribe now</button>
             </div>

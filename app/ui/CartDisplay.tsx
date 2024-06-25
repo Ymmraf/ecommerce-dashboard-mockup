@@ -46,7 +46,7 @@ export default function CartDisplay() {
   }
 
   return (
-    <div className="overflow-scroll space-y-3 max-h-full text-coal">
+    <div className="overflow-scroll lg:h-full space-y-3 max-h-full text-coal">
       {productInCart.map((product, index) => (
         <div key={index}>
           <div className="h-24 flex gap-x-2 p-2">

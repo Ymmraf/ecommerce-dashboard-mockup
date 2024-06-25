@@ -16,7 +16,7 @@ export default function Dashboard() {
                 <TotalRevenue />
                 <TotalMember />
             </div>
-            <div className="grid xl:grid-cols-2 gap-x-2 px-16 mb-8">
+            <div className="grid xl:grid-cols-2 gap-2 px-16 mb-8">
                 <RecentOrder />
                 <BestSeller />
             </div>

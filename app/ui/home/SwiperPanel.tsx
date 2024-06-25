@@ -8,11 +8,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./SwiperPanel.css"
+import { QueryResultRow } from "@vercel/postgres";
 
 export default function SwiperPanel({
   products,
 }: {
-  products: ProductInfoForCard[];
+  products: QueryResultRow[];
 }) {
   return (
     <>

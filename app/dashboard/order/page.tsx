@@ -14,7 +14,7 @@ export default async function OrderPage() {
         <StockSearch />
       </div>
 
-      <div className="lg:w-11/12 lg:m-auto lg:space-y-2">
+      <div className="w-11/12 m-auto space-y-2">
         <div className="h-12 p-2 bg-leaf rounded-lg text-cream font-bold text-lg mb-2">
           <div className="grid grid-cols-6 px-4">
             <p>Date</p>

@@ -8,8 +8,9 @@ import { ProductCardSkeleton } from "../Skeleton";
 import { Suspense } from "react";
 import SwiperPanel from "./SwiperPanel";
 import { ProductInfoForCard } from "@/type";
+import { QueryResultRow } from "@vercel/postgres";
 
-export default function Discount({discount} : {discount: ProductInfoForCard[]}) {
+export default function Discount({discount} : {discount: QueryResultRow[]}) {
   return (
     <section className="w-11/12 m-auto mb-12">
       <div className="flex justify-between text-coal">

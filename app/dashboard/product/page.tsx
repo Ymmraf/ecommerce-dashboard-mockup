@@ -24,7 +24,7 @@ export default async function Stock({
         <StockSearch />
       </div>
 
-      <div className="lg:w-11/12 lg:m-auto lg:space-y-4">
+      <div className="w-11/12 m-auto space-y-4">
         <div className="h-12 p-2 bg-leaf rounded-lg grid grid-cols-3 text-cream font-bold text-lg mb-2">
           <div className="flex">
             <div className="w-20"></div>
@@ -39,7 +39,7 @@ export default async function Stock({
       </div>
 
       <Suspense fallback={<StockSkeleton />}>
-        <div className="lg:w-11/12 lg:m-auto lg:space-y-2 pb-4">
+        <div className="w-11/12 m-auto space-y-2 pb-4">
           {allStock.map((product, index) => (
             <div
               key={index}

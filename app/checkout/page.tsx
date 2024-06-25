@@ -337,7 +337,12 @@ export default function Checkout() {
               totalPrice={totalPrice}
             />
             <div className="justify-center hidden lg:block w-full my-8">
-              <button className="w-full block text-cream bg-leaf font-semibold py-4 px-20 hover:scale-105 duration-300 rounded-lg" onClick={() => submitData(handleSubmit(), productInCart)} type="submit">Purchase</button>
+              {
+                productInCart.length > 0 ? 
+                <button className="w-full block text-cream bg-leaf font-semibold py-4 px-20 hover:scale-105 duration-300 rounded-lg" onClick={() => submitData(handleSubmit(), productInCart)} type="submit">Purchase</button> :
+                <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
+              }
+              
             </div>
             <div>
               <CheckoutList />

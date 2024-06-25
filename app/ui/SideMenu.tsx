@@ -78,9 +78,15 @@ export default function SideMenu({ openSidebar, currentOpen, handleClickNavigati
             <div>
             <DisplayTotal subTotal={productPrice} deliveryFee={deliveryFee} total={total}/>
             <div className="mb-4">
-              <Link onClick={() => handleClickNavigation()} href="/checkout" className="text-center block py-3 bg-leaf mt-2 text-cream font-semibold rounded-lg">
-                Purchase
-              </Link>
+              {
+                productInCart.length > 0 ?
+                <Link onClick={() => handleClickNavigation()} href="/checkout" className="text-center block py-3 bg-leaf mt-4 text-cream font-semibold rounded-lg">
+                  Purchase
+                </Link>
+                :
+                <button className="text-center w-full py-3 bg-darkcream mt-2 text-cream font-semibold rounded-lg" disabled>Purchase</button>
+              }
+              
             </div>
             </div>
             <hr className="h-1 w-full bg-darkcream"/>

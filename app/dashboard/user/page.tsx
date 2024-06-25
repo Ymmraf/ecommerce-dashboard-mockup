@@ -16,7 +16,7 @@ export default async function Member({searchParams} : {searchParams? : { query? 
       <div>
         <UserSearch />
       </div>
-      <div className="lg:w-11/12 lg:m-auto lg:space-y-4 lg:mt-4">
+      <div className="w-11/12 m-auto space-y-2 lg:mt-4">
         <div className="h-12 p-2 px-8 bg-leaf rounded-lg grid grid-cols-4 text-cream font-bold text-lg mb-2">
           <p>Id</p>
           <p>Username</p>
@@ -25,7 +25,7 @@ export default async function Member({searchParams} : {searchParams? : { query? 
       </div>
       <div>
         <Suspense fallback={<StockSkeleton />}>
-          <div className="lg:w-11/12 lg:m-auto lg:space-y-2 pb-4">
+          <div className="w-11/12 m-auto space-y-2 pb-4">
             {users.map((user, index) => (
               <div key={index} className="h-18 p-2 bg-white rounded-lg text-coal" >
                 <div className="grid grid-cols-4 px-8">

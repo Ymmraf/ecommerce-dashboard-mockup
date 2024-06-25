@@ -5,8 +5,9 @@ import Link from "next/link";
 import ProductCard from "../ProductCard";
 import { ProductInfoForCard } from "@/type";
 import SwiperPanel from "./SwiperPanel";
+import { QueryResultRow } from "@vercel/postgres";
 
-export default function Recent({ recent }: { recent: ProductInfoForCard[] }) {
+export default function Recent({ recent }: { recent: QueryResultRow[] }) {
   return (
     <>
       <section className="w-11/12 m-auto">

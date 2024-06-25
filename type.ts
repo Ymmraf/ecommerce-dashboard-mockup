@@ -2,17 +2,15 @@ export interface CartProduct {
     product: string,
     price: number,
     quantity: number,
-    img: string,
     stock: number
 }
 
 export interface ProductInfoForCard {
     name: string,
     price: number,
-    img: string,
     rating: number,
-    href: string,
-    discount: number
+    discount: number,
+    new: boolean
 }
 
 export interface StoreFilter {
@@ -37,3 +35,8 @@ export interface FilterObject {
     filter: "type" | "state" | "price"
     value: "fresh" | "dried" | "discount" | "new" | "desc" | "asc"
   }
+
+export interface ChartData {
+    total: number,
+    date: Date
+}

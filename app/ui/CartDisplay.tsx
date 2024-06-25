@@ -22,7 +22,7 @@ export default function CartDisplay() {
                 product: item.product,
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity + 1),
-                img: item.img,
+                img: `/fruits/${item.product.toLowerCase().replace(' ', '-')}.jpg`,
                 stock: item.stock
               }
             : item
@@ -36,7 +36,7 @@ export default function CartDisplay() {
                 product: item.product,
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity - 1),
-                img: item.img,
+                img: `/fruits/${item.product.toLowerCase().replace(' ', '-')}.jpg`,
                 stock: item.stock
               }
             : item
@@ -46,7 +46,7 @@ export default function CartDisplay() {
   }
 
   return (
-    <div className="overflow-scroll space-y-3 max-h-full text-coal">
+    <div className="overflow-scroll lg:h-full space-y-3 max-h-full text-coal">
       {productInCart.map((product, index) => (
         <div key={index}>
           <div className="h-24 flex gap-x-2 p-2">
@@ -54,7 +54,7 @@ export default function CartDisplay() {
               <div>
                 <Image
                   className="rounded-full shadow-md min-h-[80px] min-w-[80px]"
-                  src={product.img}
+                  src={`/fruits/${product.product.toLowerCase().replace(' ', '-')}.jpg`}
                   alt={product.product}
                   width={80}
                   height={80}

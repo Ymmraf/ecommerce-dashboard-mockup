@@ -3,7 +3,7 @@ import ProductCard from "../ProductCard"
 import { getDecimal } from "@/app/utils/getDecimal"
 
 export default async function Recommend() {
-    const allProduct = (await fetchProduct.all()).rows
+    const allProduct = (await fetchProduct.card()).rows
 
     const randomIndex = Math.random() * (allProduct.length-4)
     const recommendProduct = allProduct.slice(randomIndex, randomIndex+4)
@@ -18,10 +18,10 @@ export default async function Recommend() {
                             key={index}
                             name={product.name}
                             price={getDecimal(product.price, product.discount)}
-                            img={product.img}
+                            img={`/fruits/${product.name.toLowerCase().replace(' ', '-')}.jpg`}
                             rating={product.rating}
                             originalPrice={getDecimal(product.price)}
-                            href={product.href}
+                            href={`/store/${product.name.toLowerCase()}`}
                         />
                     )
                 }

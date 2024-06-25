@@ -10,7 +10,7 @@ import DesktopBanner from "./ui/home/DesktopBanner";
 import WorkProcessDesktop from "./ui/home/WorkProcessDesktop";
 
 export default async function Home() {
-  const allProduct = (await fetchProduct.all()).rows
+  const allProduct = (await fetchProduct.card()).rows
   const discountProducts = (allProduct.filter(product => product.discount > 0))
   const newProducts = (allProduct.filter(product => product.new == true))
 
@@ -18,12 +18,14 @@ export default async function Home() {
     <main className="z-0 space-y-12">
       <Swipe />
       <DesktopBanner />
-      <Discount discount={discountProducts}/>
-      <Recipe />
-      <BonusProgram />
-      <Recent recent={newProducts}/>
-      <WorkProcessMobile />
-      <WorkProcessDesktop />
+      <div className="container mx-auto space-y-12">
+        <Discount discount={discountProducts}/>
+        <Recipe />
+        <BonusProgram />
+        <Recent recent={newProducts}/>
+        <WorkProcessMobile />
+        <WorkProcessDesktop />
+      </div>
       <Footer />
     </main>
   );

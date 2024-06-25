@@ -5,7 +5,7 @@ import Footer from "../ui/Footer";
 export default function About() {
   return (
     <>
-      <main className="w-11/12 m-auto lg:mb-20">
+      <main className="container mx-auto lg:mb-20">
         <Breadcrumbs nav={["About"]} />
         <h1 className="text-coal text-3xl font-semibold">About</h1>
         <section>

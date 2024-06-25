@@ -20,9 +20,9 @@ export default function ProductCard({
 }) {
   return (
     <Link href={href}>
-      <div className="w-full bg-white p-4 rounded-3xl relative duration-300 shadow-sm hover:scale-[1.01]">
+      <div className="w-full bg-white p-4 md:mt-8 rounded-lg relative duration-300 shadow-sm hover:scale-[1.01]">
         <Image
-          className="rounded-full w-20 h-20 absolute top-[-10px] shadow-md z-10"
+          className="rounded-full size-20 lg:size-28 absolute top-[-10px] lg:top-[-40px] shadow-md z-10"
           src={img}
           alt="product image"
           width={100}

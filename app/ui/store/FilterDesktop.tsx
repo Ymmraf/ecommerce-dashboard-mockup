@@ -13,7 +13,7 @@ export default function FilterDesktop({
   return (
     <aside className="hidden w-5/6 max-w-[300px] text-coal font-semibold justify-between relative lg:flex">
       <div className="ml-8 fixed top-24">
-        <h2 className="my-4  text-2xl">Filter</h2>
+        <h2 className="my-4 text-2xl">Filter</h2>
         <div className="text-lg space-y-8">
           <div>
             <p>Type</p>
@@ -110,7 +110,7 @@ export default function FilterDesktop({
           </div>
         </div>
       </div>
-      <div className="w-[2px] h-full bg-coal opacity-70 mr-8 absolute right-0"></div>
+      <div className="w-[2px] h-full bg-coal opacity-70 absolute right-0"></div>
     </aside>
   );
 }

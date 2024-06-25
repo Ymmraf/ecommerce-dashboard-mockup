@@ -14,11 +14,11 @@ import Recommend from "@/app/ui/fruit/Recommend";
 
 export default async function Fruit({ params }: { params: { fruit: string } }) {
   const fruitName = capitalizeParams(params.fruit);
-  const productInfo = (await fetchProduct.byName(fruitName)).rows[0];
+  const productInfo = (await fetchProduct.productPageByName(fruitName)).rows[0];
 
   return (
     <>
-      <main className="w-11/12 m-auto xl:w-4/6 2xl:w-3/5">
+      <main className="w-11/12 mx-auto xl:w-4/6 2xl:w-3/5">
         <div>
           <Breadcrumbs nav={["Store", fruitName]} />
           <Link
@@ -37,7 +37,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
               <div className="w-3/5 shadow-lg rounded-full my-12 mx-auto">
                 <Image
                   className="rounded-full"
-                  src={productInfo.img}
+                  src={`/fruits/${productInfo.name.toLowerCase().replace(' ', '-')}.jpg`}
                   alt={productInfo.name}
                   width={500}
                   height={500}
@@ -84,11 +84,10 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
             </article>
             <div className="hidden lg:block">
               <Order
-                price={(productInfo.price * (1 - productInfo.discount)).toFixed(
-                  2
-                )}
+                productId={productInfo.id}
+                price={(productInfo.price * (1 - productInfo.discount)).toFixed(2)}
                 name={productInfo.name}
-                img={productInfo.img}
+                img={`/fruits/${productInfo.name.toLowerCase().replace(' ', '-')}.jpg`}
                 stock={productInfo.stock}
               />
             </div>
@@ -119,6 +118,7 @@ export default async function Fruit({ params }: { params: { fruit: string } }) {
       </main>
       <div className="fixed bottom-0 right-0 left-0 z-30 lg:hidden">
         <Order
+          productId={productInfo.id}
           price={(productInfo.price * (1 - productInfo.discount)).toFixed(2)}
           name={productInfo.name}
           img={productInfo.img}

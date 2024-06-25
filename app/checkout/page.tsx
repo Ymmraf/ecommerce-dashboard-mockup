@@ -10,16 +10,11 @@ import { useState } from "react";
 import { CartProduct } from "@/type";
 import Image from "next/image";
 
-interface CustomerInfomation {
-  name: string;
-  phone: string;
-  email: string;
-  country: string;
-  town: string;
-  street: string;
-  postcode: string;
-  packaging: string;
-  shipping: string;
+interface ShippingInfomation {
+  address: string,
+  packaging: string,
+  shipping: string,
+  payment: string
 }
 
 export default function Checkout() {
@@ -40,19 +35,23 @@ export default function Checkout() {
   const [shipping, setShipping] = useState("")
   const [payment, setPayment] = useState("")
   
-  function submitData(customerInfomation: CustomerInfomation, cart: CartProduct[]) {
+  function submitData(customerInfomation: ShippingInfomation, cart: CartProduct[]) {
+    const date = new Date()
+    const today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
     const requestBody = {
+      user_id: Math.ceil(Math.random()*8),
+      date: today,
+      total: totalPrice,
       ...customerInfomation,
       order: cart.map(product => {
         return {
+          id: product.productId,
           product: product.product,
           price: product.price,
           quantity: product.quantity
         }
       })
     }
-
-    console.log(requestBody)
 
     fetch('/checkout/api', {
       method: 'POST',
@@ -67,19 +66,29 @@ export default function Checkout() {
   }
   
   function handleSubmit() {
-    const customerInfomation = {
-      name : `${firstName} ${lastName}`,
-      phone: phone,
-      email: email,
-      country: country,
-      town: town,
-      street: street,
-      postcode: postcode,
+    // const customerInfomation = {
+    //   name : `${firstName} ${lastName}`,
+    //   phone: phone,
+    //   email: email,
+    //   country: country,
+    //   town: town,
+    //   street: street,
+    //   postcode: postcode,
+    //   packaging: packaging,
+    //   shipping: shipping,
+    //   payment: payment
+    // }
+
+    const address = `${firstName} ${lastName} ${phone} ${email} ${country} ${town} ${street} ${postcode}`
+
+    const shippingInfo = {
+      address: address,
       packaging: packaging,
       shipping: shipping,
       payment: payment
     }
-    return customerInfomation
+    
+    return shippingInfo
   }
 
   function handleClickRadio(choice: string) {
@@ -328,7 +337,12 @@ export default function Checkout() {
               totalPrice={totalPrice}
             />
             <div className="justify-center hidden lg:block w-full my-8">
-              <button className="w-full block text-cream bg-leaf font-semibold py-4 px-20 hover:scale-105 duration-300 rounded-lg" onClick={() => submitData(handleSubmit(), productInCart)} type="submit">Purchase</button>
+              {
+                productInCart.length > 0 ? 
+                <button className="w-full block text-cream bg-leaf font-semibold py-4 px-20 hover:scale-105 duration-300 rounded-lg" onClick={() => submitData(handleSubmit(), productInCart)} type="submit">Purchase</button> :
+                <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
+              }
+              
             </div>
             <div>
               <CheckoutList />

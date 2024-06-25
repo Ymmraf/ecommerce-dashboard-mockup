@@ -5,8 +5,9 @@ import Link from "next/link";
 import ProductCard from "../ProductCard";
 import { ProductInfoForCard } from "@/type";
 import SwiperPanel from "./SwiperPanel";
+import { QueryResultRow } from "@vercel/postgres";
 
-export default function Recent({ recent }: { recent: ProductInfoForCard[] }) {
+export default function Recent({ recent }: { recent: QueryResultRow[] }) {
   return (
     <>
       <section className="w-11/12 m-auto">
@@ -30,10 +31,10 @@ export default function Recent({ recent }: { recent: ProductInfoForCard[] }) {
               key={index}
               name={product.name}
               price={getDecimal(product.price, product.discount)}
-              img={product.img}
+              img={`/fruits/${product.name.toLowerCase().replace(' ', '-')}.jpg`}
               rating={product.rating}
               originalPrice={getDecimal(product.price)}
-              href={product.href}
+              href={`/store/${product.name.toLowerCase()}`}
             />
           ))}
         </div>

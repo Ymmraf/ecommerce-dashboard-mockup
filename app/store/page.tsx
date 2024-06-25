@@ -25,6 +25,8 @@ export default function Store() {
     price: ""
   });
 
+  console.log('This is it')
+  
   function handleClickFilter(filter : FilterObject) {
     if(!currentFilter[filter.filter]) {
       setCurrentFilter({
@@ -101,7 +103,7 @@ export default function Store() {
           currentFilter={currentFilter}
           handleClickFilter={handleClickFilter}
         />
-        <main className="w-11/12 mx-auto lg:mr-8">
+        <main className="container px-8 xl:px-0 xl:w-3/5 mx-auto">
           <Breadcrumbs nav={["Store"]} />
           <h1 className="text-coal text-3xl font-semibold">All products</h1>
 
@@ -141,10 +143,10 @@ export default function Store() {
                   key={index}
                   name={product.name}
                   price={getDecimal(product.price, product.discount)}
-                  img={product.img}
+                  img={`/fruits/${product.name.toLowerCase().replace(' ', '-')}.jpg`}
                   rating={product.rating}
                   originalPrice={getDecimal(product.price)}
-                  href={product.href}
+                  href={`/store/${product.name.toLowerCase()}`}
                 />
               ))}
             </Suspense>

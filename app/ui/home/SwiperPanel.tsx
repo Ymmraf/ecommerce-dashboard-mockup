@@ -8,22 +8,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./SwiperPanel.css"
+import { QueryResultRow } from "@vercel/postgres";
 
 export default function SwiperPanel({
   products,
 }: {
-  products: ProductInfoForCard[];
+  products: QueryResultRow[];
 }) {
   return (
     <>
       <Swiper
         modules={[Pagination, Navigation]}
-        navigation={true}
+        // navigation={true}
         pagination={true}
         spaceBetween={8}
         slidesPerView={4}
-        slidesOffsetAfter={50}
-        slidesOffsetBefore={50}
+        // slidesOffsetAfter={50}
+        // slidesOffsetBefore={50}
       >
         {products.map((product, index) => {
           return (
@@ -32,10 +33,10 @@ export default function SwiperPanel({
                 key={index}
                 name={product.name}
                 price={getDecimal(product.price, product.discount)}
-                img={product.img}
+                img={`/fruits/${product.name.toLowerCase().replace(' ', '-')}.jpg`}
                 rating={product.rating}
                 originalPrice={getDecimal(product.price)}
-                href={product.href}
+                href={`/store/${product.name.toLowerCase()}`}
               />
             </SwiperSlide>
           );

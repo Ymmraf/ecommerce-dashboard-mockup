@@ -5,7 +5,7 @@ export default function DesktopBanner() {
         <section className="hidden w-11/12 m-auto lg:grid lg:grid-cols-[2fr,1fr] lg:gap-x-4 mb-12">
             <div>
                 <Image
-                    className="w-full rounded-2xl"
+                    className="w-full rounded-lg"
                     src="/desktop-banner-2.jpg"
                     alt="desktop banner"
                     width={1000}
@@ -14,7 +14,7 @@ export default function DesktopBanner() {
             </div>
             <div>
                 <Image
-                    className="w-full rounded-2xl"
+                    className="w-full rounded-lg"
                     src="/mobile-slide-2.jpg"
                     alt="desktop banner 2"
                     width={300}

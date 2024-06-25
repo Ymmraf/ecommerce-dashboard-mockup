@@ -27,20 +27,21 @@ export default function Recent({ recent }: { recent: QueryResultRow[] }) {
 
         <div className="grid grid-cols-2 gap-x-2 gap-y-6 md:grid-cols-4 lg:hidden">
           {recent.slice(0, 4).map((product, index) => (
-            <ProductCard
-              key={index}
-              name={product.name}
-              price={getDecimal(product.price, product.discount)}
-              img={`/fruits/${product.name.toLowerCase().replace(' ', '-')}.jpg`}
-              rating={product.rating}
-              originalPrice={getDecimal(product.price)}
-              href={`/store/${product.name.toLowerCase()}`}
-            />
+            <div key={`${product.name}-${product.index}`}>
+              <ProductCard
+                name={product.name}
+                price={getDecimal(product.price, product.discount)}
+                img={`/fruits/${product.name.toLowerCase().replace(' ', '-')}.jpg`}
+                rating={product.rating}
+                originalPrice={getDecimal(product.price)}
+                href={`/store/${product.name.toLowerCase()}`}
+              />
+            </div>
           ))}
         </div>
 
         <div className="hidden lg:block ">
-          <SwiperPanel products={recent} />
+          <SwiperPanel section={"new-addition"} products={recent} />
         </div>
 
         <div className="mt-4">

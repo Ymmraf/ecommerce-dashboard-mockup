@@ -37,9 +37,12 @@ export default function Checkout() {
   const [shipping, setShipping] = useState("")
   const [payment, setPayment] = useState("")
   
+  const [pressed, setPressed] = useState<Boolean>(false)
+
   const router = useRouter()
   
   function submitData(customerInfomation: ShippingInfomation, cart: CartProduct[]) {
+    setPressed(true)
     const date = new Date()
     const today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
     const requestBody = {
@@ -331,10 +334,10 @@ export default function Checkout() {
                   }
                 </div>
               </div>
-              <div>
+              <div className="block lg:hidden">
                 {
                   productInCart.length > 0 ? 
-                  <CheckoutButton handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
+                  <CheckoutButton pressed={pressed} handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
                   <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
                 }
               </div>
@@ -352,16 +355,14 @@ export default function Checkout() {
             <div className="justify-center hidden lg:block w-full my-8">
               {
                 productInCart.length > 0 ? 
-                <CheckoutButton handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
+                <CheckoutButton pressed={pressed} handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
                 <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
               }
-              
             </div>
             <div>
               <CheckoutList />
             </div>
           </aside>
-              
         </div>
       </main>
       <Footer />

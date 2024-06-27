@@ -7,7 +7,9 @@ import { Suspense } from "react";
 import StockSkeleton from "@/app/ui/dashboard/StockLoading";
 import StockSearch from "@/app/ui/dashboard/StockSearch";
 import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
+import { sql } from "@vercel/postgres";
 
+export const dynamic = 'force-dynamic'
 export default async function Stock({
   searchParams,
 }: {
@@ -15,6 +17,23 @@ export default async function Stock({
 }) {
   const query = searchParams?.query || ''
   const allStock = (await fetchProduct.stock(query)).rows;
+
+  // async function fetchProductStock() {
+  //   'use server'
+  //   try {
+  //       const product = await sql `
+  //       SELECT name, price, stock
+  //       FROM product
+  //       ORDER BY id ASC
+  //       `
+  //       return product
+  //   } catch (error) {
+  //       console.log(`Database error : ${error}`)
+  //       throw new Error("Failed to fetch product for stock")
+  //   }
+  // }
+
+  // const allStock = (await fetchProductStock()).rows
 
   return (
     <>

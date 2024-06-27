@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server"
 import { sql } from "@vercel/postgres"
-import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
-import { permanentRedirect } from "next/navigation"
 
 interface InsertItem {
     id: number,

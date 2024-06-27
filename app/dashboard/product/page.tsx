@@ -9,6 +9,7 @@ import StockSearch from "@/app/ui/dashboard/StockSearch";
 import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
 import { sql } from "@vercel/postgres";
 
+export const dynamicParams = true
 export const dynamic = 'force-dynamic'
 export default async function Stock({
   searchParams,

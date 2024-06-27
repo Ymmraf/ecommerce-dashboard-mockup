@@ -5,6 +5,10 @@ import { sql } from "@vercel/postgres"
 import SubmitButton from "@/app/ui/dashboard/SubmitButton"
 import ProductManagementRadio from "@/app/ui/dashboard/ProductManagementRadio"
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function StockPage({ params }: { params: { fruitname: string } }) {
     const fruitName = capitalizeParams(params.fruitname)
     const productData = ((((await fetchProduct.productManagement(fruitName)).rows[0])))

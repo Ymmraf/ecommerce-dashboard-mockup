@@ -12,6 +12,10 @@ import Order from "@/app/ui/fruit/Order";
 import CustomerReview from "@/app/ui/fruit/CustomerReview";
 import Recommend from "@/app/ui/fruit/Recommend";
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function Fruit({ params }: { params: { fruit: string } }) {
   const fruitName = capitalizeParams(params.fruit);
   const productInfo = (await fetchProduct.productPageByName(fruitName)).rows[0];

@@ -10,7 +10,9 @@ import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
 import { sql } from "@vercel/postgres";
 
 export const dynamicParams = true
+export const revalidate = 0
 export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function Stock({
   searchParams,
 }: {
@@ -18,23 +20,6 @@ export default async function Stock({
 }) {
   const query = searchParams?.query || ''
   const allStock = (await fetchProduct.stock(query)).rows;
-
-  // async function fetchProductStock() {
-  //   'use server'
-  //   try {
-  //       const product = await sql `
-  //       SELECT name, price, stock
-  //       FROM product
-  //       ORDER BY id ASC
-  //       `
-  //       return product
-  //   } catch (error) {
-  //       console.log(`Database error : ${error}`)
-  //       throw new Error("Failed to fetch product for stock")
-  //   }
-  // }
-
-  // const allStock = (await fetchProductStock()).rows
 
   return (
     <>

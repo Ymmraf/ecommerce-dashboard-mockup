@@ -19,6 +19,7 @@ export default function CartDisplay() {
         productInCart.map((item, index) =>
           item.product == productName
             ? {
+                productId: item.productId,
                 product: item.product,
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity + 1),
@@ -33,6 +34,7 @@ export default function CartDisplay() {
         productInCart.map((item, index) =>
           item.product == productName
             ? {
+                productId: item.productId,
                 product: item.product,
                 price: Number(item.price),
                 quantity: Number(productInCart[index].quantity - 1),

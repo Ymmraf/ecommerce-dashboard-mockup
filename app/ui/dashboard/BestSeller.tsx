@@ -1,6 +1,10 @@
 import { dashboard } from "@/app/lib/dashboard"
 import Image from "next/image"
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function BestSeller() {
     const bestSeller = (await dashboard.bestSeller()).rows
     return (

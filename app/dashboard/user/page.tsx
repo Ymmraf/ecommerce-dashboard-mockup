@@ -7,6 +7,10 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import UserSearch from "@/app/ui/dashboard/UserSearch";
 import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function Member({searchParams} : {searchParams? : { query? : string }}) {
   const query = searchParams?.query || ''
   const users = (await fetchUsers.all(query)).rows;

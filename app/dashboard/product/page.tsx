@@ -7,7 +7,6 @@ import { Suspense } from "react";
 import StockSkeleton from "@/app/ui/dashboard/StockLoading";
 import StockSearch from "@/app/ui/dashboard/StockSearch";
 import SearchSkeleton from "@/app/ui/dashboard/SearchSkeleton";
-import { sql } from "@vercel/postgres";
 
 export const dynamicParams = true
 export const revalidate = 0

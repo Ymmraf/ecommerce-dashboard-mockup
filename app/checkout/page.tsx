@@ -20,7 +20,7 @@ interface ShippingInfomation {
 }
 
 export default function Checkout() {
-  const [productInCart] = useAtom(cart);
+  const [productInCart, setProductInCart] = useAtom(cart);
   const totalProductPrice = getTotalProductPrice(productInCart);
   const deliveryFee = getDeliveryFee(productInCart);
   const totalPrice = totalProductPrice + deliveryFee;
@@ -68,7 +68,10 @@ export default function Checkout() {
       body: JSON.stringify(requestBody)
     })
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => {
+      console.log(json)
+      setProductInCart([])
+    })
     .catch(error => console.log(error))
 
     router.push('/success')
@@ -355,7 +358,7 @@ export default function Checkout() {
             <div className="justify-center hidden lg:block w-full my-8">
               {
                 productInCart.length > 0 ? 
-                <CheckoutButton pressed={pressed} handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
+                <CheckoutButton pressed={pressed} handleSubmit={handleSubmit} submitData={submitData}productInCart={productInCart}/> :
                 <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
               }
             </div>

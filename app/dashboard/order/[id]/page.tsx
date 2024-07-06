@@ -1,6 +1,10 @@
 import { fetchOrders } from "@/app/lib/orders"
 import Image from "next/image"
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function OrderById({params} : {params : { id: number }}) {
     const orders = (await fetchOrders.byId(params.id)).rows[0]
     const items = (await fetchOrders.itemById(params.id)).rows

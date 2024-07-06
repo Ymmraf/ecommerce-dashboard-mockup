@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { fetchOrders } from "@/app/lib/orders"
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function UserInfomation({params} : {params : { id: number }}) {
     const user = (await fetchUsers.byId(params.id)).rows[0]
     const orders = (await fetchOrders.byUserId(params.id)).rows

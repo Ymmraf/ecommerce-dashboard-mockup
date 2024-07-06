@@ -6,6 +6,10 @@ import RecentOrder from "../ui/dashboard/RecentOrder";
 import BestSeller from "../ui/dashboard/BestSeller";
 import DashboardChart from "../ui/dashboard/DashboardChart";
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default function Dashboard() {
     return (
         <section>

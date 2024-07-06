@@ -1,5 +1,9 @@
 import { dashboard } from "@/app/lib/dashboard"
 
+export const dynamicParams = true
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
 export default async function Revenue() {
     const revenue = (await dashboard.revenue(6,2024)).rows[0].sum
     return (

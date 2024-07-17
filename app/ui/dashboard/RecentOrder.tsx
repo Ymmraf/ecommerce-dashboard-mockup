@@ -25,7 +25,7 @@ export default async function RecentOrder() {
             <div key={`${order.id}-${index}`} className="px-4 h-12">
               <div className="grid grid-cols-5 text-coal">
                 <p className="relative top-3">
-                  {order.date.getDate()}-{order.date.getMonth()}-
+                  {order.date.getDate()}-{order.date.getMonth()+1}-
                   {order.date.getFullYear()}
                 </p>
                 <p className="relative top-3">{order.id}</p>

@@ -1,11 +1,10 @@
 import Breadcrumbs from "../ui/Breadcrumbs";
-import Image from "next/image";
 import Footer from "../ui/Footer";
 
 export default function Contact() {
   return (
     <>
-      <main className="w-11/12 m-auto">
+      <main className="w-11/12 m-auto min-h-[60vh]">
         <Breadcrumbs nav={["Contact"]} />
         <h1 className="text-coal text-3xl font-semibold">Contact</h1>
         <section className="space-y-8">

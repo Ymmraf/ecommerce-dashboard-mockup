@@ -17,7 +17,7 @@ export default async function OrderById({params} : {params : { id: number }}) {
             <section className="text-coal space-y-2 mb-4 mt-4">
                 <div>
                     <p><span className="font-semibold">Username : </span>{orders.username}</p>
-                    <p><span className="font-semibold">Date : </span>{orders.date.getDate()}-{orders.date.getMonth()}-{orders.date.getFullYear()}</p>
+                    <p><span className="font-semibold">Date : </span>{orders.date.getDate()}-{orders.date.getMonth()+1}-{orders.date.getFullYear()}</p>
                 </div>
                 <hr />
                 <div>

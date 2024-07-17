@@ -36,7 +36,7 @@ export default async function OrderPage() {
         {orders.map((order, index) => (
           <div key={index} className="h-18 p-2 bg-white rounded-lg text-coal">
             <div className="grid grid-cols-6 px-8">
-              <p className="relative top-4">{`${order.date.getDate()}-${order.date.getMonth()}-${order.date.getFullYear()}`}</p>
+              <p className="relative top-4">{`${order.date.getDate()}-${order.date.getMonth()+1}-${order.date.getFullYear()}`}</p>
               <p className="relative top-4">{order.id}</p>
               <p className="relative top-4">{order.username}</p>
               <p className="relative top-4">${order.total}</p>

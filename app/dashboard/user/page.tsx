@@ -24,21 +24,21 @@ export default async function Member({searchParams} : {searchParams? : { query? 
         </div>
       </Suspense>
       <div className="w-11/12 m-auto space-y-2 lg:mt-4">
-        <div className="h-12 p-2 px-8 bg-leaf rounded-lg grid grid-cols-4 text-cream font-bold text-lg mb-2">
+        <div className="h-12 p-2 px-8 bg-leaf rounded-lg grid grid-cols-3 sm:grid-cols-4 text-cream font-bold text-lg mb-2">
           <p>Id</p>
           <p>Username</p>
-          <p>Total spent</p>
+          <p className="hidden sm:inline">Total spent</p>
         </div>
       </div>
       <div>
         <Suspense fallback={<StockSkeleton />}>
           <div className="w-11/12 m-auto space-y-2 pb-4">
             {users.map((user, index) => (
-              <div key={index} className="h-18 p-2 bg-white rounded-lg text-coal" >
-                <div className="grid grid-cols-4 px-8">
+              <div key={`${index}-${user.username}`} className="h-18 p-2 bg-white rounded-lg text-coal" >
+                <div className="grid grid-cols-3 sm:grid-cols-4 px-8">
                   <p className="relative top-4">{user.id}</p>
                   <p className="relative top-4">{user.username}</p>
-                  <p className="relative top-4">${user.total_spent ? user.total_spent : 0}</p>
+                  <p className="relative top-4 hidden sm:inline">${user.total_spent ? user.total_spent : 0}</p>
                   <div className="flex items-center justify-end">
                     <Link
                       href={`/dashboard/user/${user.id}`}

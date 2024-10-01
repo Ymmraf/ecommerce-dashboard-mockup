@@ -12,6 +12,27 @@ export const dynamicParams = true
 export const revalidate = 0
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'default-no-store'
+
+function ProductTableHeader() {
+  return (
+    <>
+      <div className="w-11/12 m-auto space-y-4">
+        <div className="h-12 p-2 bg-leaf rounded-lg grid grid-cols-2 sm:grid-cols-3 text-cream font-bold text-lg mb-2">
+          <div className="flex">
+            <div className="w-20"></div>
+            <p>Name</p>
+          </div>
+          <div className="flex justify-between">
+            <p>Stock</p>
+            <p className="hidden sm:inline">Price</p>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </>
+  )
+}
+
 export default async function Stock({
   searchParams,
 }: {
@@ -31,26 +52,14 @@ export default async function Stock({
         </div>
       </Suspense>
 
-      <div className="w-11/12 m-auto space-y-4">
-        <div className="h-12 p-2 bg-leaf rounded-lg grid grid-cols-3 text-cream font-bold text-lg mb-2">
-          <div className="flex">
-            <div className="w-20"></div>
-            <p>Name</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Stock</p>
-            <p>Price</p>
-          </div>
-          <div></div>
-        </div>
-      </div>
+      <ProductTableHeader />
 
       <Suspense fallback={<StockSkeleton />}>
         <div className="w-11/12 m-auto space-y-2 pb-4">
           {allStock.map((product, index) => (
             <div
               key={index}
-              className="h-20 p-2 bg-white rounded-lg grid grid-cols-3 text-coal"
+              className="h-20 p-2 bg-white rounded-lg grid grid-cols-3 sm:grid-cols-3 text-coal"
             >
               <div className="flex items-center">
                 <Image
@@ -64,9 +73,9 @@ export default async function Stock({
                 />
                 <h2 className="text-lg ml-4">{product.name}</h2>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-end sm:justify-between ">
                 <p>{product.stock}</p>
-                <p>${product.price}</p>
+                <p className="hidden sm:inline">${product.price}</p>
               </div>
               <div className="flex items-center justify-end">
                 <Link

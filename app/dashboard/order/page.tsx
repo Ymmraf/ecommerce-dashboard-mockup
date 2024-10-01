@@ -25,22 +25,22 @@ export default async function OrderPage() {
 
       <div className="w-11/12 m-auto space-y-2">
         <div className="h-12 p-2 bg-leaf rounded-lg text-cream font-bold text-lg mb-2">
-          <div className="grid grid-cols-6 px-4">
-            <p>Date</p>
-            <p>Order id</p>
-            <p>Username</p>
-            <p>Amount</p>
-            <p>Payment</p>
+          <div className="grid grid-cols-4 sm:grid-cols-6 px-4">
+            <p className="hidden sm:inline">Date</p>
+            <p>Id</p>
+            <p>Name</p>
+            <p className="pl-4 sm:pl-0">Amount</p>
+            <p className="hidden sm:inline">Payment</p>
           </div>
         </div>
         {orders.map((order, index) => (
           <div key={index} className="h-18 p-2 bg-white rounded-lg text-coal">
-            <div className="grid grid-cols-6 px-8">
-              <p className="relative top-4">{`${order.date.getDate()}-${order.date.getMonth()+1}-${order.date.getFullYear()}`}</p>
+            <div className="grid grid-cols-4 sm:grid-cols-6 px-8">
+              <p className="relative top-4 hidden sm:inline">{`${order.date.getDate()}-${order.date.getMonth()+1}-${order.date.getFullYear()}`}</p>
               <p className="relative top-4">{order.id}</p>
               <p className="relative top-4">{order.username}</p>
-              <p className="relative top-4">${order.total}</p>
-              <p className="relative top-4">{order.payment}</p>
+              <p className="relative top-4 pl-4 sm:pl-0">${order.total}</p>
+              <p className="relative top-4 hidden sm:inline">{order.payment}</p>
               <div className="flex items-center justify-end">
                 <Link href={`/dashboard/order/${order.id}`} className="text-white bg-leaf text-lg p-3 rounded-lg">
                   <FontAwesomeIcon icon={faMagnifyingGlass}/>

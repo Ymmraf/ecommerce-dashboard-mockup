@@ -340,7 +340,7 @@ export default function Checkout() {
               <div className="block lg:hidden">
                 {
                   productInCart.length > 0 ? 
-                  <CheckoutButton pressed={pressed} handleSubmit={handleSubmit}submitData={submitData}productInCart={productInCart}/> :
+                  <CheckoutButton pressed={pressed} handleSubmit={handleSubmit} submitData={submitData}productInCart={productInCart}/> :
                   <button className="w-full block text-cream bg-darkcream font-semibold py-4 px-20 rounded-lg" disabled={true} type="submit">Purchase</button>
                 }
               </div>

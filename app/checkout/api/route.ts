@@ -52,10 +52,20 @@ export async function POST(request: Request) {
         }
     })
 
-    console.log(requestData)
-    console.log("log from /checkout/api/route.ts")
-    
-    // revalidatePath('/checkout')
-    // return redirect('/success')
+    requestData.order.forEach(async (item : InsertItem) => {
+        try {
+            const productStock = (await sql `SELECT * FROM product WHERE id = ${item.id}`).rows[0].stock
+
+            await sql `
+            UPDATE product
+            SET stock = ${productStock - item.quantity}
+            WHERE id = ${item.id}
+            `
+        } catch (error) {
+            console.log(`An error occured : ${error}`)
+            throw new Error('Cannot update stock in product')
+        }
+        
+    })
     return NextResponse.json({requestData})
 }

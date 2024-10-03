@@ -72,9 +72,10 @@ export default function Checkout() {
       console.log(json)
       setProductInCart([])
     })
+    .then(() => {
+      router.push('/success')
+    })
     .catch(error => console.log(error))
-
-    router.push('/success')
   }
   
   function handleSubmit() {
@@ -115,7 +116,6 @@ export default function Checkout() {
         setPayment('card')
         break
     }
-    console.log(payment)
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) : void {
